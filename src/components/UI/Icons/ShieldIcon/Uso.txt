@@ -1,0 +1,8 @@
+// Importacion
+import { ShieldIcon } from '../../components/UI/Icons/ShieldIcon/ShieldIcon';
+
+// Uso simple:
+<ShieldIcon />
+
+// Con tamaño y/o clases personalizadas:
+<ShieldIcon width="20px" height="20px" className="me-2" />

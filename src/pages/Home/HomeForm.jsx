@@ -1,78 +1,128 @@
 /* ==========================================================================
   Componente Home.jsx
   Descripción: Componente que representa la página de inicio de la aplicación.
-    desde aquí se accede a las secciones principales y a los productos destacados.
+    desde aquí se accede a las secciones principales y a los productos 
+    destacados. Los Productos Destacados son leidos directamente desde eel 
+    DataContext.
   Autor: Silvio Jorda
   Date: 2026-09-30
 ========================================================================== */
 
+// Importaciones
 import { Link } from 'react-router-dom';
+import { Container, Card, Row, Col, Button, Spinner } from 'react-bootstrap';
+import { RocketIcon } from '../../components/UI/Icons/RocketIcon/RocketIcon';
+import { ShieldIcon } from '../../components/UI/Icons/ShieldIcon/ShieldIcon';
+import { CreditCardIcon } from '../../components/UI/Icons/CreditCardIcon/CreditCardIcon';
 import { useData } from '../../context/DataContext/DataContext';
 import { ItemList } from '../../components/ItemList/ItemList';
 import styles from './HomeForm.module.css';
 
 export function HomeForm() {
-  // Consumimos el estado global centralizado desde DataContext
+  // Desde el estado global centralizado del DataContext
   const { products, loading, error } = useData();
 
-  // Seleccionamos los primeros 4 productos del catálogo central como destacados
-  // Mas adelante, si se desea, se puede implementar un sistema de productos 
-  // destacados basado en algún criterio específico.
+  // Seleccionamos los primeros 4 productos del catálogo como destacados
   const featuredProducts = products ? products.slice(0, 4) : [];
 
   return (
-    <div className={styles.homeContainer}>
-      {/* Hero Section */}
-      <section className={styles.hero}>
-        <h1 className={styles.heroTitle}>
-          Bienvenido a <span className={styles.highlight}>TechStore</span>
-        </h1>
+    <Container className="py-4 d-flex flex-column gap-5">
+      {/* Hero Section Banner */}
+      <Card className={`border-0 p-4 p-md-5 text-center shadow-lg ${styles.heroCard}`}>
+        <Card.Body className="d-flex flex-column align-items-center">
+          <h1 className={styles.heroTitle}>
+            Bienvenido a <span className={styles.highlight}>TechStore</span>
+          </h1>
 
-        <p className={styles.heroSubtitle}>
-          Encontrá los mejores componentes de hardware, periféricos y tecnología con la garantía y asesoramiento que buscás.
-        </p>
+          <p className={styles.heroSubtitle}>
+            Encontrá los mejores componentes de hardware, periféricos y tecnología con la garantía y asesoramiento que buscás.
+          </p>
 
-        <Link to="/products" className={styles.heroButton}>
-          Ver Catálogo Completo
-        </Link>
-      </section>
+          <Button
+            as={Link}
+            to="/products"
+            className={styles.heroButton}
+          >
+            Ver Catálogo Completo
+          </Button>
+        </Card.Body>
+      </Card>
 
-      {/* Envios - Garantia - Pagos */}
-      <section className={styles.features}>
-        <div className={styles.featureCard}>
-          <span className={styles.featureIcon}>🚀</span>
-          <h3 className={styles.featureTitle}>Envíos a todo el país</h3>
-          <p className={styles.featureText}>Despachamos tu pedido en menos de 24 horas hábiles.</p>
-        </div>
+      {/* Envíos, Garantía, Pagos */}
+      <section>
+        <Row className="g-4 justify-content-center">
+          <Col xs={12} md={4}>
+            <Card className={`border-0 p-3 text-center h-100 ${styles.featureCard}`}>
+              <Card.Body className="d-flex flex-column align-items-center justify-content-center">
+                {/* <span className={styles.featureIcon}>🚀</span> */} 
+                <span className={styles.featureIcon}> <RocketIcon /> </span>
 
-        <div className={styles.featureCard}>
-          <span className={styles.featureIcon}>🛡️</span>
-          <h3 className={styles.featureTitle}>Garantía Oficial</h3>
-          <p className={styles.featureText}>Todos nuestros productos cuentan con respaldo directo de fábrica.</p>
-        </div>
+                <h3 className={styles.featureTitle}>Envíos a todo el país</h3>
 
-        <div className={styles.featureCard}>
-          <span className={styles.featureIcon}>💳</span>
-          <h3 className={styles.featureTitle}>Pagos Secundarios</h3>
-          <p className={styles.featureText}>Aceptamos tarjetas de crédito, débito y transferencias.</p>
-        </div>
+                <p className={styles.featureText}>Despachamos tu pedido en menos de 24 horas hábiles.</p>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          <Col xs={12} md={4}>
+            <Card className={`border-0 p-3 text-center h-100 ${styles.featureCard}`}>
+              <Card.Body className="d-flex flex-column align-items-center justify-content-center">
+                {/* <span className={styles.featureIcon}>🛡️</span> */}
+                <span className={styles.featureIcon}> <ShieldIcon /> </span>
+
+                <h3 className={styles.featureTitle}>Garantía Oficial</h3>
+
+                <p className={styles.featureText}>Todos nuestros productos cuentan con respaldo directo de fábrica.</p>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          <Col xs={12} md={4}>
+            <Card className={`border-0 p-3 text-center h-100 ${styles.featureCard}`}>
+              <Card.Body className="d-flex flex-column align-items-center justify-content-center">
+                {/* <span className={styles.featureIcon}>💳</span> */}
+                <span className={styles.featureIcon}> <CreditCardIcon /> </span>
+
+                <h3 className={styles.featureTitle}>Pagos Seguros</h3>
+
+                <p className={styles.featureText}>Aceptamos tarjetas de crédito, débito y transferencias bancarias.</p>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
       </section>
 
       {/* Productos Destacados */}
       <section className={styles.featuredSection}>
-        <div className={styles.sectionHeader}>
+        <div className={`d-flex justify-content-between align-items-center pb-3 mb-4 ${styles.sectionHeader}`}>
           <h2 className={styles.sectionTitle}>Productos Destacados</h2>
 
-          <Link to="/products" className={styles.viewAllLink}>
+          {/* Ver todos */}
+          <Button
+            as={Link}
+            to="/products"
+            className={styles.viewAllBtn}
+          >
             Ver todos &rarr;
-          </Link>
+          </Button>
         </div>
 
-        {loading && <p className={styles.loadingText}>Cargando productos destacados...</p>}
-        {error && <p className={styles.errorText}>Error: {error}</p>}
+        {loading && (
+          <div className="text-center py-5">
+            <Spinner animation="border" style={{ color: '#8de2d6' }} role="status" />
 
-        {!loading && !error && <ItemList products={featuredProducts} />}
+            <p className={`mt-3 ${styles.loadingText}`}>Cargando productos destacados...</p>
+          </div>
+        )}
+
+        {error && (
+          <p className={styles.errorText}>Error al cargar los productos: {error}</p>
+        )}
+
+        {!loading && !error && (
+          <ItemList products={featuredProducts} />
+        )}
       </section>
-    </div>
+    </Container>
   );
 }

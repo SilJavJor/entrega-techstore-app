@@ -1,13 +1,14 @@
 /* ==========================================================================
   Componente AuthContext.jsx
   Descripcion: 
-  Autor: Nombre 
+  Autor: Silvio Jorda 
   Date: 2026-09-30
 ========================================================================== */
 
+// Importaciones
 import { createContext, useContext, useState } from 'react';
 
-// Cracion del contexto de la Autorizacion
+// Cracion del contexto de Autorizacion
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
@@ -18,14 +19,18 @@ export function AuthProvider({ children }) {
   const login = (username, password) => {
     if (username === 'Admin' && password === 'Admin2026') {
       setIsAdmin(true);
+
       localStorage.setItem('isAdmin', 'true');
+
       return true;
     }
+
     return false;
   };
 
   const logout = () => {
     setIsAdmin(false);
+
     localStorage.removeItem('isAdmin');
   };
 

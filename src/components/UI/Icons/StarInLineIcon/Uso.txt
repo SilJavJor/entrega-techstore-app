@@ -1,5 +1,8 @@
-// Uso simple con los valores por defecto:
-<StarIcon />
+// Importacion
+import { CreditCardIcon } from '../../components/UI/Icons/StarInLineIcon/StarInLineIcon';
 
-// O con tamaño personalizado:
-<StarIcon size={26} color="#8de2d6" />
+// Uso simple con los valores por defecto:
+<StarInLineIcon />
+
+// Con tamaño y color personalizados
+<StarInLineIcon size = 28, color = "#FFD700" />

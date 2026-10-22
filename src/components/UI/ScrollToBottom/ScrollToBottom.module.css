@@ -6,8 +6,8 @@
 
 .scrollBottomBtn {
   position: fixed;
-  top: 85px; /* Ajusta este valor para que quede justo debajo del Header */
-  right: 2rem;
+  top: 85px;
+  right: 1rem;
   width: 42px;
   height: 42px;
   background-color: #8de2d6;

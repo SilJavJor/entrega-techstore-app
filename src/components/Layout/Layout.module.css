@@ -1,20 +1,14 @@
 /* ==========================================================================
-   Estilos de Layout.module.css
-   Descripcion:
-   Author: Silvio Jorda
-   Date: 2026-09-30
+  Estilos de Layout.module.css
+  Descripcion: Estilos del contenedor general de la estructura.   
+  Author: Silvio Jorda
+  Date: 2026-09-30
 ========================================================================== */
 
 .layoutContainer {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  background-color: #f8f9fa;
 }
 
 .mainContent {
-  flex: 1;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
   width: 100%;
 }

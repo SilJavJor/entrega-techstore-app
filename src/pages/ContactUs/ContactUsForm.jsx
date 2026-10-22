@@ -2,10 +2,15 @@
   Componente ContactUs.jsx
   Descripción: Formulario de contacto integrado en tarjeta de fondo oscuro.
   Autor: Silvio Jorda
-  Fecha: 2026-10-08
+  Fecha: 2026-09-30
 ========================================================================== */
 
+// Importaciones
 import { useState } from 'react';
+import { Container, Card, Form, Button } from 'react-bootstrap';
+import { BroomIcon } from '../../components/UI/Icons/BroomIcon/BroomIcon';
+import { CheckIcon } from '../../components/UI/Icons/CheckIcon/CheckIcon';
+import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
 import styles from './ContactUsForm.module.css';
 
 export function ContactUsForm() {
@@ -15,81 +20,128 @@ export function ContactUsForm() {
     mensaje: ''
   });
 
+  const [showModal, setShowModal] = useState(false);
+
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('¡Gracias por contactarte! Te responderemos a la brevedad.');
+
+    setShowModal(true);
+  };
+
+  const handleReset = () => {
     setFormData({ nombre: '', email: '', mensaje: '' });
   };
 
+  const handleCloseModal = () => {
+    setShowModal(false);
+
+    handleReset();
+  };
+
   return (
-    <div className={styles.pageContainer}>
-      <div className={styles.cardContainer}>
-        {/* Encabezado dentro de la tarjeta de fondo oscuro */}
-        <h1 className={styles.title}>Contáctanos</h1>
-        
-        {/* Subtítulo en dos líneas independientes */}
-        <div className={styles.subtitleContainer}>
-          <p className={styles.subtitle}>
-            ¿Tenés alguna duda o consulta sobre nuestros productos?
-          </p>
-          <p className={styles.subtitle}>
-            Dejanos tu mensaje y te responderemos a la brevedad.
-          </p>
-        </div>
+    <Container className="py-5 d-flex justify-content-center align-items-center">
+      <Card className={`border-0 p-4 shadow-lg ${styles.card}`}>
+        <Card.Body>
+          {/* Encabezado */}
+          <h1 className={styles.title}>Contáctanos</h1>
 
-        {/* Formulario */}
-        <form onSubmit={handleSubmit} className={styles.form}>
-          <div className={styles.fieldGroup}>
-            <label htmlFor="nombre">Nombre completo</label>
-            <input
-              type="text"
-              id="nombre"
-              name="nombre"
-              placeholder="Tu nombre y apellido"
-              value={formData.nombre}
-              onChange={handleChange}
-              required
-            />
+          {/* Subtítulo */}
+          <div className={styles.subtitleContainer}>
+            <p className={styles.subtitle}>
+              ¿Tenés alguna duda o consulta sobre nuestros productos?
+            </p>
+
+            <p className={styles.subtitle}>
+              Dejanos tu mensaje y te responderemos a la brevedad.
+            </p>
           </div>
 
-          <div className={styles.fieldGroup}>
-            <label htmlFor="email">Correo electrónico</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="tuemail@ejemplo.com"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
+          {/* Formulario */}
+          <Form onSubmit={handleSubmit} className="d-flex flex-column gap-3">
+            {/* Nombre completo */}
+            <Form.Group controlId="nombre">
+              <Form.Label className={styles.label}>Nombre completo *</Form.Label>
 
-          <div className={styles.fieldGroup}>
-            <label htmlFor="mensaje">Mensaje</label>
-            <textarea
-              id="mensaje"
-              name="mensaje"
-              rows="4"
-              placeholder="Escribí tu mensaje acá..."
-              value={formData.mensaje}
-              onChange={handleChange}
-              required
-            />
-          </div>
+              <Form.Control
+                type="text"
+                name="nombre"
+                value={formData.nombre}
+                onChange={handleChange}
+                placeholder="Ej: Juan Pérez"
+                required
+                className={styles.input}
+              />
+            </Form.Group>
 
-          <button type="submit" className={styles.btnSubmit}>
-            Enviar mensaje
-          </button>
-        </form>
-      </div>
-    </div>
+            {/* E-mail */}
+            <Form.Group controlId="email">
+              <Form.Label className={styles.label}>Correo electrónico *</Form.Label>
+
+              <Form.Control
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Ej: juan.perez@email.com"
+                required
+                className={styles.input}
+              />
+            </Form.Group>
+
+            {/* Mensaje */}
+            <Form.Group controlId="mensaje">
+              <Form.Label className={styles.label}>Mensaje *</Form.Label>
+
+              <Form.Control
+                as="textarea"
+                rows={4}
+                name="mensaje"
+                value={formData.mensaje}
+                onChange={handleChange}
+                placeholder="Escribí tu consulta o mensaje acá..."
+                required
+                className={styles.input}
+              />
+            </Form.Group>
+
+            <div className="d-flex gap-3 mt-3">
+            { /* Limpiar */}
+              <Button 
+                type="button" 
+                className={styles.cleanBtn} 
+                onClick={handleReset}
+              >
+                <BroomIcon /> Limpiar
+              </Button>
+
+              {/* Enviar  */}
+              <Button 
+                type="submit" 
+                className={styles.btnSubmit}
+              >
+                <CheckIcon /> Enviar
+              </Button>
+            </div>
+          </Form>
+        </Card.Body>
+      </Card>
+
+      <MessageBtnAccept
+        isOpen={showModal}
+        onClose={handleCloseModal}
+        title="¡ Mensaje Enviado !"
+        message="¡ Gracias por contactarte ! Te responderemos a la brevedad."
+        confirmText="Aceptar"
+        showCancel={false}
+      />
+    </Container>
   );
 }

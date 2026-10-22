@@ -1,18 +1,18 @@
 /* ==========================================================================
   Componente CartContext.jsx
-  Descripcion: 
+  Descripcion:  
   Autor: Silvio Jorda
   Date: 2026-09-30
 ========================================================================== */
 
-
+// Importaciones
 import { createContext, useState, useContext } from 'react';
 
-// Creacion el contexto del Carrito
+// Creacion del contexto del Carrito
 // eslint-disable-next-line react-refresh/only-export-components
 export const CartContext = createContext();
 
-// Custom hook para consumir el contexto fácilmente
+// Hook para consumir el contexto fácilmente
 // eslint-disable-next-line react-refresh/only-export-components
 export const useCart = () => {
   const context = useContext(CartContext);

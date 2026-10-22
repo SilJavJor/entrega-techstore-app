@@ -1,69 +1,115 @@
 /* ==========================================================================
-  Componente Cart.jsx
+  Componente CartForm.jsx
+  Descripción: Vista del carrito de compras migrada a React Bootstrap.
+    Muestra los productos agregados, desglose de cantidades y subtotales,
+    estado de carrito vacío y opciones de vaciado/continuación de compra.
   Autor: Silvio Jorda
-  Date: 2026-10-07
+  Fecha: 2026-09-30
 ========================================================================== */
 
+// Importaciones
 import { Link } from 'react-router-dom';
+import { Container, Card, Button } from 'react-bootstrap';
 import { useCart } from '../../context/CartContext/CartContext';
+import { CartIcon } from '../../components/UI/Icons/CartIcon/CartIcon';
 import styles from './CartForm.module.css';
 
 export function CartForm() {
   const { cart, removeFromCart, clearCart, totalPrice } = useCart();
 
+  // Estado del Carrito Vacío
   if (cart.length === 0) {
     return (
-      <div className={styles.empty}>
-        <h2>Tu carrito está vacío 🛒</h2>
+      <Container className="py-5 d-flex justify-content-center align-items-center">
+        <Card className={`border-0 p-4 text-center shadow-lg ${styles.emptyCard}`}>
+          <Card.Body className="d-flex flex-column align-items-center">
+            {/* <h2 className={styles.emptyTitle}>Tu carrito está vacío 🛒</h2> */}
+            <h2 className={styles.emptyTitle}>Tu carrito está vacío <CartIcon /></h2>
 
-        <p style={{ margin: '1rem 0' }}>¿ No sabés qué comprar ? ¡ Revisá nuestro catálogo !</p>
+            <p className={styles.emptySubtitle}>
+              ¿ No sabés qué comprar ? ¡ Revisá nuestro catálogo !
+            </p>
 
-        <Link to="/products" className={styles.continueButton}>
-          Ver Productos
-        </Link>
-      </div>
+            <Button
+              as={Link}
+              to="/products"
+              className={styles.continueButton}
+            >
+              Ver Productos
+            </Button>
+          </Card.Body>
+        </Card>
+      </Container>
     );
   }
 
+  // Estado con Productos en el Carrito
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Carrito de Compras</h1>
+    <Container className="py-5">
+      <Card className={`border-0 p-4 shadow-lg ${styles.mainCard}`}>
+        <Card.Body>
+          <h1 className={styles.title}>Carrito de Compras</h1>
 
-      {cart.map((item) => (
-        <div key={item.id} className={styles.itemRow}>
-          <img src={item.image} alt={item.name} className={styles.itemImage} />
+          {/* Listado de Productos */}
+          <div className="d-flex flex-column gap-3 my-4">
+            {cart.map((item) => (
+              <Card key={item.id} className={`border-0 p-3 ${styles.itemCard}`}>
+                <div className="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                  {/* Foto e Información del Producto */}
+                  <div className="d-flex align-items-center gap-3">
+                    <div className={styles.imageWrapper}>
+                      <img src={item.image} alt={item.name} className={styles.itemImage} />
+                    </div>
 
-          <div className={styles.itemInfo}>
-            <h4>{item.name}</h4>
-            <p style={{ color: '#666', fontSize: '0.9rem' }}>
-              ${item.price.toLocaleString()} x {item.quantity} unidades
-            </p>
+                    <div>
+                      <h4 className={styles.itemName}>{item.name}</h4>
+
+                      <span className={styles.itemDetails}>
+                        ${item.price.toLocaleString()} x {item.quantity} {item.quantity === 1 ? 'unidad' : 'unidades'}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Subtotal */}
+                  <div className="d-flex align-items-center gap-4">
+                    <strong className={styles.itemSubtotal}>
+                      ${(item.price * item.quantity).toLocaleString()}
+                    </strong>
+
+                    {/* Botón Eliminar */}
+                    <Button
+                      variant="link"
+                      className={styles.removeButton}
+                      onClick={() => removeFromCart(item.id)}
+                    >
+                      Eliminar
+                    </Button>
+                  </div>
+                </div>
+              </Card>
+            ))}
           </div>
 
-          <strong style={{ margin: '0 1.5rem' }}>
-            ${(item.price * item.quantity).toLocaleString()}
-          </strong>
-          <button className={styles.removeButton} onClick={() => removeFromCart(item.id)}>
-            Eliminar
-          </button>
-        </div>
-      ))}
+          {/* Panel de Resumen */}
+          <div className={`d-flex justify-content-between align-items-center flex-wrap gap-3 pt-3 ${styles.footer}`}>
+            <div className="d-flex gap-3 flex-wrap">
+              {/* Seguir Comprando */}
+              <Button as={Link} to="/products" className={styles.continueButton}>
+                Seguir Comprando
+              </Button>
 
-      <div className={styles.footer}>
-        <div className={styles.actionButtons}>
-          <Link to="/products" className={styles.continueButton}>
-            Seguir Comprando
-          </Link>
+              {/* Vaciar el Carrito */}
+              <Button className={styles.clearButton} onClick={clearCart}>
+                Vaciar Carrito
+              </Button>
+            </div>
 
-          <button className={styles.clearButton} onClick={clearCart}>
-            Vaciar Carrito
-          </button>
-        </div>
-
-        <div className={styles.total}>
-          Total: ${totalPrice.toLocaleString()}
-        </div>
-      </div>
-    </div>
+            <div className={styles.totalText}>
+              Total: <span className={styles.totalAmount}>${totalPrice.toLocaleString()}</span>
+            </div>
+          </div>
+        </Card.Body>
+      </Card>
+    </Container>
   );
 }

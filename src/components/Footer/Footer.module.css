@@ -1,76 +1,62 @@
 /* ==========================================================================
-   Estilos de Footer.module.css
-   Descripcion: 
-   Author: Silvio Jorda
-   Date: 2026-09-30
+  Estilos de Footer.module.css
+  Descripción: Estilos del pie de página.
+  Autor: Silvio Jorda
+  Date: 2026-09-30
 ========================================================================== */
 
 .footer {
-  background-color: #111;
-  color: #fff;
-  padding: 2rem 1rem;
+  background-color: #111111;
+  color: #ffffff;
+  padding: 2rem 0;
   margin-top: auto;
-  border-top: 1px solid #222;
+  border-top: 1px solid #222222;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
+.brandLink {
+  color: #8de2d6 !important;
+  text-decoration: none !important;
+  font-weight: bold;
+  transition: opacity 0.2s ease, text-shadow 0.2s ease;
 }
 
-/* Columna Izquierda */
-.brandInfo {
-  flex: 1;
-  min-width: 250px;
-  text-align: left;
+.brandLink:hover {
+  color: #8de2d6 !important;
+  opacity: 0.85;
+  text-shadow: 0 0 8px rgba(141, 226, 214, 0.4);
 }
 
 .title {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   font-weight: bold;
   color: #ffffff;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.4rem;
 }
 
 .description {
-  color: #aaa;
+  color: #aaaaaa;
   font-size: 0.85rem;
   line-height: 1.4;
   margin: 0;
 }
 
-/* Columna Central */
-.centerNav {
-  flex: 1;
-  text-align: center;
-  min-width: 180px;
-}
-
 .teamLink {
-  color: #8de2d6;
+  color: #8de2d6 !important;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.95rem;
+  text-decoration: none !important;
   transition: color 0.2s ease, transform 0.2s ease;
   display: inline-block;
 }
 
 .teamLink:hover {
-  color: #6fc2b6;
-  text-decoration: underline;
+  color: #6fc2b6 !important;
+  text-decoration: underline !important;
   transform: translateY(-1px);
 }
 
-/* Columna Derecha */
 .copyright {
-  flex: 1;
-  text-align: right;
   font-size: 0.85rem;
-  color: #888;
-  min-width: 220px;
+  color: #888888;
   margin: 0;
 }

@@ -1,6 +1,8 @@
-// Uso simple con los valores por defecto:
-<CloseIcon />
+// Importacion
+import { GitHubIcon } from '../../components/UI/Icons/GitHubIcon/GitHubIcon';
 
-<button className={styles.cancelBtn} onClick={onClose}>
-  <CloseIcon size={18} color="#ff4d4f" /> Cancelar
-</button>
+// Uso simple con los valores por defecto:
+<GitHubIcon />
+
+// Con tamaño y/o color personalizadas
+<GitHubIcon  size = 22, color = "#ffffff" />

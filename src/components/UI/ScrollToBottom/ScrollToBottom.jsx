@@ -4,6 +4,7 @@
   Date: 2026-09-30
 ========================================================================== */
 
+// Importaciones
 import { useState, useEffect } from 'react';
 import styles from './ScrollToBottom.module.css';
 
@@ -13,11 +14,13 @@ export function ScrollToBottom() {
   useEffect(() => {
     const toggleVisibility = () => {
       const windowHeight = window.innerHeight;
+
       const fullHeight = document.documentElement.scrollHeight;
+
       const currentScroll = window.scrollY;
 
-      // Se oculta únicamente cuando faltan menos de 150px para llegar al final de la página
-      if (windowHeight + currentScroll >= fullHeight - 150) {
+      // Se oculta a menos de 200px del final de la página
+      if (windowHeight + currentScroll >= fullHeight - 200) {
         setIsVisible(false);
       } else {
         setIsVisible(true);

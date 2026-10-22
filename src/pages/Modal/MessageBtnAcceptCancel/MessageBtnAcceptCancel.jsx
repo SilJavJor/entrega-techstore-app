@@ -4,7 +4,9 @@
   Fecha: 2026-10-08
 ========================================================================== */
 
+// Importaciones
 import styles from './MessageBtnAcceptCancel.module.css';
+import { CheckIcon } from '../../../components/UI/Icons/CheckIcon/CheckIcon';
 
 export function Modal({
   isOpen,

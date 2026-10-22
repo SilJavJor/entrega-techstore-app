@@ -1,0 +1,8 @@
+// Importacion
+import { CartIcon } from '../../components/UI/Icons/CartIcon/CartIcon';
+
+// Uso simple con los valores por defecto:
+<CartIcon />
+
+// Tamaño y/o color personalizadas
+<CartIcon size = 22, color = "#ffffff" /> Aceptar

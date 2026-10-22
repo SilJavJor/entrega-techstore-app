@@ -6,7 +6,7 @@
 ========================================================================== */
 
 import styles from './MessageBtnAccept.module.css';
-import { CheckIcon } from '../../../components/UI/Icons/ChekIcon/CheckIcon';
+import { CheckIcon } from '../../../components/UI/Icons/CheckIcon/CheckIcon';
 
 export function MessageBtnAccept({ isOpen, onClose, title = 'Atención', message }) {
   if (!isOpen) return null;

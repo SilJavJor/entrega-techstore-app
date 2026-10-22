@@ -1,12 +1,14 @@
 /* ==========================================================================
   Componente GoogleIcon.jsx
-  Descripción: Este componente representa un ícono de Google que se puede utilizar en la interfaz de usuario para indicar autenticación o integración con Google.
-  Props: - size: Tamaño del ícono (por defecto: 18)
+  Descripción: Este componente representa un ícono de Google que se puede 
+    utilizar en la interfaz de usuario para indicar autenticación o 
+    integración con Google.
+  Props: - size: Tamaño del ícono (por defecto: 22)
   Autor: Silvio Jorda
   Fecha: 2026-10-08
 ========================================================================== */
 
-export function GoogleIcon({ size = 18 }) {
+export function GoogleIcon({ size = 22 }) {
   return (
     <svg
       width={size}

@@ -1,7 +1,8 @@
+// Importacion
+import { CloseIcon } from '../../components/UI/Icons/CloseIcon/CloseIcon';
 
 // Uso simple con los valores por defecto:
 <CloseIcon />
 
-<button className={styles.cancelBtn} onClick={onClose}>
-  <CloseIcon size={18} color="#ff4d4f" /> Cancelar
-</button>
+// Con tamaño y/o color personalizadas
+<CloseIcon size=22 color="#ff4d4f" /> Cancelar

@@ -1,13 +1,17 @@
 /* ==========================================================================
   Componente DataContext.jsx
+  Descripcion: 
   Autor: Silvio Jorda
   Date: 2026-10-09
 ========================================================================== */
 
-// 
+// Importaciones
 import { createContext, useContext, useState, useEffect } from 'react';
 
 // Creacion del contexto Principal de la Aplicacion
+// Productos
+// Categorias
+// Equipo
 const DataContext = createContext();
 
 export function DataProvider({ children }) {
@@ -24,6 +28,7 @@ export function DataProvider({ children }) {
 
         const [resProducts, resTeam] = await Promise.all([
           fetch('/data/products/products.json'),
+
           fetch('/data/team/team.json'),
         ]);
 
@@ -54,37 +59,46 @@ export function DataProvider({ children }) {
   // Función para obtener el próximo ID correlativo de productos
   const getNextProductId = () => {
     if (!products || products.length === 0) return '1';
+
     const maxId = Math.max(...products.map((p) => Number(p.id) || 0));
+
     return String(maxId + 1);
   };
 
   const getNextCategoryId = () => {
   if (!categories || categories.length === 0) return '1';
     const maxId = Math.max(...categories.map((c) => Number(c.id) || 0));
+
     return String(maxId + 1);
   };
 
   // Función para obtener el próximo ID correlativo del equipo
   const getNextTeamId = () => {
     if (!team || team.length === 0) return '1';
+
     const maxId = Math.max(...team.map((t) => Number(t.id) || 0));
+
     return String(maxId + 1);
   };
 
   // Función para agregar un producto
   const addProduct = (newProductData) => {
     const nextId = getNextProductId();
+
     const completeProduct = {
       id: nextId,
       ...newProductData,
     };
+
     setProducts((prev) => [completeProduct, ...prev]);
+
     return completeProduct;
   };
 
   // Función para agregar 
   const addCategory = (newCategoryData) => {
     const nextId = getNextCategoryId();
+
     const completeCategory = {
       id: nextId,
       ...newCategoryData

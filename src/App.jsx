@@ -11,6 +11,9 @@ import { Routes, Route } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
 import { ItemListContainer } from './components/ItemListContainer/ItemListContainer';
 
+// Importacion de Bootstrap 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 // Importación de Páginas
 import { HomeForm } from './pages/Home/HomeForm';
 import { ProductDetailForm } from './pages/ProductDetail/ProductDetailForm';
@@ -43,10 +46,7 @@ function App() {
           <Route path="/cart" element={<CartForm />} />
 
           {/* ABMC de Pproductos CRUD */}
-          <Route path="/add-product" element={<ProductForm />} />
-
-          {/* ABMC de Equipo CRUD */}
-          <Route path="/add-team" element={<TeamForm />} />
+          <Route path="/add-products" element={<ProductForm />} />
 
           {/* Contactanos */}
           <Route path="/contactus" element={<ContactUsForm />} />
@@ -59,6 +59,9 @@ function App() {
 
           {/* Acreca de... */}
           <Route path="/aboutus" element={<AboutUsForm />} />
+
+          {/* ABMC de Equipo CRUD */}
+          <Route path="/add-team" element={<TeamForm />} />
 
           {/* Paginas no encontradas (404) */}
           <Route path="*" element={<NotFoundForm />} />

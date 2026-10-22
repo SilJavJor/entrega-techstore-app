@@ -1,0 +1,8 @@
+// Importacion
+import { BoltIcon } from '../../components/UI/Icons/BoltIcon/BoltIcon';
+
+// Uso simple con los valores por defecto:
+<BoltIcon />
+
+// Con tamaño y/o color personalizadas
+<BoltIcon size={22} color="#8de2d6" /> Aceptar

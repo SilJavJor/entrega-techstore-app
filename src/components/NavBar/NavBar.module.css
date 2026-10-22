@@ -1,8 +1,8 @@
 /* ==========================================================================
-   Estilos de NavBar.module.css
-   Descripcion:
-   Author: Silvio Jorda
-   Date: 2026-09-30
+  Estilos de NavBar.module.css
+  Descripcion:  
+  Author: Silvio Jorda
+  sDate: 2026-09-30
 ========================================================================== */
 
 .nav {
@@ -24,18 +24,16 @@
   align-items: center;
 }
 
-.navLink {
-  color: #ffffff;
-  text-decoration: none;
+.navLink,
+:global(.nav-link) {
+  color: #ffffff !important;
+  opacity: 1 !important;
   font-weight: 500;
-  font-size: 0.95rem;
-  transition: color 0.2s ease;
 }
 
-.navLink:hover {
-  color: #8de2d6;
-  text-decoration: underline;
-  transform: translateY(-1px);
+.navLink:hover,
+:global(.nav-link:hover) {
+  color: #8de2d6 !important;
 }
 
 .dropdownContainer {
@@ -48,7 +46,7 @@
   position: absolute;
   top: 100%;
   left: 0;
-  margin: 0; /* Elimina la brecha de aire */
+  margin: 0;
   padding: 0.5rem 0;
   background-color: #1a1a1a;
   border: 1px solid #333333;
@@ -85,6 +83,6 @@
 }
 
 .dropdownLink:hover {
-  background-color: #222222;
-  color: #8de2d6;
+  color: #8de2d6 !important;
+  background-color: rgba(141, 226, 214, 0.1) !important;
 }

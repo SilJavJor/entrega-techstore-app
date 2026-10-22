@@ -1,0 +1,8 @@
+// Importacion
+import { BroomIcon } from '../../components/UI/Icons/BroomIcon/BroomIcon';
+
+// Uso simple con los valores por defecto:
+<BroomIcon />
+
+// Con tamaño y/o color personalizadas
+<BroomIcon size =22, color = "#cccccc" /> Aceptar

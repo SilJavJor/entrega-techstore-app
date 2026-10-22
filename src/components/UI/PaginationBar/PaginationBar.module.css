@@ -1,0 +1,57 @@
+/* ==========================================================================
+  Estilos de PaginationBar.module.css
+  Estilos de ScrollToBottom.module.css
+  Author: Silvio Jorda
+  Date: 2026-09-30
+=========================================================================== */
+
+.selectLabel {
+  color: #333333;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.selectControl {
+  background-color: #1a1a1a !important;
+  color: #8de2d6 !important;
+  border: 1px solid #333333 !important;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.8rem !important;        /* Tipografía ligeramente más compacta */
+  padding: 0.25rem 0.5rem !important;  /* Reducción de relleno interno */
+  min-width: 95px !important;          /* Ancho reducido al 75% aprox */
+  max-width: 150px !important;
+  cursor: pointer;
+}
+
+.selectControl:focus {
+  border-color: #8de2d6 !important;
+  box-shadow: 0 0 0 0.15rem rgba(141, 226, 214, 0.25) !important;
+}
+
+/* Personalización temática de la Paginación de Bootstrap */
+.paginationCustom :global(.page-item .page-link) {
+  background-color: #1a1a1a;
+  color: #cccccc;
+  border-color: #333333;
+  transition: all 0.2s ease;
+}
+
+.paginationCustom :global(.page-item:hover .page-link) {
+  background-color: rgba(141, 226, 214, 0.15);
+  color: #8de2d6;
+  border-color: #8de2d6;
+}
+
+.paginationCustom :global(.page-item.active .page-link) {
+  background-color: #8de2d6 !important;
+  color: #111111 !important;
+  border-color: #8de2d6 !important;
+  font-weight: 700;
+}
+
+.paginationCustom :global(.page-item.disabled .page-link) {
+  background-color: #111111;
+  color: #555555;
+  border-color: #222222;
+}

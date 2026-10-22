@@ -6,12 +6,13 @@
   Fecha: 2026-10-10
 ========================================================================== */
 
+// Importaciones
 import { useState } from 'react';
 import { useData } from '../../context/DataContext/DataContext';
 import { BroomIcon } from '../../components/UI/Icons/BroomIcon/BroomIcon';
 import { CheckIcon } from '../../components/UI/Icons/ChekIcon/CheckIcon';
 import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
-import styles from './CategoryForm.module.css';
+import styles from './CategoriesForm.module.css';
 
 export function CategoryForm() {
   const { addCategory, getNextCategoryId } = useData();
@@ -70,6 +71,7 @@ export function CategoryForm() {
     }
 
     setSavedCategoryName(categoryData.name);
+
     setShowModal(true);
 
     handleReset();
@@ -96,6 +98,7 @@ export function CategoryForm() {
           {/* Campo de ID generado automáticamente */}
           <div className={styles.field}>
             <label htmlFor="id">ID de Categoría (Auto-generado)</label>
+
             <input
               type="text"
               id="id"
@@ -109,6 +112,7 @@ export function CategoryForm() {
           {/* Nombre de la Categoría */}
           <div className={styles.field}>
             <label htmlFor="name">Nombre de la categoría *</label>
+
             <input
               type="text"
               id="name"
@@ -123,6 +127,7 @@ export function CategoryForm() {
           {/* Slug URL */}
           <div className={styles.field}>
             <label htmlFor="slug">Identificador URL (Slug) *</label>
+
             <input
               type="text"
               id="slug"
@@ -137,6 +142,7 @@ export function CategoryForm() {
           {/* URL de Imagen de la Categoría */}
           <div className={styles.field}>
             <label htmlFor="image">URL de la imagen representativa</label>
+
             <input
               type="url"
               id="image"

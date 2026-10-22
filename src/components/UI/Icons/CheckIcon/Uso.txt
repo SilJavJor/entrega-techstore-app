@@ -1,0 +1,8 @@
+// Importacion
+import { CheckIcon } from '../../components/UI/Icons/CheckIcon/CheckIcon';
+
+// Uso simple con los valores por defecto:
+<CheckIcon />
+
+// Con tamaño y/o color personalizadas
+<CheckIcon size=22 color="#111111" /> Aceptar

@@ -5,7 +5,7 @@
   Fecha: 2026-10-10
 ========================================================================== */
 
-export function CartIcon({ size = 20, color = '#ffffff' }) {
+export function CartIcon({ size = 22, color = '#ffffff' }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +19,6 @@ export function CartIcon({ size = 20, color = '#ffffff' }) {
       strokeLinejoin="round"
       style={{ verticalAlign: 'middle' }}
     >
-      {/* Mango y Estructura del Carrito */}
       <circle cx="9" cy="21" r="1" fill={color} />
       <circle cx="20" cy="21" r="1" fill={color} />
       <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />

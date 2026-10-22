@@ -25,31 +25,31 @@
 .logo {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #8de2d6; /* Mismo color verde/turquesa que el icono */
+  color: #8de2d6;
   text-decoration: none;
   flex: 1;
   text-align: left;
   display: flex;
   align-items: center;
-  gap: 0.4rem; /* Espaciado entre el rayo y el texto */
+  gap: 0.4rem;
   transition: opacity 0.2s ease;
 }
 
 .navContainer {
-  flex: 2; /* Le da más espacio al centro */
+  flex: 2;
   display: flex;
-  justify-content: center; /* Centra la Navbar */
+  justify-content: center;
 }
 
-/* Modificación/Agregado para la sección derecha */
 .rightSection {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 0.5rem; /* Reduce la separación entre "Acceder" y el CartWidget */
+  gap: 0.5rem;
 }
+
 .logo:hover {
-  opacity: 0.85; /* Efecto sutil al pasar el mouse */
+  opacity: 0.85;
 }
 
 .authButtons {
@@ -58,7 +58,6 @@
   gap: 0.75rem;
 }
 
-/* Botón activo / destacado (Acceder) */
 .btnPrimary {
   background-color: #8de2d6;
   color: #111111;
@@ -71,16 +70,14 @@
   transition: all 0.25s ease;
 }
 
-/* Efecto hover inverso: fondo oscuro, borde e iluminación en el texto/borde */
 .btnPrimary:hover {
   background-color: transparent;
   color: #8de2d6;
   border-color: #8de2d6;
-  box-shadow: 0 0 12px rgba(141, 226, 214, 0.4); /* Resplandor/iluminación suave */
+  box-shadow: 0 0 12px rgba(141, 226, 214, 0.4);
   transform: translateY(-1px);
 }
 
-/* Botón secundario (Registrarse) */
 .btnSecondary {
   background-color: transparent;
   color: #ffffff;
@@ -98,9 +95,12 @@
   border-color: rgba(141, 226, 214, 0.3);
 }
 
-/* Desplazamiento del CartWidget 20px a la derecha */
 .cartWidgetWrapper {
   margin-left: 15px;
   display: flex;
   align-items: center;
+}
+
+.highlight {
+  color: #8de2d6;
 }

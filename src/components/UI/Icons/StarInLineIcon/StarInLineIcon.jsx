@@ -9,7 +9,6 @@
   Fecha: 2026-10-08
 ========================================================================== */
 
-// Color del Sistema size={22} color='#8de2d6'
 export function StarInLineIcon({ size = 28, color = '#FFD700' }) {
   return (
     <svg

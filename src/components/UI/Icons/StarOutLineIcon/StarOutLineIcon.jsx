@@ -9,7 +9,7 @@
   Fecha: 2026-10-08
 ========================================================================== */
 
-export function StarOutlineIcon({ size = 34, color = '#8de2d6' }) {
+export function StarOutlineIcon({ size = 28, color = '#8de2d6' }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

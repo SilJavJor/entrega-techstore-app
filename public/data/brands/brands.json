@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Intel",
+    "description": "",
+    "image": ""
+  },
+
+  {
+    "id": 2,
+    "name": "AMD",
+    "description": "",
+    "image": ""
+  },
+
+  {
+    "id": 3,
+    "name": "Asus",
+    "description": "",
+    "image": ""
+  },
+
+  {
+    "id": 4,
+    "name": "MSI",
+    "description": "",
+    "image": ""
+  },
+
+  {
+    "id": 5,
+    "name": "GIGABYTE",
+    "description": "",
+    "image": ""
+  },
+
+  {
+    "id": 6,
+    "name": "KINGSTON",
+    "description": "",
+    "image": ""
+  },
+
+  {
+    "id": 7,
+    "name": "ADATA",
+    "description": "",
+    "image": ""
+  }
+]

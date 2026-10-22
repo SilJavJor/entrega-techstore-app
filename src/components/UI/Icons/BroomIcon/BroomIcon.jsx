@@ -4,7 +4,7 @@
     puede utilizar en la interfaz de usuario para indicar la acción
     de limpiar o restablecer campos.
   Props: - size: Tamaño del ícono (por defecto: 22)
-         - color: Color del ícono (por defecto: '#cccccc')
+    color: Color del ícono (por tamaño, defecto: '#cccccc')
   Autor: Silvio Jorda
   Fecha: 2026-10-09
 ========================================================================== */

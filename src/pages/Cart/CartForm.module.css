@@ -1,96 +1,163 @@
 /* ==========================================================================
-   Nuevos estilos para el botón Seguir Comprando
+   Estilos de CartForm.module.css
+   Descripción: Hoja de estilos para el carrito de compras.
+   Autor: Silvio Jorda
+   Fecha: 2026-10-16
 ========================================================================== */
 
-  .container {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+.mainCard {
+  background-color: #1a1a1a !important;
+  border: 1px solid #2a2a2a !important;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
 }
 
 .title {
   font-size: 2rem;
-  border-bottom: 2px solid #eee;
-  padding-bottom: 0.5rem;
+  font-weight: 700;
+  color: #8de2d6;
+  border-bottom: 1px solid #333333;
+  padding-bottom: 0.8rem;
+  margin-bottom: 1rem;
 }
 
-.empty {
-  text-align: center;
-  padding: 3rem;
+.emptyCard {
+  background-color: #1a1a1a !important;
+  border: 1px solid #2a2a2a !important;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 580px;
+  padding: 3rem 2rem !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
 }
 
-.itemRow {
+.emptyTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.6rem;
+}
+
+.emptySubtitle {
+  color: #aaaaaa;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.itemCard {
+  background-color: #111111 !important;
+  border: 1px solid #2a2a2a !important;
+  border-radius: 8px;
+  color: #ffffff;
+  transition: border-color 0.2s ease;
+}
+
+.itemCard:hover {
+  border-color: #333333 !important;
+}
+
+.imageWrapper {
+  width: 65px;
+  height: 65px;
+  background-color: #1a1a1a;
+  border-radius: 6px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  background-color: white;
-  padding: 1rem;
-  border-radius: 8px;
-  border: 1px solid #eee;
+  justify-content: center;
+  padding: 4px;
 }
 
 .itemImage {
-  width: 60px;
-  height: 60px;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
 }
 
-.itemInfo {
-  flex: 1;
-  margin-left: 1rem;
+.itemName {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0 0 0.25rem 0;
+}
+
+.itemDetails {
+  color: #888888;
+  font-size: 0.88rem;
+}
+
+.itemSubtotal {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #8de2d6;
 }
 
 .removeButton {
-  background: none;
-  border: none;
-  color: #ff4d4f;
-  font-weight: bold;
-  cursor: pointer;
+  color: #ff5555 !important;
+  font-weight: 600;
+  text-decoration: none !important;
+  font-size: 0.9rem;
+  padding: 0;
+  transition: opacity 0.2s ease;
+}
+
+.removeButton:hover {
+  color: #ff7777 !important;
+  opacity: 0.85;
 }
 
 .footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #fff;
-  padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid #eee;
-  margin-top: 1rem;
+  border-top: 1px solid #333333;
 }
 
-.total {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.clearButton {
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.actionButtons {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.continueButton {
-  display: inline-block;
-  background-color: #8de2d6;
-  color: #111111;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+.totalText {
+  font-size: 1.3rem;
   font-weight: 600;
-  text-decoration: none;
+  color: #ffffff;
+}
+
+.totalAmount {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #8de2d6;
+  margin-left: 0.5rem;
+}
+
+.continueButton {
+  background-color: #8de2d6 !important;
+  color: #111111 !important;
+  border: none !important;
+  padding: 0.75rem 1.4rem !important;
+  border-radius: 6px;
+  font-weight: 700;
   font-size: 0.95rem;
+  text-decoration: none !important;
   transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .continueButton:hover {
-  background-color: #72c8bc;
+  background-color: #72c8bc !important;
+  color: #111111 !important;
   transform: translateY(-1px);
+}
+
+.clearButton {
+  background-color: transparent !important;
+  color: #ff5555 !important;
+  border: 1px solid #ff5555 !important;
+  padding: 0.75rem 1.4rem !important;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.clearButton:hover {
+  background-color: rgba(255, 85, 85, 0.1) !important;
+  color: #ff7777 !important;
+  border-color: #ff7777 !important;
 }

@@ -4,6 +4,7 @@
   Date: 2026-09-30
 ========================================================================== */
 
+// Importaciones
 import { useState, useEffect } from 'react';
 import styles from './ScrollToTop.module.css';
 
@@ -12,7 +13,7 @@ export function ScrollToTop() {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      // Muestra el botón si el scroll vertical supera los 200px
+      // Se muestra a mas de 200px del inicio de la página
       if (window.scrollY > 200) {
         setIsVisible(true);
       } else {

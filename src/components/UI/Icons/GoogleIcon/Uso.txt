@@ -1,4 +1,8 @@
+// Importacion
+import { GitHubIcon } from '../../components/UI/Icons/GoogleIcon/GoogleIcon';
 
-<button className={styles.cancelBtn} onClick={onClose}>
-  <CloseIcon size={18} color="#ff4d4f" /> Cancelar
-</button>
+// Uso simple con los valores por defecto:
+<GoogleIcon />
+
+// O con tamaño personalizado
+<CloseIcon size=22 />

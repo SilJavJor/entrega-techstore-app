@@ -6,29 +6,32 @@
   Fecha: 2026-09-30
 ========================================================================== */
 
+// Importaciones
 import { useState } from 'react';
+import { Container, Card, Form, Row, Col, Button } from 'react-bootstrap';
 import { useData } from '../../context/DataContext/DataContext';
 import { BroomIcon } from '../../components/UI/Icons/BroomIcon/BroomIcon';
-import { CheckIcon } from '../../components/UI/Icons/ChekIcon/CheckIcon';
+import { CheckIcon } from '../../components/UI/Icons/CheckIcon/CheckIcon';
 import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
 import styles from './TeamForm.module.css';
 
 export function TeamForm() {
-  // Obtenemos las funciones del contexto de datos
   const { addTeamMember, getNextTeamId } = useData();
 
-  // Se Obtiene el próximo ID correlativo del equipo en memoria
   const nextId = getNextTeamId ? getNextTeamId() : '-';
 
   const [memberData, setMemberData] = useState({
-    name: '',
-    role: '',
+    nombre: '',
+    puesto: '',
     email: '',
     linkedin: '',
     github: '',
-    image: '',
     bio: ''
   });
+
+  const [imageFile, setImageFile] = useState(null);
+
+  const [uploading, setUploading] = useState(false);
 
   const [errors, setErrors] = useState({});
 
@@ -48,182 +51,270 @@ export function TeamForm() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleFileChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      setImageFile(e.target.files[0]);
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (addTeamMember) {
-      const result = addTeamMember(memberData);
+    if (!imageFile) {
+      alert('Por favor, seleccioná una foto de perfil para el integrante.');
 
-      if (result && !result.success && result.errors) {
-        setErrors(result.errors);
-
-        return;
-      }
+      return;
     }
 
-    setSavedMemberName(memberData.nombre);
+    try {
+      setUploading(true);
 
-    setShowModal(true);
+      const formData = new FormData();
 
-    handleReset();
+      formData.append('image', imageFile);
+
+      const apiKey = import.meta.env.VITE_IMGBB_API_KEY;
+
+      if (!apiKey) {
+        throw new Error('La API Key de ImgBB no está definida en el archivo .env');
+      }
+
+      const response = await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, {
+        method: 'POST',
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (!data.success) {
+        throw new Error(data.error?.message || 'Error al subir la imagen a ImgBB.');
+      }
+
+      const imageUrl = data.data.url;
+
+      if (addTeamMember) {
+        const result = addTeamMember({
+          name: memberData.nombre,
+          role: memberData.puesto,
+          email: memberData.email,
+          linkedin: memberData.linkedin,
+          github: memberData.github,
+          photo: imageUrl,
+          bio: memberData.bio
+        });
+
+        if (result && !result.success && result.errors) {
+          setErrors(result.errors);
+
+          return;
+        }
+      }
+
+      setSavedMemberName(memberData.nombre);
+
+      setShowModal(true);
+
+      handleReset();
+    } catch (error) {
+      console.error('Error durante la carga:', error);
+
+      alert(`Ocurrió un error: ${error.message}`);
+    } finally {
+      setUploading(false);
+    }
   };
 
   const handleReset = () => {
     setMemberData({
-      name: '',
-      role: '',
+      nombre: '',
+      puesto: '',
       email: '',
       linkedin: '',
       github: '',
-      image: '',
       bio: ''
     });
+    setImageFile(null);
+
     setErrors({});
+
+    const fileInput = document.getElementById('imagen');
+    if (fileInput) fileInput.value = '';
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.card}>
-        <h1 className={styles.title}>Registrar Miembro del Equipo</h1>
+    <Container className="py-5 d-flex justify-content-center align-items-center">
+      <Card className={`border-0 p-4 shadow-lg ${styles.card}`}>
+        <Card.Body>
+          <h1 className={styles.title}>Registrar Miembro del Equipo</h1>
 
-        <p className={styles.subtitle}>
-          Ingresá los datos del nuevo integrante para mostrar su perfil en la sección Nosotros y en el Footer.
-        </p>
+          <p className={styles.subtitle}>
+            Ingresá los datos del nuevo integrante para mostrar su perfil en la sección Nosotros
+          </p>
 
-        <form className={styles.form} onSubmit={handleSubmit}>
-          {/* Campo ID de Integrante (Auto-generado / Sólo Lectura) */}
-          <div className={styles.field}>
-            <label htmlFor="id">ID de Integrante (Auto-generado)</label>
-            <input
-              type="text"
-              id="id"
-              name="id"
-              value={`# ${nextId}`}
-              readOnly
-              className={styles.readOnlyInput}
-            />
-          </div>
+          <Form onSubmit={handleSubmit} className="d-flex flex-column gap-3">
+            {/* ID Auto-generado */}
+            <Form.Group controlId="id">
+              <Form.Label className={styles.label}>ID de Integrante (Auto-generado)</Form.Label>
 
-          {/* Nombre Completo */}
-          <div className={styles.field}>
-            <label htmlFor="nombre">Nombre Completo *</label>
-            <input
-              type="text"
-              id="nombre"
-              name="nombre"
-              value={memberData.nombre}
-              onChange={handleChange}
-              placeholder="Ej: Laura Giménez"
-              required
-            />
-            {errors.nombre && <span className={styles.errorText}>{errors.nombre}</span>}
-          </div>
-
-          {/* Rol */}
-          <div className={styles.field}>
-            <label htmlFor="puesto">Puesto / Rol *</label>
-            <input
-              type="text"
-              id="puesto"
-              name="puesto"
-              value={memberData.puesto}
-              onChange={handleChange}
-              placeholder="Ej: Desarrolladora Frontend React"
-              required
-            />
-            {errors.puesto && <span className={styles.errorText}>{errors.puesto}</span>}
-          </div>
-
-          {/* Email */}
-          <div className={styles.field}>
-            <label htmlFor="email">Correo Electrónico *</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={memberData.email}
-              onChange={handleChange}
-              placeholder="ejemplo@techstore.com"
-              required
-            />
-            {errors.email && <span className={styles.errorText}>{errors.email}</span>}
-          </div>
-
-          {/* Fila con LinkedIn y GitHub */}
-          <div className={styles.row}>
-            <div className={styles.field}>
-              <label htmlFor="linkedin">Perfil de LinkedIn (URL)</label>
-              <input
-                type="url"
-                id="linkedin"
-                name="linkedin"
-                value={memberData.linkedin}
-                onChange={handleChange}
-                placeholder="https://linkedin.com/in/..."
+              <Form.Control
+                type="text"
+                value={`# ${nextId}`}
+                readOnly
+                className={styles.readOnlyInput}
               />
-            </div>
+            </Form.Group>
 
-            <div className={styles.field}>
-              <label htmlFor="github">Perfil de GitHub (URL)</label>
-              <input
-                type="url"
-                id="github"
-                name="github"
-                value={memberData.github}
+            {/* Nombre Completo */}
+            <Form.Group controlId="nombre">
+              <Form.Label className={styles.label}>Nombre Completo *</Form.Label>
+
+              <Form.Control
+                type="text"
+                name="nombre"
+                value={memberData.nombre}
                 onChange={handleChange}
-                placeholder="https://github.com/..."
+                placeholder="Ej: Laura Giménez"
+                required
+                className={styles.input}
+                isInvalid={!!errors.nombre}
               />
+              {errors.nombre && <span className={styles.errorText}>{errors.nombre}</span>}
+            </Form.Group>
+
+            {/* Puesto / Rol */}
+            <Form.Group controlId="puesto">
+              <Form.Label className={styles.label}>Puesto / Rol *</Form.Label>
+
+              <Form.Control
+                type="text"
+                name="puesto"
+                value={memberData.puesto}
+                onChange={handleChange}
+                placeholder="Ej: Desarrolladora Frontend React"
+                required
+                className={styles.input}
+                isInvalid={!!errors.puesto}
+              />
+              {errors.puesto && <span className={styles.errorText}>{errors.puesto}</span>}
+            </Form.Group>
+
+            {/* Email */}
+            <Form.Group controlId="email">
+              <Form.Label className={styles.label}>Correo Electrónico *</Form.Label>
+
+              <Form.Control
+                type="email"
+                name="email"
+                value={memberData.email}
+                onChange={handleChange}
+                placeholder="Ej: laura.gimenez@techstore.com"
+                required
+                className={styles.input}
+                isInvalid={!!errors.email}
+              />
+              {errors.email && <span className={styles.errorText}>{errors.email}</span>}
+            </Form.Group>
+
+            <Row className="g-3">
+              {/* Fila LinkedIn (Opcionales) */}
+              <Col md={6}>
+                <Form.Group controlId="linkedin">
+                  <Form.Label className={styles.label}>
+                    Perfil de LinkedIn <span className="text-muted fw-normal">(Opcional)</span>
+                  </Form.Label>
+
+                  <Form.Control
+                    type="text"
+                    name="linkedin"
+                    value={memberData.linkedin}
+                    onChange={handleChange}
+                    placeholder="Ej: https://linkedin.com/in/laura-gimenez"
+                    className={styles.input}
+                  />
+                </Form.Group>
+              </Col>
+
+              {/* GitHub (Opcionales) */}
+              <Col md={6}>
+                <Form.Group controlId="github">
+                  <Form.Label className={styles.label}>
+                    Perfil de GitHub <span className="text-muted fw-normal">(Opcional)</span>
+                  </Form.Label>
+
+                  <Form.Control
+                    type="text"
+                    name="github"
+                    value={memberData.github}
+                    onChange={handleChange}
+                    placeholder="Ej: https://github.com/lauragimenez"
+                    className={styles.input}
+                  />
+                </Form.Group>
+              </Col>
+            </Row>
+
+            {/* Foto de Perfil (Subida a ImgBB) */}
+            <Form.Group controlId="imagen">
+              <Form.Label className={styles.label}>Foto de Perfil *</Form.Label>
+
+              <Form.Control
+                type="file"
+                name="imagen"
+                accept="image/*"
+                onChange={handleFileChange}
+                required
+                className={styles.input}
+              />
+            </Form.Group>
+
+            {/* Biografía / Presentación */}
+            <Form.Group controlId="bio">
+              <Form.Label className={styles.label}>
+                Biografía / Presentación <span className="text-muted fw-normal">(Opcional)</span>
+              </Form.Label>
+
+              <Form.Control
+                as="textarea"
+                rows={4}
+                name="bio"
+                value={memberData.bio}
+                onChange={handleChange}
+                placeholder="Reseña sobre su experiencia y rol dentro del equipo..."
+                className={styles.input}
+              />
+            </Form.Group>
+
+            {/* Botones */}
+            <div className="d-flex gap-3 mt-3">
+              <Button 
+                type="button" 
+                className={styles.cleanBtn} 
+                onClick={handleReset}
+                disabled={uploading}
+              >
+                <BroomIcon /> Limpiar
+              </Button>
+
+              <Button 
+                type="submit" 
+                className={styles.submitBtn}
+                disabled={uploading}
+              >
+                <CheckIcon /> {uploading ? 'Subiendo...' : 'Guardar'}
+              </Button>
             </div>
-          </div>
+          </Form>
+        </Card.Body>
+      </Card>
 
-          {/* URL de la Fotografía */}
-          <div className={styles.field}>
-            <label htmlFor="imagen">URL de la Foto de Perfil</label>
-            <input
-              type="url"
-              id="imagen"
-              name="imagen"
-              value={memberData.imagen}
-              onChange={handleChange}
-              placeholder="https://images.unsplash.com/..."
-            />
-          </div>
-
-          {/* Biografía Corta */}
-          <div className={styles.field}>
-            <label htmlFor="bio">Biografía / Presentación</label>
-            <textarea
-              id="bio"
-              name="bio"
-              rows="3"
-              value={memberData.bio}
-              onChange={handleChange}
-              placeholder="Breve reseña sobre su experiencia y rol dentro del proyecto..."
-            ></textarea>
-          </div>
-
-          {/* Botones de Acción: Limpiar y Guardar */}
-          <div className={styles.actionButtons}>
-            <button type="button" className={styles.cleanBtn} onClick={handleReset}>
-              <BroomIcon /> Limpiar
-            </button>
-
-            <button type="submit" className={styles.submitBtn}>
-              <CheckIcon /> Guardar
-            </button>
-          </div>
-        </form>
-      </div>
-
-      {/* Ventana Modal de confirmación */}
       <MessageBtnAccept
         isOpen={showModal}
         onClose={() => setShowModal(false)}
         title="¡ Integrante Registrado !"
-        message={`"${savedMemberName}" ha sido agregado al equipo exitosamente.`}
+        message={`"${savedMemberName}" ha sido agregado al equipo exitosamente con su foto en ImgBB.`}
         confirmText="Aceptar"
         showCancel={false}
       />
-    </div>
+    </Container>
   );
 }
