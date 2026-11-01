@@ -19,8 +19,11 @@ export function Footer() {
           <Col xs={12} md={5} className="text-center text-md-start">
             <h3 className={styles.title}>
               <Link to="/" className={styles.brandLink}>
+                {/* Icono */}
+                <BoltIcon />
+
                 {/* Marca */}
-                <BoltIcon /> TechStore
+                TechStore
               </Link>{' '}
 
               - Soluciones Tecnológicas
@@ -43,6 +46,7 @@ export function Footer() {
           <Col xs={12} md={5} className="text-center text-md-end">
             <p className={styles.copyright}>
               &copy; 2026{' '}
+
               <Link to="/" className={styles.brandLink}>
                 TechStore
               </Link>

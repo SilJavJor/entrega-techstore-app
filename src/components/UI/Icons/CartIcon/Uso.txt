@@ -5,4 +5,4 @@ import { CartIcon } from '../../components/UI/Icons/CartIcon/CartIcon';
 <CartIcon />
 
 // Tamaño y/o color personalizadas
-<CartIcon size = 22, color = "#ffffff" /> Aceptar
+<CartIcon size = 22, color = "#ffffff" />

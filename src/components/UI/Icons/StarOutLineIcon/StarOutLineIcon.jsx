@@ -1,12 +1,13 @@
 /* ==========================================================================
   Componente StarOutlineIcon (ícono de estrella transparente / de contorno) 
-  Descripción: Este componente representa un ícono de estrella transparente (outline star)
+  Descripcion: Este componente representa un ícono de estrella transparente (outline star)
     que se puede utilizar en la interfaz de usuario para indicar calificaciones
     o elementos destacados.
-  Props: - size: Tamaño del ícono (por defecto: 34)
-         - color: Color del ícono (por defecto: '#8de2d6')
+  Props: 
+    size: Tamaño del ícono (por defecto: 34)
+    color: Color del ícono (por defecto: '#8de2d6')
   Autor: Silvio Jorda
-  Fecha: 2026-10-08
+  Date: 2026-09-30
 ========================================================================== */
 
 export function StarOutlineIcon({ size = 28, color = '#8de2d6' }) {

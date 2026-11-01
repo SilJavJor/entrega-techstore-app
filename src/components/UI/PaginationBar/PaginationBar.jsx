@@ -15,6 +15,7 @@
   Fecha: 2026-10-21
 ========================================================================== */
 
+
 /* ==========================================================================
   Componente: PaginationBar.jsx
   Descripción: Selector de cantidad por página y barra de navegación alineados
@@ -55,6 +56,7 @@
   Fecha: 2026-10-21
 ========================================================================== */
 
+// Importaciones
 import { Form, Pagination } from 'react-bootstrap';
 import styles from './PaginationBar.module.css';
 
@@ -124,6 +126,7 @@ export function PaginationBar({
               onClick={() => onPageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
             />
+
             <Pagination.Last
               onClick={() => onPageChange(totalPages)}
               disabled={currentPage === totalPages}

@@ -3,9 +3,10 @@
   Descripción: Este componente representa un ícono de Google que se puede 
     utilizar en la interfaz de usuario para indicar autenticación o 
     integración con Google.
-  Props: - size: Tamaño del ícono (por defecto: 22)
+  Props: 
+    size: Tamaño del ícono (por defecto: 22)
   Autor: Silvio Jorda
-  Fecha: 2026-10-08
+  Date: 2026-09-30
 ========================================================================== */
 
 export function GoogleIcon({ size = 22 }) {

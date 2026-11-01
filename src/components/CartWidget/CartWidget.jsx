@@ -20,9 +20,9 @@ export function CartWidget() {
     <Link
       to="/cart"
       className={`position-relative d-inline-flex align-items-center text-decoration-none ${styles.cartWidgetLink}`}
-      title="Ver Carrito de Compras"
+      title="Ver Carrito"
     >
-      {/* Icono del Carrito */}
+      {/* Icono */}
       <span className={styles.cartIcon}>
         <CartIcon />
       </span>

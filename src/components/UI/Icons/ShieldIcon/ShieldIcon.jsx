@@ -2,8 +2,11 @@
   Componente ShieldIcon.jsx
   Descripción: Icono SVG vectorial a todo color para escudo de protección (🛡️)
     que replica la estética y tonalidades metálicas del emoji original.
+  Props: 
+    size: Tamaño del ícono (por defecto: 22)
+    color: Color del ícono (por tamaño, defecto: '#cccccc')
   Autor: Silvio Jorda
-  Fecha: 2026-10-19
+  Date: 2026-09-30
 ========================================================================== */
 
 export function ShieldIcon({ width = "1.2em", height = "1.2em", className = "", ...props }) {

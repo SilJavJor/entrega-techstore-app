@@ -1,6 +1,6 @@
 /* ==========================================================================
   Estilos de PaginationBar.module.css
-  Estilos de ScrollToBottom.module.css
+  Descripcion:
   Author: Silvio Jorda
   Date: 2026-09-30
 =========================================================================== */
@@ -17,9 +17,9 @@
   border: 1px solid #333333 !important;
   border-radius: 6px;
   font-weight: 600;
-  font-size: 0.8rem !important;        /* Tipografía ligeramente más compacta */
-  padding: 0.25rem 0.5rem !important;  /* Reducción de relleno interno */
-  min-width: 95px !important;          /* Ancho reducido al 75% aprox */
+  font-size: 0.8rem !important;
+  padding: 0.25rem 0.5rem !important;
+  min-width: 95px !important;
   max-width: 150px !important;
   cursor: pointer;
 }
@@ -29,7 +29,6 @@
   box-shadow: 0 0 0 0.15rem rgba(141, 226, 214, 0.25) !important;
 }
 
-/* Personalización temática de la Paginación de Bootstrap */
 .paginationCustom :global(.page-item .page-link) {
   background-color: #1a1a1a;
   color: #cccccc;

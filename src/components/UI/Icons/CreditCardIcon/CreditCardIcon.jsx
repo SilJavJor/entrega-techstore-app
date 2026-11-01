@@ -2,8 +2,11 @@
   Componente CreditCardIcon.jsx
   Descripción: Icono SVG vectorial a todo color para tarjeta de crédito/pago 
     que replica la estética y tonalidades del original (💳).
+    Props: 
+    size: Tamaño del ícono (por defecto: 22)
+    color: Color del ícono (por tamaño, defecto: '#cccccc')
   Autor: Silvio Jorda
-  Fecha: 2026-09-30
+  Date: 2026-09-30
   ========================================================================== */
 
 export function CreditCardIcon({ width = "1.2em", height = "1.2em", className = "", ...props }) {

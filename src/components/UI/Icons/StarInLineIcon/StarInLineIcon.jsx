@@ -3,10 +3,11 @@
   Descripción: Este componente representa un ícono de estrella (star)
     que se puede utilizar en la interfaz de usuario para indicar calificaciones
     o elementos destacados.
-  Props: - size: Tamaño del ícono (por defecto: 28)
-         - color: Color del ícono (por defecto: '#FFD700')
+  Props: 
+    size: Tamaño del ícono (por defecto: 28)
+    color: Color del ícono (por defecto: '#FFD700')
   Autor: Silvio Jorda
-  Fecha: 2026-10-08
+  Date: 2026-09-30
 ========================================================================== */
 
 export function StarInLineIcon({ size = 28, color = '#FFD700' }) {

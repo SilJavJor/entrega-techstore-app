@@ -1,14 +1,9 @@
 /* ==========================================================================
   Componente Layout.jsx
-  Descripcion: 
+  Descripcion: Mantiene el Header arriba (encabezado), el Footer al pie (pie)
+    y renderiza las vistas dinámicas a través del Outlet de React Router.
   Autor: Silvio Jorda
   Date: 2026-09-30
-========================================================================== */
-
-/* ==========================================================================
-  Descripcion: Estructura principal de la aplicación construida con React Bootstrap
-    (Container as="main"). Mantiene el Header arriba, el Footer al pie (sticky footer)
-    y renderiza las vistas dinámicas a través del Outlet de React Router.
 ========================================================================== */
 
 // Importaciones

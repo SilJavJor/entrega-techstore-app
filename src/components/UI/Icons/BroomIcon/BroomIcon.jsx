@@ -3,10 +3,11 @@
   Descripción: Este componente representa un ícono de escoba (broom) que se
     puede utilizar en la interfaz de usuario para indicar la acción
     de limpiar o restablecer campos.
-  Props: - size: Tamaño del ícono (por defecto: 22)
+  Props: 
+    size: Tamaño del ícono (por defecto: 22)
     color: Color del ícono (por tamaño, defecto: '#cccccc')
   Autor: Silvio Jorda
-  Fecha: 2026-10-09
+  Date: 2026-09-30
 ========================================================================== */
 
 export function BroomIcon({ size =22, color = '#cccccc' }) {

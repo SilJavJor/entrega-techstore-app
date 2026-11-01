@@ -2,8 +2,9 @@
   Componente GitHubIcon.jsx
   Descripción: Este componente representa un ícono de GitHub que se puede
     utilizar en la interfaz de usuario para indicar enlaces a repositorios de GitHub.
-  Props: - size: Tamaño del ícono (por defecto: 18)
-    - color: Color del ícono (por defecto: '#ffffff')
+  Props: 
+    size: Tamaño del ícono (por defecto: 18)
+    color: Color del ícono (por defecto: '#ffffff')
   Autor: Silvio Jorda
   Fecha: 2026-10-08
 ========================================================================== */

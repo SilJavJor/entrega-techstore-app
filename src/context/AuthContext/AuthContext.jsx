@@ -11,6 +11,11 @@ import { createContext, useContext, useState } from 'react';
 // Cracion del contexto de Autorizacion
 const AuthContext = createContext();
 
+// Hook para consumir el contexto fácilmente
+// eslint-disable-next-line react-refresh/only-export-components
+export const useAuth = () => useContext(AuthContext);
+
+// Proveedor del contexto
 export function AuthProvider({ children }) {
   const [isAdmin, setIsAdmin] = useState(() => {
     return localStorage.getItem('isAdmin') === 'true';
@@ -39,7 +44,4 @@ export function AuthProvider({ children }) {
       {children}
     </AuthContext.Provider>
   );
-}
-
-// eslint-disable-next-line react-refresh/only-export-components
-export const useAuth = () => useContext(AuthContext);
+};

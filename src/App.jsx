@@ -6,68 +6,70 @@
   Date: 2026-09-30
 ========================================================================== */
 
-// Importación de Componentes
+// Importaciones
 import { Routes, Route } from 'react-router-dom';
-import { Layout } from './components/Layout/Layout';
-import { ItemListContainer } from './components/ItemListContainer/ItemListContainer';
-
-// Importacion de Bootstrap 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Layout } from './components/Layout/Layout';
+import { ProductListContainer } from './components/ProductListContainer/ProductListContainer';
 
-// Importación de Páginas
-import { HomeForm } from './pages/Home/HomeForm';
-import { ProductDetailForm } from './pages/ProductDetail/ProductDetailForm';
-import { CartForm } from './pages/Cart/CartForm';
-import { ProductForm } from './pages/Product/ProductForm';
-import { TeamForm } from './pages/Team/TeamForm';
-import { ContactUsForm } from './pages/ContactUs/ContactUsForm';
-import { LoginForm } from './pages/Login/LoginForm';
-import { RegisterForm } from './pages/Register/RegisterForm';
-import { AboutUsForm } from './pages/AboutUs/AboutUsForm';
-import { NotFoundForm } from './pages/NotFound/NotFoundForm';
+// Importacion de Paginas
+import { HomePage } from './pages/Home/HomePage';
+import { ProductDetail } from './pages/ProductDetail/ProductDetail';
+import { CartForm } from './pages/Cart/CartPage';
+import { ProductPage } from './pages/Product/ProductPage';
+import { CategoryPage } from './pages/Category/CategoryPage';
+import { TeamPage } from './pages/Team/TeamPage';
+import { ContactUsPage } from './pages/ContactUs/ContactUsPage';
+import { LoginPage } from './pages/Login/LoginPage';
+import { RegisterPage } from './pages/Register/RegisterPage';
+import { AboutUsPage } from './pages/AboutUs/AboutUsPage';
+import { SettingsPage } from './pages/Settings/SettingsPage';
+import { NotFoundPage } from './pages/NotFound/NotFoundPage';
 
 function App() {
   return (
-      <Routes>
-        <Route element={<Layout />}>
-          {/* Inicio */}
-          <Route path="/" element={<HomeForm />} />
+    <Routes>
+      <Route element={<Layout />}>
+        {/* Inicio */}
+        <Route path="/" element={<HomePage />} />
 
-          {/* Productos */}
-          <Route
-            path="/products"
-            element={<ItemListContainer greeting="Catálogo de Productos" />}
-          />
+        {/* Productos */}
+        <Route path="/products" element={<ProductListContainer greeting="Catálogo de Productos" />} />
 
-          {/* Detalle de un unico producto */}
-          <Route path="/product/:id" element={<ProductDetailForm />} />
+        {/* Detalle de un unico producto */}
+        <Route path="/product/:id" element={<ProductDetail />} />
 
-          {/* / Carrito de compras */}
-          <Route path="/cart" element={<CartForm />} />
+        {/* ABMC de Pproductos - CRUD */}
+        <Route path="/add-product" element={<ProductPage />} />
 
-          {/* ABMC de Pproductos CRUD */}
-          <Route path="/add-products" element={<ProductForm />} />
+        {/* ABMC de Categorias - CRUD */}
+        <Route path="/add-category" element={<CategoryPage />} />
 
-          {/* Contactanos */}
-          <Route path="/contactus" element={<ContactUsForm />} />
+        {/* / Carrito de compras */}
+        <Route path="/cart" element={<CartForm />} />
 
-          {/* Login */}
-          <Route path="/login" element={<LoginForm />} />
+        {/* Contactanos */}
+        <Route path="/contactus" element={<ContactUsPage />} />
 
-          {/* Registro de usuarios */}
-          <Route path="/register" element={<RegisterForm />} />
+        {/* Login */}
+        <Route path="/login" element={<LoginPage />} />
 
-          {/* Acreca de... */}
-          <Route path="/aboutus" element={<AboutUsForm />} />
+        {/* Registro de usuarios */}
+        <Route path="/register" element={<RegisterPage />} />
 
-          {/* ABMC de Equipo CRUD */}
-          <Route path="/add-team" element={<TeamForm />} />
+        {/* Acreca de... */}
+        <Route path="/aboutus" element={<AboutUsPage />} />
 
-          {/* Paginas no encontradas (404) */}
-          <Route path="*" element={<NotFoundForm />} />
-        </Route>
+        {/* ABMC de Equipo CRUD */}
+        <Route path="/add-team" element={<TeamPage />} />
 
-      </Routes>
+        {/*  */}
+        <Route path="/settings" element={<SettingsPage />} />
+
+        {/* Paginas no encontradas (404) */}
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   );
 }
 

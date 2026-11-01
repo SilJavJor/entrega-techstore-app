@@ -58,7 +58,7 @@ export function Header() {
               <NavBar />
             </div>
 
-            {/* Autenticación */}
+            {/* Autenticacion - Admin */}
             <div className={styles.authButtons}>
               {isAdmin ? (
                 <button className={styles.btnPrimary} onClick={handleLogout}>

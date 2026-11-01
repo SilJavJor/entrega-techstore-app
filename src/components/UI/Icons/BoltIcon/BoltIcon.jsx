@@ -3,8 +3,9 @@
   Descripción: Este componente representa un ícono de rayo (bolt) que se 
     puede utilizar en la interfaz de usuario para indicar energía, velocidad
     o acción.
-  Props: - size: Tamaño del ícono (por defecto: 22)
-         - color: Color del ícono (por defecto: '#8de2d6')
+  Props: 
+    size: Tamaño del ícono (por defecto: 22)
+    color: Color del ícono (por defecto: '#8de2d6')
   Autor: Silvio Jorda
   Date: 2026-09-30
 ========================================================================== */

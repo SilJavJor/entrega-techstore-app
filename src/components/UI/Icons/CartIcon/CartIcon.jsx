@@ -1,8 +1,11 @@
 /* ==========================================================================
   Componente CartIcon.jsx (Ícono de Carrito de Compras Vectorial)
   Descripción: Este componente representa un ícono de carrito de compras
+    Props: 
+    size: Tamaño del ícono (por defecto: 22)
+    color: Color del ícono (por tamaño, defecto: '#cccccc')
   Autor: Silvio Jorda
-  Fecha: 2026-10-10
+  Date: 2026-09-30
 ========================================================================== */
 
 export function CartIcon({ size = 22, color = '#ffffff' }) {

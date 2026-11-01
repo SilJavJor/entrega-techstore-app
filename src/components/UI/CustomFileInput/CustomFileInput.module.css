@@ -1,0 +1,49 @@
+/* ==========================================================================
+  Estilos de ProductList.module.css
+  Descripcion: Estilos para Selector de Archivos Reutilizable. 
+    ProductPage, TEamPage, etc.
+  Autor: Silvio Jorda
+  Date: 2026-09-30
+========================================================================== */
+
+.label {
+  font-size: 0.85rem;
+  color: #dddddd;
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+  display: block;
+}
+
+.input {
+  background-color: #111111 !important;
+  border: 1px solid #444444 !important;
+  color: #ffffff !important;
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.input:focus {
+  border-color: #8de2d6 !important;
+  box-shadow: 0 0 0 0.25rem rgba(141, 226, 214, 0.25) !important;
+}
+
+.input[type="file"]::file-selector-button,
+.input[type="file"]::-webkit-file-upload-button {
+  background-color: #8de2d6 !important;
+  color: #111111 !important;
+  border: none !important;
+  padding: 0.35rem 0.85rem !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  font-size: 0.88rem !important;
+  margin-left: 2px !important;
+  margin-right: 0.8rem !important;
+  cursor: pointer !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.input[type="file"]::file-selector-button:hover,
+.input[type="file"]::-webkit-file-upload-button:hover {
+  background-color: #72c8bc !important;
+}

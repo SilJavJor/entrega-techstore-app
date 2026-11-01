@@ -3,10 +3,11 @@
     Descripción: Este componente representa un ícono de cerrar (close)
     que se puede utilizar en la interfaz de usuario para indicar la acción
     de cerrar o cancelar.
-  Props: - size: Tamaño del ícono (por defecto: 22)
-         - color: Color del ícono (por defecto: '#ff4d4f')
+  Props: 
+    size: Tamaño del ícono (por defecto: 22)
+    color: Color del ícono (por defecto: '#ff4d4f')
   Autor: Silvio Jorda
-  Fecha: 2026-10-08
+  Date: 2026-09-30
 ========================================================================== */
 
 export function CloseIcon({ size = 22, color = '#ff4d4f' }) {

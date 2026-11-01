@@ -19,7 +19,7 @@ export function OurTeam() {
       <Container className="text-center py-5">
         <Spinner animation="border" variant="secondary" className="me-2" />
 
-        <p className="mt-3 text-muted">Cargando información del equipo...</p>
+        <p className="mt-3 text-muted"> Cargando información del equipo... </p>
       </Container>
     );
   }

@@ -1,0 +1,189 @@
+/* ==========================================================================
+   Estilos de RegisterForm.module.css
+   Descripción: Estilos para la pagina de registro..
+   Autor: Silvio Jorda
+  Date: 2026-09-30
+========================================================================== */
+
+.card {
+  background-color: #1a1a1a;
+  border: 1px solid #2a2a2a !important;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 680px;
+  padding: 3rem 2.5rem !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+}
+
+.title {
+  color: #8de2d6;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  text-align: center;
+  color: #aaaaaa;
+  margin-bottom: 2rem;
+}
+
+.label {
+  color: #cccccc;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.45rem;
+  display: block;
+}
+
+.input {
+  background-color: #111111 !important;
+  border: 1px solid #333333 !important;
+  color: #ffffff !important;
+  border-radius: 6px;
+  padding: 0.85rem 1.1rem !important;
+  font-size: 0.95rem;
+}
+
+.input:focus {
+  border-color: #8de2d6 !important;
+  box-shadow: 0 0 0 0.25rem rgba(141, 226, 214, 0.25) !important;
+}
+
+.input::placeholder {
+  color: #555555 !important;
+  font-weight: 400;
+  opacity: 1;
+}
+
+.terms {
+  cursor: pointer;
+  margin-top: 0.3rem;
+}
+
+.termsText {
+  font-size: 0.88rem;
+  color: #cccccc;
+}
+
+.termsLink {
+  color: #8de2d6;
+  text-decoration: none;
+}
+
+.termsLink:hover {
+  text-decoration: underline;
+}
+
+.cleanBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: transparent !important;
+  color: #cccccc !important;
+  border: 1px solid #555555 !important;
+  padding: 0.88rem !important;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cleanBtn:hover {
+  border-color: #8de2d6 !important;
+  color: #8de2d6 !important;
+  background-color: rgba(141, 226, 214, 0.05) !important;
+}
+
+.cleanBtn:hover svg {
+  stroke: #8de2d6;
+}
+
+.submitBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #8de2d6 !important;
+  color: #111111 !important;
+  border: none !important;
+  padding: 0.88rem !important;
+  border-radius: 6px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.submitBtn:hover {
+  background-color: #72c8bc !important;
+  color: #111111 !important;
+  transform: translateY(-1px);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1.8rem 0;
+  color: #666666;
+  font-size: 0.85rem;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #333333;
+}
+
+.divider span {
+  padding: 0 0.75rem;
+}
+
+.socialBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  background-color: #111111 !important;
+  border: 1px solid #444444 !important;
+  color: #ffffff !important;
+  padding: 0.75rem !important;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.socialBtn:hover {
+  border-color: #8de2d6 !important;
+  background-color: #222222 !important;
+}
+
+.footerText {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #aaaaaa;
+  margin-top: 1.8rem;
+  margin-bottom: 0;
+}
+
+.loginLink {
+  color: #8de2d6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.loginLink:hover {
+  text-decoration: underline;
+}

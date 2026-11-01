@@ -23,6 +23,7 @@ export function NavBar() {
       </Nav.Link>
 
       {/* Productos */}
+      {/* Si es Admin */}
       {isAdmin ? (
         <NavDropdown 
           title={<span className={styles.navLink}>Productos</span>} 
@@ -33,16 +34,17 @@ export function NavBar() {
             Ver Productos
           </NavDropdown.Item>
 
-          <NavDropdown.Item as={Link} to="/add-categories" className={styles.dropdownLink}>
+          <NavDropdown.Item as={Link} to="/add-category" className={styles.dropdownLink}>
             Agregar Categoria
           </NavDropdown.Item>
 
-          <NavDropdown.Item as={Link} to="/add-products" className={styles.dropdownLink}>
+          <NavDropdown.Item as={Link} to="/add-product" className={styles.dropdownLink}>
             Agregar Producto
           </NavDropdown.Item>
         </NavDropdown>
       ) : (
         <Nav.Link as={Link} to="/products" className={styles.navLink}>
+          {/* Si no es Admin */}
           Productos
         </Nav.Link>
       )}
@@ -64,6 +66,7 @@ export function NavBar() {
           id="aboutus-dropdown"
           menuVariant="dark"
         >
+          {/* Si es Admin */}
           <NavDropdown.Item as={Link} to="/aboutus" className={styles.dropdownLink}>
             Ver Equipo
           </NavDropdown.Item>
@@ -74,7 +77,8 @@ export function NavBar() {
         </NavDropdown>
       ) : (
         <Nav.Link as={Link} to="/aboutus" className={styles.navLink}>
-          Nosotros
+        {/* Si no es Admin */}
+        Nosotros
         </Nav.Link>
       )}
     </Nav>

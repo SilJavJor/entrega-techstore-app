@@ -6,19 +6,17 @@
   Date: 2026-09-30
 ========================================================================== */
 
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
-import React from 'react'
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import React from 'react';
 
 // Importación de Contextos
-import { AuthProvider } from './context/AuthContext/AuthContext'
+import { AuthProvider } from './context/AuthContext/AuthContext';
 import { DataProvider } from './context/DataContext/DataContext';
-import { CartProvider } from './context/CartContext/CartContext';
-
 
 // Probar que pasa al cambiar el orden de los imports, si se rompe la app o no
-import './index.css'
-import App from './App.jsx'
+import './index.css';
+import App from './App.jsx';
 
 // Se debe cambiár este valor a false para desactivar el StricMode
 const ENABLE_STRICT_MODE = true;
@@ -31,11 +29,9 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <AuthProvider>
         <DataProvider>
-          <CartProvider>
-            <App />
-          </CartProvider>
+          <App />
         </DataProvider>
       </AuthProvider>
     </BrowserRouter>
   </StrictWrapper>
-)
+);

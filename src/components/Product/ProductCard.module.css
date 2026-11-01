@@ -1,0 +1,141 @@
+/* ==========================================================================
+  Estilos de ProductCard.module.css
+  Descripcion: Estilos para las tarjetas de productos (ProductCard),
+    estilo, relleno turquesa, delineado.
+  Autor: Silvio Jorda
+  Date: 2026-09-30
+========================================================================== */
+
+.card {
+  background-color: #1a1a1a !important;
+  border: 1px solid #2a2a2a !important;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+  color: #ffffff;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: #8de2d6 !important;
+  box-shadow: 0 10px 25px rgba(141, 226, 214, 0.2), 0 6px 16px rgba(0, 0, 0, 0.4) !important;
+}
+
+.favButton {
+  color: #8de2d6 !important;
+  text-decoration: none !important;
+  background: rgba(0, 0, 0, 0.55) !important;
+  border-radius: 50% !important;
+  margin: 8px;
+  width: 36px;
+  height: 36px;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: none !important;
+  line-height: 1 !important;
+  transition: transform 0.2s ease, background-color 0.2s ease !important;
+}
+
+.favButton:hover {
+  transform: scale(1.1);
+  background: rgba(0, 0, 0, 0.8) !important;
+}
+
+.favButton svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+.imageLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #111111;
+  width: 100% !important;
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+}
+
+.image {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  padding: 0.75rem;
+  transition: transform 0.3s ease;
+}
+
+.imageLink:hover .image {
+  transform: scale(1.06);
+}
+
+.title {
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.price {
+  color: #8de2d6 !important;
+}
+
+.stockText {
+  color: #aaaaaa;
+}
+
+.stockBadgeIn {
+  border: 1px solid #8de2d6;
+  color: #8de2d6;
+}
+
+.detailsBtn {
+  background-color: #8de2d6 !important;
+  color: #111111 !important;
+  border: none !important;
+  border-radius: 6px;
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  padding: 0.6rem !important;
+  text-decoration: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.1s ease !important;
+}
+
+.detailsBtn:hover {
+  background-color: #72c8bc !important;
+  color: #111111 !important;
+  transform: translateY(-1px);
+}
+
+.addBtn {
+  background-color: transparent !important;
+  color: #cccccc !important;
+  border: 1px solid #555555 !important;
+  border-radius: 6px;
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  padding: 0.6rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.addBtn:hover:not(:disabled) {
+  border-color: #8de2d6 !important;
+  color: #8de2d6 !important;
+  background-color: rgba(141, 226, 214, 0.05) !important;
+}
+
+.addBtn:disabled {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: #444444 !important;
+  color: #666666 !important;
+  cursor: not-allowed;
+}

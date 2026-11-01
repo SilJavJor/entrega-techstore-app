@@ -2,8 +2,11 @@
   Componente RocketIcon.jsx
   Descripción: Icono SVG vectorial a todo color para cohete (🚀) que replica
     la estética, velocidad y gradientes metálicos del emoji original.
+  Props: 
+    size: Tamaño del ícono (por defecto: 22)
+    color: Color del ícono (por tamaño, defecto: '#cccccc')
   Autor: Silvio Jorda
-  Fecha: 2026-10-19
+  Date: 2026-09-30
 ========================================================================== */
 
 export function RocketIcon({ width = "1.2em", height = "1.2em", className = "", ...props }) {

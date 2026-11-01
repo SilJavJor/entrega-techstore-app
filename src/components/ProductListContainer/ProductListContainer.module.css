@@ -1,0 +1,147 @@
+/* ==========================================================================
+  Estilos de ProductListContainer.module.css
+  Descripcion: Estilos para el contenedor del catálogo de productos
+    y encabezado. Barra de Filtros. Combo de cantidad. Barra de paginacion
+  Autor: Silvio Jorda
+  Date: 2026-09-30
+========================================================================== */
+
+.headerWrapper {
+  border-bottom: 2px solid #8de2d6;
+  padding-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #111111;
+  margin: 0 !important;
+  line-height: 1.2;
+  white-space: nowrap !important;
+}
+
+.selectLabel {
+  color: #333333;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.selectControl {
+  background-color: #1a1a1a !important;
+  color: #8de2d6 !important;
+  border: 1px solid #333333 !important;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  min-width: 135px;
+}
+
+.selectControl:focus {
+  border-color: #8de2d6 !important;
+  box-shadow: 0 0 0 0.2rem rgba(141, 226, 214, 0.25) !important;
+}
+
+.statusMessage {
+  text-align: center;
+  font-size: 1.05rem;
+  color: #555555;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Barra de Paginacion
+   ========================================================================== */
+.paginationCustom :global(.page-item .page-link) {
+  background-color: #1a1a1a;
+  color: #cccccc;
+  border-color: #333333;
+  transition: all 0.2s ease;
+}
+
+.paginationCustom :global(.page-item:hover .page-link) {
+  background-color: rgba(141, 226, 214, 0.15);
+  color: #8de2d6;
+  border-color: #8de2d6;
+}
+
+.paginationCustom :global(.page-item.active .page-link) {
+  background-color: #8de2d6 !important;
+  color: #111111 !important;
+  border-color: #8de2d6 !important;
+  font-weight: 700;
+}
+
+.paginationCustom :global(.page-item.disabled .page-link) {
+  background-color: #111111;
+  color: #555555;
+  border-color: #222222;
+}
+
+/* ==========================================================================
+   Barra de Filtros
+   ========================================================================== */
+.filterBar {
+  background-color: #1a1a1a !important;
+  border: 1px solid #2a2a2a !important;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.filterLabel {
+  color: #ffffff !important;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.categoryBtn {
+  background-color: transparent !important;
+  color: #cccccc !important;
+  border: 1px solid #444444 !important;
+  border-radius: 50px !important; /* Curvatura total en los bordes */
+  padding: 0.4rem 1.1rem !important;
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+
+.categoryBtn:hover {
+  border-color: #8de2d6 !important;
+  color: #8de2d6 !important;
+  background-color: rgba(141, 226, 214, 0.08) !important;
+  transform: translateY(-1px);
+}
+
+.categoryBtnActive {
+  background-color: #8de2d6 !important;
+  color: #111111 !important;
+  border: 1px solid #8de2d6 !important;
+  border-radius: 50px !important; /* Curvatura total en los bordes */
+  padding: 0.4rem 1.1rem !important;
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
+  box-shadow: 0 0 10px rgba(141, 226, 214, 0.3) !important;
+  transition: all 0.2s ease !important;
+}
+
+.selectFilterControl {
+  background-color: #242424 !important;
+  color: #8de2d6 !important;
+  border: 1px solid #3a3a3a !important;
+  border-radius: 6px;
+  font-size: 0.82rem !important;
+  font-weight: 600;
+  min-width: 150px;
+  max-width: 190px;
+  cursor: pointer;
+}
+
+.selectFilterControl:focus {
+  border-color: #8de2d6 !important;
+  box-shadow: 0 0 0 0.15rem rgba(141, 226, 214, 0.25) !important;
+}
+
+.selectFilterControl option {
+  background-color: #1a1a1a !important;
+  color: #ffffff !important;
+}

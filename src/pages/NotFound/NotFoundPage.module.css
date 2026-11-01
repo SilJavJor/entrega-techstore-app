@@ -1,0 +1,62 @@
+/* ==========================================================================
+  Estilos de NotFoundForm.module.css
+  Descripción: Estilos para la vista de error 404.
+  Autor: Silvio Jorda
+  Fecha: 2026-09-30
+========================================================================== */
+
+.card {
+  background-color: #1a1a1a;
+  border: 1px solid #2a2a2a !important;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 580px;
+  padding: 3rem 2.5rem !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+}
+
+.errorCode {
+  font-size: 5.5rem;
+  font-weight: 800;
+  color: #ff4d4f;
+  margin: 0;
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 1.2rem 0 0.6rem;
+  color: #ffffff;
+}
+
+.description {
+  color: #aaaaaa;
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  max-width: 440px;
+  line-height: 1.5;
+}
+
+.homeBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #8de2d6 !important;
+  color: #111111 !important;
+  border: none !important;
+  padding: 0.85rem 1.8rem !important;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.homeBtn:hover {
+  background-color: #72c8bc !important;
+  color: #111111 !important;
+  transform: translateY(-1px);
+}

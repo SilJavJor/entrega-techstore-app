@@ -51,7 +51,7 @@
     "description": "Sonido envolvente virtual 7.1 con micrófono e insolación pasiva de ruido.",
     "image": "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=600&auto=format&fit=crop&q=80",
     "id_marca" : "1",
-    "id_categorie" : "1"
+    "id_categorie" : "2"
   },
 
   {
@@ -62,7 +62,7 @@
     "description": "Almacenamiento ultra rápido PCIe Gen4 con velocidades de lectura de hasta 7000 MB/s.",
     "image": "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=600&auto=format&fit=crop&q=80",
     "id_marca" : "1",
-    "id_categorie" : "1"
+    "id_categorie" : "2"
   },
 
   {
@@ -73,7 +73,7 @@
     "description": "Estructura metálica, apoyabrazos 4D y cojines lumbares para largas sesiones.",
     "image": "https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=600&auto=format&fit=crop&q=80",
     "id_marca" : "1",
-    "id_categorie" : "1"
+    "id_categorie" : "2"
   },
 
   {
@@ -84,7 +84,7 @@
     "description": "Cámara web Full HD con micrófono estéreo integrado y corrección automática de luz.",
     "image": "https://images.unsplash.com/photo-1588702547919-26089e690ecc?w=600&auto=format&fit=crop&q=80",
     "id_marca" : "1",
-    "id_categorie" : "1"
+    "id_categorie" : "2"
   },
 
   {
@@ -95,7 +95,7 @@
     "description": "8GB GDDR6, arquitectura Ada Lovelace, con soporte para DLSS 3 y Ray Tracing.",
     "image": "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=600&auto=format&fit=crop&q=80",
     "id_marca" : "1",
-    "id_categorie" : "1"
+    "id_categorie" : "3"
   },
 
   {
@@ -106,7 +106,7 @@
     "description": "Módulo RAM DDR5 de 5600MHz con disipador de calor de aluminio anodizado.",
     "image": "https://images.unsplash.com/photo-1562976540-1502c2145186?w=600&auto=format&fit=crop&q=80",
     "id_marca" : "1",
-    "id_categorie" : "1"
+    "id_categorie" : "3"
   },
 
   {
@@ -117,7 +117,7 @@
     "description": "8 núcleos y 16 hilos de hasta 4.6GHz, socket AM4 ideal para multitarea exigente.",
     "image": "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=600&auto=format&fit=crop&q=80",
     "id_marca" : "1",
-    "id_categorie" : "1"
+    "id_categorie" : "3"
   },
 
   {
@@ -128,7 +128,7 @@
     "description": "Fuente modular con certificación 80 Plus Gold y protección eléctrica integrada.",
     "image": "https://images.unsplash.com/photo-1555680202-c86f0e12f086?w=600&auto=format&fit=crop&q=80",
     "id_marca" : "1",
-    "id_categorie" : "1"
+    "id_categorie" : "3"
   },
 
   {
@@ -139,7 +139,7 @@
     "description": "Panel frontal de malla para alto flujo de aire y lateral de vidrio templado.",
     "image": "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=600&auto=format&fit=crop&q=80",
     "id_marca" : "1",
-    "id_categorie" : "1"
+    "id_categorie" : "4"
   },
 
   {
@@ -150,7 +150,7 @@
     "description": "Compatible con la serie Ryzen 7000, PCIe 5.0 y Wi-Fi 6E integrado.",
     "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&auto=format&fit=crop&q=80",
     "id_marca" : "1",
-    "id_categorie" : "1"
+    "id_categorie" : "4"
   },
 
   {
@@ -161,7 +161,7 @@
     "description": "Sistema de refrigeración líquida con dos ventiladores PWM de 120mm y bomba iluminada.",
     "image": "https://images.unsplash.com/photo-1588702547919-26089e690ecc?w=600&auto=format&fit=crop&q=80",
     "id_marca" : "1",
-    "id_categorie" : "1"
+    "id_categorie" : "5"
   },
 
   {
@@ -172,7 +172,7 @@
     "description": "Velocidades de hasta 1800 Mbps con tecnología OFDMA y cobertura extendida.",
     "image": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=600&auto=format&fit=crop&q=80",
     "id_marca" : "1",
-    "id_categorie" : "1"
+    "id_categorie" : "6"
   },
 
   {
@@ -183,7 +183,7 @@
     "description": "Patrón polar cardioide, filtro anti-pop incluido y configuración Plug & Play.",
     "image": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600&auto=format&fit=crop&q=80",
     "id_marca" : "1",
-    "id_categorie" : "1"
+    "id_categorie" : "6"
   },
 
   {
@@ -194,7 +194,7 @@
     "description": "Adaptador multipuerto con salida HDMI 4K, lector de tarjetas SD y puertos USB 3.0.",
     "image": "https://images.unsplash.com/photo-1625842268584-8f3296236761?w=600&auto=format&fit=crop&q=80",
     "id_marca" : "1",
-    "id_categorie" : "1"
+    "id_categorie" : "7"
   },
 
   {
@@ -205,7 +205,7 @@
     "description": "Superficie de tela optimizada de 900x400mm con bordes cosidos anti-deshilachado.",
     "image": "https://images.unsplash.com/photo-1616440342803-0d3a01725fb5?w=600&auto=format&fit=crop&q=80",
     "id_marca" : "1",
-    "id_categorie" : "1"
+    "id_categorie" : "8"
   },
 
   {
@@ -216,6 +216,6 @@
     "description": "Almacenamiento externo portátil USB 3.0 para respaldos rápidos y seguros.",
     "image": "https://images.unsplash.com/photo-1531492746076-161ca9bcad58?w=600&auto=format&fit=crop&q=80",
     "id_marca" : "1",
-    "id_categorie" : "1"
+    "id_categorie" : "8"
   }
 ]

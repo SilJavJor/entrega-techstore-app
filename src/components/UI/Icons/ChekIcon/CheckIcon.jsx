@@ -3,10 +3,11 @@
   Descripción: Este componente representa un ícono de verificación (check) 
     que se puede utilizar en la interfaz de usuario para indicar aceptación 
     o confirmación.
-  Props: - size: Tamaño del ícono (por defecto: 22)
-         - color: Color del ícono (por defecto: '#111111')
+  Props: 
+    size: Tamaño del ícono (por defecto: 22)
+    color: Color del ícono (por defecto: '#111111')
   Autor: Silvio Jorda
-  Fecha: 2026-10-08
+  Date: 2026-09-30
 ========================================================================== */
 
 export function CheckIcon({ size = 22, color = '#111111' }) {
