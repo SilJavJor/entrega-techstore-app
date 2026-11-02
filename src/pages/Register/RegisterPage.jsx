@@ -18,8 +18,12 @@ import { CheckIcon } from '../../components/UI/Icons/CheckIcon/CheckIcon';
 import { GoogleIcon } from '../../components/UI/Icons/GoogleIcon/GoogleIcon';
 import { GitHubIcon } from '../../components/UI/Icons/GitHubIcon/GitHubIcon';
 import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
+
+// Estilos
 import styles from './RegisterPage.module.css';
 import '../../styles/CheckBoxes/CheckBoxes.css';
+import '../../styles/Buttons/ActionButtons.css';
+import '../../styles/Buttons/SocialButtons.css';
 
 export function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -30,7 +34,7 @@ export function RegisterPage() {
     acceptTerms: false
   });
 
-  // Estado para controlar el modal de aviso
+  // Ventana modal de aviso
   const [modalConfig, setModalConfig] = useState({
     show: false,
     title: '',
@@ -182,19 +186,12 @@ export function RegisterPage() {
 
             <div className="d-flex gap-3 mt-3">
               {/* Limpiar */}
-              <Button 
-                type="button" 
-                className={styles.cleanBtn} 
-                onClick={handleReset}
-              >
+              <Button type="button" className="cleanBtn" onClick={handleReset} >
                 <BroomIcon /> Limpiar
               </Button>
 
               {/* Registrarme */}
-              <Button 
-                type="submit" 
-                className={styles.submitBtn}
-              >
+              <Button type="submit" className="submitBtn">
                 <CheckIcon /> Registrarme
               </Button>
             </div>
@@ -209,7 +206,7 @@ export function RegisterPage() {
             {/* Google */}
             <Button 
               type="button" 
-              className={styles.socialBtn}
+              className="socialBtn" 
               onClick={() => handleNotImplemented('Google')}
             >
               <GoogleIcon /> Google
@@ -218,7 +215,7 @@ export function RegisterPage() {
             {/* GitHub */}
             <Button 
               type="button" 
-              className={styles.socialBtn}
+              className="socialBtn"
               onClick={() => handleNotImplemented('GitHub')}
             >
               <GitHubIcon /> GitHub
@@ -228,6 +225,7 @@ export function RegisterPage() {
           {/* Login */}
           <p className={styles.footerText}>
             ¿ Si ya tenés una cuenta ?{' '}
+
             <Link to="/login" className={styles.loginLink}>
               Iniciá sesión acá
             </Link>

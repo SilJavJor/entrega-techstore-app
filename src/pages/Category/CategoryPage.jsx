@@ -15,7 +15,10 @@ import { CustomFileInput } from '../../components/UI/CustomFileInput/CustomFileI
 import { BroomIcon } from '../../components/UI/Icons/BroomIcon/BroomIcon';
 import { CheckIcon } from '../../components/UI/Icons/ChekIcon/CheckIcon';
 import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
+
+// Estilos
 import styles from './CategoryPage.module.css';
+import '../../styles/Buttons/ActionButtons.css';
 
 export function CategoryPage() {
   // Sub-Contexto de Categorias
@@ -230,7 +233,7 @@ export function CategoryPage() {
             <div className="d-flex gap-3 mt-3">
               <Button
                 type="button"
-                className={styles.cleanBtn}
+                className="cleanBtn"
                 onClick={handleReset}
                 disabled={uploading}
               >
@@ -239,7 +242,8 @@ export function CategoryPage() {
 
               <Button
                 type="submit"
-                className={styles.submitBtn}
+                className="submitBtn"
+                onClick={handleSubmit}
                 disabled={uploading}
               >
                 <CheckIcon /> {uploading ? 'Guardando...' : 'Guardar'}

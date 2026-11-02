@@ -16,7 +16,12 @@ import { CheckIcon } from '../../components/UI/Icons/CheckIcon/CheckIcon';
 import { GoogleIcon } from '../../components/UI/Icons/GoogleIcon/GoogleIcon';
 import { GitHubIcon } from '../../components/UI/Icons/GitHubIcon/GitHubIcon';
 import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
+
+// Estilos
 import styles from './LoginPage.module.css';
+import '../../styles/CheckBoxes/CheckBoxes.css';
+import '../../styles/Buttons/ActionButtons.css';
+import '../../styles/Buttons/SocialButtons.css';
 
 export function LoginPage() {
   const navigate = useNavigate();
@@ -126,7 +131,7 @@ export function LoginPage() {
               />
             </Form.Group>
 
-            {/* Opciones (Recordarme / Olvidaste tu contraseña) */}
+            {/* Recordarme */}
             <div className="d-flex justify-content-between align-items-center mt-1">
               <Form.Check
                 type="checkbox"
@@ -149,19 +154,12 @@ export function LoginPage() {
 
             <div className="d-flex gap-3 mt-3">
               {/* Limpiar */}
-              <Button 
-                type="button" 
-                className={styles.cleanBtn} 
-                onClick={handleReset}
-              >
+              <Button type="button" className="cleanBtn" onClick={handleReset}>
                 <BroomIcon /> Limpiar
               </Button>
 
               {/* Ingresar */}
-              <Button 
-                type="submit" 
-                className={styles.submitBtn}
-              >
+              <Button type="submit" className="submitBtn">
                 <CheckIcon /> Ingresar
               </Button>
             </div>
@@ -176,16 +174,17 @@ export function LoginPage() {
             {/* Google */}
             <Button 
               type="button" 
-              className={styles.socialBtn}
+              className="socialBtn"
               onClick={() => handleNotImplemented('Google')}
             >
               <GoogleIcon /> Google
             </Button>
 
+            
             {/* GitHub */}
             <Button 
-              type="button" 
-              className={styles.socialBtn}
+              type="button"
+              className="socialBtn"
               onClick={() => handleNotImplemented('GitHub')}
             >
               <GitHubIcon /> GitHub

@@ -1,7 +1,7 @@
 /* ==========================================================================
-   Estilos de RegisterForm.module.css
-   Descripción: Estilos para la pagina de registro..
-   Autor: Silvio Jorda
+  Estilos de RegisterForm.module.css
+  Descripción: Estilos para la pagina de registro..
+  Autor: Silvio Jorda
   Date: 2026-09-30
 ========================================================================== */
 
@@ -78,56 +78,6 @@
   text-decoration: underline;
 }
 
-.cleanBtn {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background-color: transparent !important;
-  color: #cccccc !important;
-  border: 1px solid #555555 !important;
-  padding: 0.88rem !important;
-  border-radius: 6px;
-  font-weight: 500;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.cleanBtn:hover {
-  border-color: #8de2d6 !important;
-  color: #8de2d6 !important;
-  background-color: rgba(141, 226, 214, 0.05) !important;
-}
-
-.cleanBtn:hover svg {
-  stroke: #8de2d6;
-}
-
-.submitBtn {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background-color: #8de2d6 !important;
-  color: #111111 !important;
-  border: none !important;
-  padding: 0.88rem !important;
-  border-radius: 6px;
-  font-size: 1.05rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-}
-
-.submitBtn:hover {
-  background-color: #72c8bc !important;
-  color: #111111 !important;
-  transform: translateY(-1px);
-}
-
 .divider {
   display: flex;
   align-items: center;
@@ -146,28 +96,6 @@
 
 .divider span {
   padding: 0 0.75rem;
-}
-
-.socialBtn {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  background-color: #111111 !important;
-  border: 1px solid #444444 !important;
-  color: #ffffff !important;
-  padding: 0.75rem !important;
-  border-radius: 6px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
-}
-
-.socialBtn:hover {
-  border-color: #8de2d6 !important;
-  background-color: #222222 !important;
 }
 
 .footerText {

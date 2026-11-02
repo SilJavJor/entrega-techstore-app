@@ -1,0 +1,72 @@
+/* ==========================================================================
+  ActionButtons.css
+  Estilos globales unificados para botones de acción y campos en TechStore
+========================================================================== */
+
+/* Boton Guardar */
+.submitBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #8de2d6 !important;
+  color: #111111 !important;
+  border: none !important;
+  padding: 0.85rem !important;
+  border-radius: 6px !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease !important;
+}
+
+.submitBtn:hover {
+  background-color: #72c8bc !important;
+  color: #111111 !important;
+  transform: translateY(-1px);
+}
+
+.submitBtn:disabled {
+  background-color: #444444 !important;
+  color: #888888 !important;
+  cursor: not-allowed;
+}
+
+/* Boton Limpiar */
+.cleanBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: transparent !important;
+  color: #cccccc !important;
+  border: 1px solid #555555 !important;
+  padding: 0.85rem !important;
+  border-radius: 6px !important;
+  font-weight: 500 !important;
+  font-size: 1rem !important;
+  cursor: pointer;
+  transition: all 0.2s ease !important;
+}
+
+.cleanBtn:hover {
+  border-color: #8de2d6 !important;
+  color: #8de2d6 !important;
+  background-color: rgba(141, 226, 214, 0.05) !important;
+}
+
+.cleanBtn:hover svg {
+  stroke: #8de2d6;
+}
+
+/* Campo de Solo Lectura (ID Autogenerado) */
+.readonly-input-tech {
+  background-color: #0d0d0d !important;
+  border-color: #2a2a2a !important;
+  color: #8de2d6 !important;
+  font-weight: 700 !important;
+  cursor: not-allowed !important;
+  user-select: none;
+}
