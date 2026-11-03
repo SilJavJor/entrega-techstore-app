@@ -11,7 +11,7 @@ import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Container, Row, Col, Card, Button, Badge, InputGroup, Alert, Spinner } from 'react-bootstrap';
 import { useProducts } from '../../context/Products/ProductsContext';
-import { useCart } from '../../context/CartContext/CartContext';
+import { useCart } from '../../context/Cart/CartContext';
 import styles from './ProductDetail.module.css';
 
 export function ProductDetail() {

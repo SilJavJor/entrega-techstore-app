@@ -7,25 +7,27 @@
 ========================================================================== */
 
 // Importaciones
-//import { BrandsProvider } from '../Brands/BrandsContext';
+import { TeamsProvider } from '../Teams/TeamsContext';
+import { BrandsProvider } from '../Brands/BrandsContext';
 import { ProductsProvider } from '../Products/ProductsContext';
 import { CategoriesProvider } from '../Categories/CategoriesContext';
-import { TeamsProvider } from '../Teams/TeamsContext';
 import { FavoritesProvider } from '../Favorites/FavoritesContext';
-import { CartProvider } from '../CartContext/CartContext';
+import { CartProvider } from '../Cart/CartContext';
 
 export function DataProvider({ children }) {
   return (
-    <ProductsProvider>
+   <TeamsProvider>
+     <BrandsProvider>
       <CategoriesProvider>
-        <FavoritesProvider>
-          <TeamsProvider>
+        <ProductsProvider>
+          <FavoritesProvider>
             <CartProvider>
               {children}
             </CartProvider>
-          </TeamsProvider>
-        </FavoritesProvider>
+          </FavoritesProvider>
+        </ProductsProvider>
       </CategoriesProvider>
-    </ProductsProvider>
+    </BrandsProvider>
+  </TeamsProvider>
   );
 };

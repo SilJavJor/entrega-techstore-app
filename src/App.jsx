@@ -17,13 +17,14 @@ import { HomePage } from './pages/Home/HomePage';
 import { ProductDetail } from './pages/ProductDetail/ProductDetail';
 import { CartForm } from './pages/Cart/CartPage';
 import { ProductPage } from './pages/Product/ProductPage';
+import { BrandPage } from './pages/Brand/BrandPage';
 import { CategoryPage } from './pages/Category/CategoryPage';
 import { TeamPage } from './pages/Team/TeamPage';
 import { ContactUsPage } from './pages/ContactUs/ContactUsPage';
 import { LoginPage } from './pages/Login/LoginPage';
 import { RegisterPage } from './pages/Register/RegisterPage';
 import { AboutUsPage } from './pages/AboutUs/AboutUsPage';
-import { SettingsPage } from './pages/Settings/SettingsPage';
+import { MaintenancePage } from './pages/Settings/MaintenancePage';
 import { NotFoundPage } from './pages/NotFound/NotFoundPage';
 
 function App() {
@@ -39,11 +40,14 @@ function App() {
         {/* Detalle de un unico producto */}
         <Route path="/product/:id" element={<ProductDetail />} />
 
-        {/* ABMC de Pproductos - CRUD */}
-        <Route path="/add-product" element={<ProductPage />} />
+        {/* ABMC de Marcas - CRUD */}
+        <Route path="/add-brand" element={<BrandPage />} />
 
         {/* ABMC de Categorias - CRUD */}
         <Route path="/add-category" element={<CategoryPage />} />
+
+        {/* ABMC de Pproductos - CRUD */}
+        <Route path="/add-product" element={<ProductPage />} />
 
         {/* / Carrito de compras */}
         <Route path="/cart" element={<CartForm />} />
@@ -64,7 +68,7 @@ function App() {
         <Route path="/add-team" element={<TeamPage />} />
 
         {/*  */}
-        <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/maintenance" element={<MaintenancePage />} />
 
         {/* Paginas no encontradas (404) */}
         <Route path="*" element={<NotFoundPage />} />

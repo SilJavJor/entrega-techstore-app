@@ -3,27 +3,29 @@
   Descripción: Maneja exclusivamente la restauración de datos semilla.
 ========================================================================== */
 
+//
 import { useState } from 'react';
-//import { useBrands } from '../../context/Brands/BrandsContext';
+import { useBrands } from '../../context/Brands/BrandsContext';
 import { useProducts } from '../../context/Products/ProductsContext';
 import { useCategories } from '../../context/Categories/CategoriesContext';
 import { useTeam } from '../../context/Teams/TeamsContext';
 import { STORAGE_KEYS } from './useSettingsStats';
 
 export function useSettingsLoad(onSuccess, setModalConfig) {
+  const { resetBrands } = useBrands();  
   const { resetProducts } = useProducts();
   const { resetCategories } = useCategories();
   const { resetTeams } = useTeam();
 
   const domainLoaders = {
-    //brands: resetBrands,
+    brands: resetBrands,
     products: resetProducts,
     categories: resetCategories,
     team: resetTeams
   };
 
   const domainEndPoints = {
-    // brands: '/data/brands/brands.json',
+    brands: '/data/brands/brands.json',
     products: '/data/products/products.json',
     categories: '/data/categories/categories.json',
     team: '/data/team/team.json',

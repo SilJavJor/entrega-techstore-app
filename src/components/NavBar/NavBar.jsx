@@ -31,7 +31,13 @@ export function NavBar() {
           menuVariant="dark"
         >
           <NavDropdown.Item as={Link} to="/products" className={styles.dropdownLink}>
-            Ver Productos
+            Ver Catálogo
+          </NavDropdown.Item>
+
+          <NavDropdown.Divider />
+
+          <NavDropdown.Item as={Link} to="/add-brand" className={styles.dropdownLink}>
+            Agregar Marca
           </NavDropdown.Item>
 
           <NavDropdown.Item as={Link} to="/add-category" className={styles.dropdownLink}>
@@ -71,6 +77,8 @@ export function NavBar() {
             Ver Equipo
           </NavDropdown.Item>
 
+          <NavDropdown.Divider />
+
           <NavDropdown.Item as={Link} to="/add-team" className={styles.dropdownLink}>
             Agregar Integrante
           </NavDropdown.Item>
@@ -81,6 +89,20 @@ export function NavBar() {
         Nosotros
         </Nav.Link>
       )}
+
+      {/* Administracion */}
+      {isAdmin ? (
+        <NavDropdown 
+          title={<span className={styles.navLink}>Administracion</span>} 
+          id="maintenance-dropdown"
+          menuVariant="dark"
+        >
+          {/* Si es Admin */}
+          <NavDropdown.Item as={Link} to="/maintenance" className={styles.dropdownLink}>
+            Mantenimiento
+          </NavDropdown.Item>
+        </NavDropdown>
+      ) : null}
     </Nav>
   );
 }

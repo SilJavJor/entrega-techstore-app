@@ -10,7 +10,7 @@
 // Importaciones
 import { Link } from 'react-router-dom';
 import { Container, Card, Button } from 'react-bootstrap';
-import { useCart } from '../../context/CartContext/CartContext';
+import { useCart } from '../../context/Cart/CartContext';
 import { CartIcon } from '../../components/UI/Icons/CartIcon/CartIcon';
 import styles from './CartPage.module.css';
 

@@ -20,10 +20,11 @@ import { useSettingsStats } from '../../hooks/UseSettings/useSettingsStats';
 import { useSettingsClean } from '../../hooks/UseSettings/useSettingsClean';
 import { useSettingsLoad } from '../../hooks/UseSettings/useSettingsLoad';
 
-import styles from './SettingsPage.module.css';
+// Estilos
+import styles from './MaintenancePage.module.css';
 import '../../styles/CheckBoxes/CheckBoxes.css';
 
-export function SettingsPage() {
+export function MaintenancePage() {
   const [modalConfig, setModalConfig] = useState({ show: false, title: '', message: '' });
 
   // Hook de Auditoría

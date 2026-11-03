@@ -7,18 +7,16 @@
 import { useState } from 'react';
 
 // Contextos
-// import { useBrands } from '../../context/Brands/Brands';
+import { useBrands } from '../../context/Brands/BrandsContext';
 import { useCategories } from '../../context/Categories/CategoriesContext';
 import { useProducts } from '../../context/Products/ProductsContext';
-import { useTeam } from '../../context/Teams/TeamsContext';
 import { useFavorites } from '../../context/Favorites/FavoritesContext';
-import { useCart } from '../../context/CartContext/CartContext';
-
-//
+import { useCart } from '../../context/Cart/CartContext';
+import { useTeam } from '../../context/Teams/TeamsContext';
 import { STORAGE_KEYS } from './useSettingsStats';
 
 export function useSettingsClean(onSuccess, setModalConfig) {
-  // const { clearBrands } = useBrands();
+  const { clearBrands } = useBrands();
   const { clearCategories } = useCategories();
   const { clearProducts } = useProducts();
   const { clearTeams } = useTeam();
@@ -26,7 +24,7 @@ export function useSettingsClean(onSuccess, setModalConfig) {
   const { clearCart } = useCart();
 
   const domainCleaners = {
-    // brands: clearBrands,
+    brands: clearBrands,
     categories: clearCategories,
     products: clearProducts,
     team: clearTeams,

@@ -16,11 +16,12 @@
 ========================================================================== */
 
 import { useState, useEffect } from 'react';
-import { useProducts } from '../../context/Products/ProductsContext';
+import { useBrands } from '../../context/Brands/BrandsContext';
 import { useCategories } from '../../context/Categories/CategoriesContext';
+import { useProducts } from '../../context/Products/ProductsContext';
 import { useTeam } from '../../context/Teams/TeamsContext';
 import { useFavorites } from '../../context/Favorites/FavoritesContext';
-import { useCart } from '../../context/CartContext/CartContext';
+import { useCart } from '../../context/Cart/CartContext';
 
 export const STORAGE_KEYS = {
   brands: 'techstore_brands',
@@ -32,9 +33,10 @@ export const STORAGE_KEYS = {
 };
 
 export function useSettingsStats() {
-  // Consumo en tiempo real de la memoria de React
-  const { products } = useProducts();
+  // Consumo de los contextos
+  const { brands } = useBrands();
   const { categories } = useCategories();
+  const { products } = useProducts();
   const { team } = useTeam();
   const { favorites } = useFavorites();
   const { cart } = useCart();
@@ -43,7 +45,7 @@ export function useSettingsStats() {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const checkStorageStats = () => {
-    // Suma real de unidades para el carrito
+     // Suma real de unidades para el carrito
     const cartCount = Array.isArray(cart)
       ? cart.reduce((acc, item) => acc + (item.quantity || 1), 0)
       : 0;
@@ -65,7 +67,7 @@ export function useSettingsStats() {
     }
 
     setStorageStats({
-      //brands: Array.isArray(brands) ? brands.length : 0,
+      brands: Array.isArray(brands) ? brands.length : 0,
       categories: Array.isArray(categories) ? categories.length : 0,
       products: Array.isArray(products) ? products.length : 0,
       team: Array.isArray(team) ? team.length : 0,
@@ -74,13 +76,15 @@ export function useSettingsStats() {
     });
   };
 
-  // Se re-ejecuta automáticamente ante cualquier cambio o carga de datos en los Contextos
+  // Se re-ejecuta automáticamente ante cualquier cambio o carga
+  // de datos en los Contextos
   useEffect(() => {
     checkStorageStats();
-  }, [products, categories, team, favorites, cart, checkStorageStats]);
+  }, [brands, categories, products, favorites, cart, team, checkStorageStats]);
 
   return {
     storageStats,
+
     checkStorageStats
   };
 }

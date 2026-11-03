@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 /* ==========================================================================
   Componente CategoryContext.jsx
   Descripción: Sub-contexto independiente para la gestión de categorías

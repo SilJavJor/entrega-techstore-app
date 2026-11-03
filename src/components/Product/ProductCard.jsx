@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 import { useFavorites } from '../../context/Favorites/FavoritesContext';
 import { StarInLineIcon } from '../UI/Icons/StarInLineIcon/StarInLineIcon';
 import { StarOutlineIcon } from '../UI/Icons/StarOutLineIcon/StarOutLineIcon';
-import { useCart } from '../../context/CartContext/CartContext';
+import { useCart } from '../../context/Cart/CartContext';
 import styles from './ProductCard.module.css';
 
 export function ProductCard({ product }) {

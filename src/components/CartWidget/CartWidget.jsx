@@ -9,7 +9,7 @@
 // Importaciones
 import { Link } from 'react-router-dom';
 import { Badge } from 'react-bootstrap';
-import { useCart } from '../../context/CartContext/CartContext';
+import { useCart } from '../../context/Cart/CartContext';
 import { CartIcon } from '../UI/Icons/CartIcon/CartIcon';
 import styles from './CartWidget.module.css';
 
