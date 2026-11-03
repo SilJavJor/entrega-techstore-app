@@ -35,9 +35,13 @@ export function CategoryPage() {
   });
 
   const [imageFile, setImageFile] = useState(null);
+
   const [uploading, setUploading] = useState(false);
+
   const [showModal, setShowModal] = useState(false);
+
   const [savedCategoryName, setSavedCategoryName] = useState('');
+
   const [savedCategoryId, setSavedCategoryId] = useState('');
 
   const handleChange = (e) => {
@@ -48,8 +52,7 @@ export function CategoryPage() {
       const generatedSlug = value
         .toLowerCase()
         .trim()
-        .replace(/[\s_]+/g, '-')
-        .replace(/[^\w\-]+/g, '');
+        .replace(/[^\w-]+/g, '');
 
       setCategoryData((prev) => ({
         ...prev,

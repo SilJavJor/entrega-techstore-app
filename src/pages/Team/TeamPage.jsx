@@ -13,7 +13,10 @@ import { useTeam } from '../../context/Teams/TeamsContext';
 import { BroomIcon } from '../../components/UI/Icons/BroomIcon/BroomIcon';
 import { CheckIcon } from '../../components/UI/Icons/CheckIcon/CheckIcon';
 import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
+
+// Estilos
 import styles from './TeamPage.module.css';
+import '../../styles/Buttons/ActionButtons.css';
 
 export function TeamPage() {
   // Sub-Contexto de Equipos
@@ -147,7 +150,7 @@ export function TeamPage() {
     <Container className="py-5 d-flex justify-content-center align-items-center">
       <Card className={`border-0 p-4 shadow-lg ${styles.card}`}>
         <Card.Body>
-          <h1 className={styles.title}>Registrar Miembro del Equipo</h1>
+          <h1 className={styles.title}>Alta de Integrante</h1>
 
           <p className={styles.subtitle}>
             Ingresá los datos del nuevo integrante para mostrar su perfil en la sección Nosotros
@@ -291,7 +294,7 @@ export function TeamPage() {
             <div className="d-flex gap-3 mt-3">
               <Button 
                 type="button" 
-                className={styles.cleanBtn} 
+                className="cleanBtn"
                 onClick={handleReset}
                 disabled={uploading}
               >
@@ -300,7 +303,7 @@ export function TeamPage() {
 
               <Button 
                 type="submit" 
-                className={styles.submitBtn}
+                className="submitBtn"
                 disabled={uploading}
               >
                 <CheckIcon /> {uploading ? 'Subiendo...' : 'Guardar'}

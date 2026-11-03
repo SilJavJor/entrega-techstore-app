@@ -1,3 +1,8 @@
+/* ==========================================================================
+  ActionButtons.css
+  Estilos globales unificados para botones de acción y campos en TechStore
+========================================================================== */
+
 /* Estado por defecto (desmarcado) */
 .form-check-input {
   background-color: #111111 !important;

@@ -9,6 +9,17 @@
 ========================================================================== */
 
 // Importaciones
+/* ==========================================================================
+  Componente ProductPage.jsx
+  Descripción: Pagina para la carga de productos. Obtiene dinámicamente
+    las categorías registradas consumiendo useCategories() y guarda el 
+    producto utilizando useProducts(). Guarda directamente las imágenes en 
+    ImgBB mediante API Key. La Descripción es opcional.
+  Autor: Silvio Jorda 
+  Date: 2026-09-30
+========================================================================== */
+
+// Importaciones
 import { useState } from 'react';
 import { Container, Card, Form, Row, Col, Button, Spinner, Alert } from 'react-bootstrap';
 import { useProducts } from '../../context/Products/ProductsContext';
@@ -17,13 +28,16 @@ import { CustomFileInput } from '../../components/UI/CustomFileInput/CustomFileI
 import { BroomIcon } from '../../components/UI/Icons/BroomIcon/BroomIcon';
 import { CheckIcon } from '../../components/UI/Icons/ChekIcon/CheckIcon';
 import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
+
+// Estilos
 import styles from './ProductPage.module.css';
+import '../../styles/Buttons/ActionButtons.css';
 
 export function ProductPage() {
   // Sub-Contexto de Productos
   const { addProduct, getNextProductId } = useProducts();
 
-  // Sub-Contextos de Productos
+  // Sub-Contextos de Categorias
   const { categories, loadingCategories, errorCategories } = useCategories();
 
   // Proximo ID de producto
@@ -119,11 +133,15 @@ export function ProductPage() {
       }
 
       setSavedProductName(productData.name);
+
       setSavedProductId(currentId);
+
       setShowModal(true);
+
       handleReset();
     } catch (error) {
       console.error('Error al guardar el producto:', error);
+
       alert(`Ocurrió un error: ${error.message}`);
     } finally {
       setUploading(false);
@@ -140,9 +158,11 @@ export function ProductPage() {
       description: ''
     });
     setImageFile(null);
+
     setErrors({});
 
     const fileInput = document.getElementById('imagenArchivo');
+
     if (fileInput) fileInput.value = '';
   };
 
@@ -206,14 +226,22 @@ export function ProductPage() {
                   className={styles.input}
                 >
                   <option value="">Seleccioná una categoría...</option>
-                  {categories && categories.map((cat) => {
-                    const catValue = cat.name || cat.nombre || cat;
-                    return (
-                      <option key={cat.id || catValue} value={catValue}>
-                        {catValue}
-                      </option>
-                    );
-                  })}
+                  {categories &&
+                    categories.map((cat, index) => {
+                      // Extracción segura garantizando tipo string
+                      const catName =
+                        typeof cat === 'string'
+                          ? cat
+                          : cat.name || cat.nombre || cat.slug || `Categoría #${cat.id || index}`;
+
+                      const catKey = typeof cat === 'object' && cat.id ? cat.id : index;
+
+                      return (
+                        <option key={catKey} value={catName}>
+                          {catName}
+                        </option>
+                      );
+                    })}
                 </Form.Select>
               )}
             </Form.Group>
@@ -262,20 +290,6 @@ export function ProductPage() {
               onChange={handleFileChange}
             />
 
-            {/*
-            <Form.Group controlId="imagenArchivo">
-              <Form.Label className={styles.label}>
-                Imagen de Producto <span className="text-muted fw-normal">(Subida a ImgBB)</span>
-              </Form.Label>
-              <Form.Control
-                type="file"
-                accept="image/*"
-                onChange={handleFileChange}
-                className={styles.input}
-              />
-            </Form.Group>
-            */}
-
             {/* URL de la imagen */}
             <Form.Group controlId="image">
               <Form.Label className={styles.label}>
@@ -309,7 +323,7 @@ export function ProductPage() {
             {/* Botones de Acción */}
             <div className="d-flex gap-3 mt-3">
               <Button
-                type="button"
+                type="button" 
                 className={styles.cleanBtn}
                 onClick={handleReset}
                 disabled={uploading}
