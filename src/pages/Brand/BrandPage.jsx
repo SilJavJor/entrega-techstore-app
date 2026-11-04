@@ -1,8 +1,7 @@
 /* ==========================================================================
   Componente BrandsPage.jsx
-  Descripción: Página para el alta de marcas de productos con ID 
-    autogenerado, botón de limpiar y mensaje de confirmación, consumiendo
-    del sub-contexto independiente useBrands().
+  Descripción: Página para el alta de Marcas de productos con ID autogenerado,
+    consumiendo del subcontexto useBrands().
   Autor: Silvio Jorda 
   Fecha: 2026-11-03
 ========================================================================== */
@@ -18,7 +17,13 @@ import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
 
 // Estilos
 import styles from './BrandPage.module.css';
+import '../../styles/Forms/Globals.css';
+import '../../styles/Forms/Titles.css';
+import '../../styles/CheckBoxes/CheckBoxes.css';
+import '../../styles/Forms/Inputs.css';
+import '../../styles/Forms/Links.css';
 import '../../styles/Buttons/ActionButtons.css';
+import '../../styles/Buttons/SocialButtons.css';
 
 export function BrandPage() {
   // Sub-Contexto de Marcas
@@ -27,7 +32,7 @@ export function BrandPage() {
   // Próximo ID de Marca
   const nextId = getNextBrandId ? getNextBrandId() : '-';
 
-  const [brandData, setBrandData] = useState({
+  const [formData, setFormData] = useState({
     name: '',
     slug: '',
     description: '',
@@ -54,13 +59,13 @@ export function BrandPage() {
         .trim()
         .replace(/[^\w-]+/g, '');
 
-      setBrandData((prev) => ({
+      setFormData((prev) => ({
         ...prev,
         name: value,
         slug: generatedSlug
       }));
     } else {
-      setBrandData((prev) => ({
+      setFormData((prev) => ({
         ...prev,
         [name]: value
       }));
@@ -76,8 +81,16 @@ export function BrandPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Validación de seguridad en JS
+    if (!formData.name.trim() || !formData.slug.trim()) {
+      alert('Por favor, completá el nombre de la marca y su identificador (slug).');
+  
+      return;
+    }
+
     const currentId = nextId;
-    let imageUrl = brandData.image;
+
+    let imageUrl = formData.image;
 
     try {
       setUploading(true);
@@ -108,9 +121,9 @@ export function BrandPage() {
       }
 
       const newBrandData = {
-        name: brandData.name,
-        slug: brandData.slug,
-        description: brandData.description,
+        name: formData.name,
+        slug: formData.slug,
+        description: formData.description,
         image: imageUrl || 'https://via.placeholder.com/300',
         createdAt: new Date().toISOString()
       };
@@ -119,9 +132,12 @@ export function BrandPage() {
         addBrand(newBrandData);
       }
 
-      setSavedBrandName(brandData.name);
+      setSavedBrandName(formData.name);
+
       setSavedBrandId(currentId);
+
       setShowModal(true);
+
       handleReset();
     } catch (error) {
       console.error('Error al guardar la marca:', error);
@@ -132,7 +148,7 @@ export function BrandPage() {
   };
 
   const handleReset = () => {
-    setBrandData({
+    setFormData({
       name: '',
       slug: '',
       description: '',
@@ -148,50 +164,53 @@ export function BrandPage() {
     <Container className="py-5 d-flex justify-content-center align-items-center">
       <Card className={`border-0 p-4 shadow-lg ${styles.card}`}>
         <Card.Body>
-          <h1 className={styles.title}>Alta de Marcas</h1>
+          <h1 className="title">Alta de Marcas</h1>
 
-          <p className={styles.subtitle}>
+          <p className="subtitle">
             Ingresá los detalles para registrar e identificar a los fabricantes de productos
           </p>
 
           <Form onSubmit={handleSubmit} className="d-flex flex-column gap-3">
             {/* ID Auto-generado */}
             <Form.Group controlId="id">
-              <Form.Label className={styles.label}>ID de Marca (Auto-generado)</Form.Label>
+              <Form.Label className="label">ID de Marca (Auto-generado)</Form.Label>
+
               <Form.Control
                 type="text"
                 value={`# ${nextId}`}
                 readOnly
-                className={styles.readOnlyInput}
+                className="readOnlyInput"
               />
             </Form.Group>
 
-            {/* Nombre de la Marca */}
+            {/* Marca */}
             <Form.Group controlId="name">
-              <Form.Label className={styles.label}>Nombre de la marca *</Form.Label>
+              <Form.Label className="label">Nombre de la marca *</Form.Label>
+
               <Form.Control
                 type="text"
                 name="name"
                 autoFocus
-                value={brandData.name}
+                value={formData.name}
                 onChange={handleChange}
                 placeholder="Ej: Asus, Corsair, Logitech..."
                 required
-                className={styles.input}
+                className="input"
               />
             </Form.Group>
 
             {/* Slug URL */}
             <Form.Group controlId="slug">
-              <Form.Label className={styles.label}>Identificador URL (Slug) *</Form.Label>
+              <Form.Label className="label">Identificador URL (Slug) *</Form.Label>
+
               <Form.Control
                 type="text"
                 name="slug"
-                value={brandData.slug}
+                value={formData.slug}
                 onChange={handleChange}
                 placeholder="Ej: asus, corsair, logitech"
                 required
-                className={styles.input}
+                className="input"
               />
             </Form.Group>
 
@@ -204,49 +223,47 @@ export function BrandPage() {
 
             {/* O URL directa de Imagen */}
             <Form.Group controlId="image">
-              <Form.Label className={styles.label}>
+              <Form.Label className="label">
                 O ingresar URL directa del logo/imagen
               </Form.Label>
+
               <Form.Control
                 type="url"
                 name="image"
-                value={brandData.image}
+                value={formData.image}
                 onChange={handleChange}
                 placeholder="https://images.unsplash.com/..."
-                className={styles.input}
+                className="input"
                 disabled={!!imageFile}
               />
             </Form.Group>
 
             {/* Descripción */}
             <Form.Group controlId="description">
-              <Form.Label className={styles.label}>Descripción</Form.Label>
+              <Form.Label className="label">Descripción</Form.Label>
+
               <Form.Control
                 as="textarea"
                 rows={3}
                 name="description"
-                value={brandData.description}
+                value={formData.description}
                 onChange={handleChange}
                 placeholder="Resumen o detalles de la marca comercial o fabricante..."
-                className={styles.input}
+                className="input"
               />
             </Form.Group>
 
-            {/* Botones de Acción */}
+            {/* Limpiar */}
             <div className="d-flex gap-3 mt-3">
               <Button
-                type="button"
-                className="cleanBtn"
-                onClick={handleReset}
-                disabled={uploading}
+                type="button" className="cleanBtn" onClick={handleReset}
+                  disabled={uploading}
               >
                 <BroomIcon /> Limpiar
               </Button>
 
               <Button
-                type="submit"
-                className="submitBtn"
-                disabled={uploading}
+                type="submit" className="submitBtn" disabled={uploading}
               >
                 <CheckIcon /> {uploading ? 'Guardando...' : 'Guardar'}
               </Button>
@@ -259,8 +276,8 @@ export function BrandPage() {
       <MessageBtnAccept
         isOpen={showModal}
         onClose={() => setShowModal(false)}
-        title="¡ Marca Registrada !"
-        message={`La marca "${savedBrandName}" con ID #${savedBrandId} se cargó correctamente en el sistema.`}
+        title="¡ Marca agregada !"
+        message={`La marca "${savedBrandName}" con ID #${savedBrandId} se agregó exitosamente.`}
         confirmText="Aceptar"
         showCancel={false}
       />

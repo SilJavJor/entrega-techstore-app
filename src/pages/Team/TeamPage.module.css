@@ -1,11 +1,11 @@
 /* ==========================================================================
-  Estilos de TeamForm.module.css
-  Descripcion: Hoja de estilos para el formulario de registro de miembros 
+  Estilos de TeamPage.module.css
+  Descripcion: Hoja de estilos para el formulario de alta de los miembros 
     del equipo.
   Autor: Silvio Jorda
   Fecha: 2026-09-30
 ========================================================================== */
-
+/*
 .card {
   background-color: #1a1a1a !important;
   border: 1px solid #333333 !important;
@@ -37,37 +37,4 @@
   font-weight: 500;
   margin-bottom: 0.3rem;
 }
-
-.input {
-  background-color: #111111 !important;
-  border: 1px solid #444444 !important;
-  color: #ffffff !important;
-  padding: 0.7rem 0.9rem !important;
-  font-size: 0.95rem !important;
-}
-
-.input:focus {
-  border-color: #8de2d6 !important;
-  box-shadow: 0 0 0 0.25rem rgba(141, 226, 214, 0.25) !important;
-}
-
-.input::placeholder {
-  color: #555555 !important;
-  font-weight: 400;
-  opacity: 1;
-}
-
-.readOnlyInput {
-  background-color: #0d0d0d !important;
-  border-color: #2a2a2a !important;
-  color: #8de2d6 !important;
-  font-weight: 700 !important;
-  cursor: not-allowed;
-}
-
-.errorText {
-  color: #ff4d4f;
-  font-size: 0.8rem;
-  margin-top: 0.2rem;
-  display: block;
-}
+*/

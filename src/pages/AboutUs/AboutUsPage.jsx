@@ -9,6 +9,8 @@
 // Importaciones
 import { Container, Row, Col, Card, Spinner } from 'react-bootstrap';
 import { useTeam } from '../../context/Teams/TeamsContext';
+
+// Estilos
 import styles from './AboutUsPage.module.css';
 
 export function AboutUsPage() {

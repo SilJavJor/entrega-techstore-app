@@ -1,0 +1,17 @@
+/* ==========================================================================
+  Inputs.css
+  Estilos: Estilos globales para todos los Links de la aplicacion.
+  Autor: Silvio Jorda
+  Date: 2026-09-30
+========================================================================== */
+
+/* Lins */
+.loginLink {
+  color: #8de2d6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.loginLink:hover {
+  text-decoration: underline;
+}

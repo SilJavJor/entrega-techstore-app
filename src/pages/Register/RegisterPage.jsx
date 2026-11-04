@@ -21,7 +21,11 @@ import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
 
 // Estilos
 import styles from './RegisterPage.module.css';
+import '../../styles/Forms/Globals.css';
+import '../../styles/Forms/Titles.css';
 import '../../styles/CheckBoxes/CheckBoxes.css';
+import '../../styles/Forms/Inputs.css';
+import '../../styles/Forms/Links.css';
 import '../../styles/Buttons/ActionButtons.css';
 import '../../styles/Buttons/SocialButtons.css';
 
@@ -64,7 +68,8 @@ export function RegisterPage() {
     setModalConfig({
       show: true,
       title: '¡ Función No Implementada !',
-      message: `El registro mediante ${featureName} no se encuentra disponible actualmente en esta versión de desarrollo.`
+      message: `El registro mediante ${featureName} no se encuentra 
+        disponible actualmente en esta versión de desarrollo.`
     });
   };
 
@@ -92,14 +97,14 @@ export function RegisterPage() {
     <Container className="py-5 d-flex justify-content-center align-items-center">
       <Card className={`border-0 p-4 shadow-lg ${styles.card}`}>
         <Card.Body>
-          <h1 className={styles.title}>Crear Cuenta</h1>
+          <h1 className="title">Crear Cuenta</h1>
 
-          <p className={styles.subtitle}>Completá tus datos para registrarte en TechStore</p>
+          <p className="subtitle">Completá tus datos para registrarte en TechStore</p>
 
           <Form onSubmit={handleSubmit} className="d-flex flex-column gap-3">
-            {/* Nombre Completo */}
+            {/* Nombre */}
             <Form.Group controlId="name">
-              <Form.Label className={styles.label}>Nombre completo *</Form.Label>
+              <Form.Label className="label">Nombre completo *</Form.Label>
 
               <Form.Control
                 type="text"
@@ -109,13 +114,13 @@ export function RegisterPage() {
                 onChange={handleChange}
                 placeholder="Ej: Juan Pérez"
                 required
-                className={styles.input}
+                className="input"
               />
             </Form.Group>
 
             {/* E-mail */}
             <Form.Group controlId="email">
-              <Form.Label className={styles.label}>Correo electrónico *</Form.Label>
+              <Form.Label className="label">Correo electrónico *</Form.Label>
 
               <Form.Control
                 type="email"
@@ -124,7 +129,7 @@ export function RegisterPage() {
                 onChange={handleChange}
                 placeholder="Ej: juan.perez@email.com"
                 required
-                className={styles.input}
+                className="input"
               />
             </Form.Group>
 
@@ -132,7 +137,7 @@ export function RegisterPage() {
             <Row className="g-3">
               <Col md={6}>
                 <Form.Group controlId="password">
-                  <Form.Label className={styles.label}>Contraseña *</Form.Label>
+                  <Form.Label className="label">Contraseña *</Form.Label>
 
                   <Form.Control
                     type="password"
@@ -141,14 +146,14 @@ export function RegisterPage() {
                     onChange={handleChange}
                     placeholder="Mínimo 8 caracteres"
                     required
-                    className={styles.input}
+                    className="input"
                   />
                 </Form.Group>
               </Col>
 
               <Col md={6}>
                 <Form.Group controlId="confirmPassword">
-                  <Form.Label className={styles.label}>Confirmar contraseña *</Form.Label>
+                  <Form.Label className="label">Confirmar contraseña *</Form.Label>
 
                   <Form.Control
                     type="password"
@@ -157,7 +162,7 @@ export function RegisterPage() {
                     onChange={handleChange}
                     placeholder="Repetí tu contraseña"
                     required
-                    className={styles.input}
+                    className="input"
                   />
                 </Form.Group>
               </Col>
@@ -176,8 +181,16 @@ export function RegisterPage() {
                   <span className={styles.termsText}>
                     Acepto los{' '}
 
-                    <a href="#terms" className={styles.termsLink}>
-                      Términos y Condiciones
+                    <a
+                      href="#terms"
+                      className={styles.termsLink}
+                      onClick={(e) => {
+                      e.preventDefault();
+
+                      handleNotImplemented('Términos y Condiciones');
+                      }}
+                    >
+                    Términos y Condiciones
                     </a>
                   </span>
                 }

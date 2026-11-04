@@ -16,6 +16,10 @@ import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
 
 // Estilos
 import styles from './TeamPage.module.css';
+import '../../styles/Forms/Globals.css';
+import '../../styles/Forms/Titles.css';
+import '../../styles/CheckBoxes/CheckBoxes.css';
+import '../../styles/Forms/Inputs.css';
 import '../../styles/Buttons/ActionButtons.css';
 
 export function TeamPage() {
@@ -25,7 +29,8 @@ export function TeamPage() {
   // Proximo ID de Integrante
   const nextId = getNextTeamId ? getNextTeamId() : '-';
 
-  const [memberData, setMemberData] = useState({
+  //const [memberData, setMemberData] = useState({
+  const [formData, setFormData] = useState({
     name: '',
     role: '',
     email: '',
@@ -46,7 +51,7 @@ export function TeamPage() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setMemberData((prev) => ({
+    setFormData((prev) => ({
       ...prev,
       [name]: value
     }));
@@ -99,13 +104,13 @@ export function TeamPage() {
 
       if (addTeamMember) {
         const result = addTeamMember({
-          name: memberData.name,
-          role: memberData.role,
-          email: memberData.email,
-          linkedin: memberData.linkedin,
-          github: memberData.github,
+          name: formData.name,
+          role: formData.role,
+          email: formData.email,
+          linkedin: formData.linkedin,
+          github: formData.github,
           photo: imageUrl,
-          bio: memberData.bio
+          bio: formData.bio
         });
 
         if (result && !result.success && result.errors) {
@@ -115,7 +120,7 @@ export function TeamPage() {
         }
       }
 
-      setSavedMemberName(memberData.nombre);
+      setSavedMemberName(formData.name);
 
       setShowModal(true);
 
@@ -130,7 +135,7 @@ export function TeamPage() {
   };
 
   const handleReset = () => {
-    setMemberData({
+    setFormData({
       name: '',
       role: '',
       email: '',
@@ -150,74 +155,77 @@ export function TeamPage() {
     <Container className="py-5 d-flex justify-content-center align-items-center">
       <Card className={`border-0 p-4 shadow-lg ${styles.card}`}>
         <Card.Body>
-          <h1 className={styles.title}>Alta de Integrante</h1>
+          <h1 className="title">Alta de Integrante</h1>
 
-          <p className={styles.subtitle}>
+          <p className="subtitle">
             Ingresá los datos del nuevo integrante para mostrar su perfil en la sección Nosotros
           </p>
 
           <Form onSubmit={handleSubmit} className="d-flex flex-column gap-3">
             {/* ID Auto-generado */}
             <Form.Group controlId="id">
-              <Form.Label className={styles.label}>ID de Integrante (Auto-generado)</Form.Label>
+              <Form.Label className="label">ID de Integrante (Auto-generado)</Form.Label>
 
               <Form.Control
                 type="text"
                 value={`# ${nextId}`}
                 readOnly
-                className={styles.readOnlyInput}
+                className="readOnlyInput"
               />
             </Form.Group>
 
-            {/* Nombre Completo */}
+            {/* Nombre */}
             <Form.Group controlId="nombre">
-              <Form.Label className={styles.label}>Nombre Completo *</Form.Label>
+              <Form.Label className="label">Nombre Completo *</Form.Label>
 
               <Form.Control
                 type="text"
                 name="nombre"
                 autoFocus
-                value={memberData.nombre}
+                value={formData.name}
                 onChange={handleChange}
                 placeholder="Ej: Laura Giménez"
                 required
-                className={styles.input}
+                className="input"
                 isInvalid={!!errors.nombre}
               />
-              {errors.nombre && <span className={styles.errorText}>{errors.nombre}</span>}
+
+              {errors.nombre && <span className="errorText">{errors.nombre}</span>}
             </Form.Group>
 
             {/* Puesto / Rol */}
             <Form.Group controlId="puesto">
-              <Form.Label className={styles.label}>Puesto / Rol *</Form.Label>
+              <Form.Label className="label">Puesto / Rol *</Form.Label>
 
               <Form.Control
                 type="text"
                 name="puesto"
-                value={memberData.puesto}
+                value={formData.role}
                 onChange={handleChange}
                 placeholder="Ej: Desarrolladora Frontend React"
                 required
-                className={styles.input}
+                className="input"
                 isInvalid={!!errors.puesto}
               />
+
               {errors.puesto && <span className={styles.errorText}>{errors.puesto}</span>}
             </Form.Group>
 
             {/* Email */}
             <Form.Group controlId="email">
-              <Form.Label className={styles.label}>Correo Electrónico *</Form.Label>
+              <Form.Label className="label">Correo Electrónico *</Form.Label>
 
               <Form.Control
                 type="email"
                 name="email"
-                value={memberData.email}
+                value={formData.email}
                 onChange={handleChange}
                 placeholder="Ej: laura.gimenez@techstore.com"
                 required
-                className={styles.input}
+                className="input"
                 isInvalid={!!errors.email}
               />
+
               {errors.email && <span className={styles.errorText}>{errors.email}</span>}
             </Form.Group>
 
@@ -225,17 +233,18 @@ export function TeamPage() {
               {/* Fila LinkedIn (Opcionales) */}
               <Col md={6}>
                 <Form.Group controlId="linkedin">
-                  <Form.Label className={styles.label}>
-                    Perfil de LinkedIn <span className="text-muted fw-normal">(Opcional)</span>
+                  <Form.Label className="label">
+                    Perfil de LinkedIn 
+                    <span className="text-muted fw-normal">(Opcional)</span>
                   </Form.Label>
 
                   <Form.Control
                     type="text"
                     name="linkedin"
-                    value={memberData.linkedin}
+                    value={formData.linkedin}
                     onChange={handleChange}
                     placeholder="Ej: https://linkedin.com/in/laura-gimenez"
-                    className={styles.input}
+                    className="input"
                   />
                 </Form.Group>
               </Col>
@@ -243,17 +252,18 @@ export function TeamPage() {
               {/* GitHub (Opcionales) */}
               <Col md={6}>
                 <Form.Group controlId="github">
-                  <Form.Label className={styles.label}>
-                    Perfil de GitHub <span className="text-muted fw-normal">(Opcional)</span>
+                  <Form.Label className="label">
+                    Perfil de GitHub 
+                    <span className="text-muted fw-normal">(Opcional)</span>
                   </Form.Label>
 
                   <Form.Control
                     type="text"
                     name="github"
-                    value={memberData.github}
+                    value={formData.github}
                     onChange={handleChange}
                     placeholder="Ej: https://github.com/lauragimenez"
-                    className={styles.input}
+                    className="input"
                   />
                 </Form.Group>
               </Col>
@@ -261,7 +271,7 @@ export function TeamPage() {
 
             {/* Foto de Perfil (Subida a ImgBB) */}
             <Form.Group controlId="imagen">
-              <Form.Label className={styles.label}>Foto de Perfil *</Form.Label>
+              <Form.Label className="label">Foto de Perfil *</Form.Label>
 
               <Form.Control
                 type="file"
@@ -269,13 +279,13 @@ export function TeamPage() {
                 accept="image/*"
                 onChange={handleFileChange}
                 required
-                className={styles.input}
+                className="input"
               />
             </Form.Group>
 
             {/* Biografía / Presentación */}
             <Form.Group controlId="bio">
-              <Form.Label className={styles.label}>
+              <Form.Label className="label">
                 Biografía / Presentación <span className="text-muted fw-normal">(Opcional)</span>
               </Form.Label>
 
@@ -283,10 +293,10 @@ export function TeamPage() {
                 as="textarea"
                 rows={4}
                 name="bio"
-                value={memberData.bio}
+                value={formData.bio}
                 onChange={handleChange}
                 placeholder="Reseña sobre su experiencia y rol dentro del equipo..."
-                className={styles.input}
+                className="input"
               />
             </Form.Group>
 
@@ -316,7 +326,7 @@ export function TeamPage() {
       <MessageBtnAccept
         isOpen={showModal}
         onClose={() => setShowModal(false)}
-        title="¡ Integrante Registrado !"
+        title="¡ Integrante agregado !"
         message={`"${savedMemberName}" ha sido agregado al equipo exitosamente con su foto en ImgBB.`}
         confirmText="Aceptar"
         showCancel={false}

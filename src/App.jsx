@@ -15,7 +15,7 @@ import { ProductListContainer } from './components/ProductListContainer/ProductL
 // Importacion de Paginas
 import { HomePage } from './pages/Home/HomePage';
 import { ProductDetail } from './pages/ProductDetail/ProductDetail';
-import { CartForm } from './pages/Cart/CartPage';
+import { CartPage } from './pages/Cart/CartPage';
 import { ProductPage } from './pages/Product/ProductPage';
 import { BrandPage } from './pages/Brand/BrandPage';
 import { CategoryPage } from './pages/Category/CategoryPage';
@@ -50,7 +50,7 @@ function App() {
         <Route path="/add-product" element={<ProductPage />} />
 
         {/* / Carrito de compras */}
-        <Route path="/cart" element={<CartForm />} />
+        <Route path="/cart" element={<CartPage />} />
 
         {/* Contactanos */}
         <Route path="/contactus" element={<ContactUsPage />} />
@@ -67,7 +67,7 @@ function App() {
         {/* ABMC de Equipo CRUD */}
         <Route path="/add-team" element={<TeamPage />} />
 
-        {/*  */}
+        {/* Mantenimiento */}
         <Route path="/maintenance" element={<MaintenancePage />} />
 
         {/* Paginas no encontradas (404) */}

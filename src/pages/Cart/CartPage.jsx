@@ -14,7 +14,7 @@ import { useCart } from '../../context/Cart/CartContext';
 import { CartIcon } from '../../components/UI/Icons/CartIcon/CartIcon';
 import styles from './CartPage.module.css';
 
-export function CartForm() {
+export function CartPage() {
   const { cart, removeFromCart, clearCart, totalPrice } = useCart();
 
   // Estado del Carrito Vacío

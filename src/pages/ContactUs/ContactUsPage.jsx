@@ -11,7 +11,11 @@ import { Container, Card, Form, Button } from 'react-bootstrap';
 import { BroomIcon } from '../../components/UI/Icons/BroomIcon/BroomIcon';
 import { CheckIcon } from '../../components/UI/Icons/CheckIcon/CheckIcon';
 import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
+
+// Estilos
 import styles from './ContactUsPage.module.css';
+import '../../styles/Forms/Inputs.css';
+import '../../styles/Buttons/ActionButtons.css';
 
 export function ContactUsPage() {
   const [formData, setFormData] = useState({
@@ -78,7 +82,7 @@ export function ContactUsPage() {
                 onChange={handleChange}
                 placeholder="Ej: Juan Pérez"
                 required
-                className={styles.input}
+                className="input"
               />
             </Form.Group>
 
@@ -93,7 +97,7 @@ export function ContactUsPage() {
                 onChange={handleChange}
                 placeholder="Ej: juan.perez@email.com"
                 required
-                className={styles.input}
+                className="input"
               />
             </Form.Group>
 
@@ -109,26 +113,24 @@ export function ContactUsPage() {
                 onChange={handleChange}
                 placeholder="Escribí tu consulta o mensaje acá..."
                 required
-                className={styles.input}
+                className="input"
               />
             </Form.Group>
 
             <div className="d-flex gap-3 mt-3">
             { /* Limpiar */}
               <Button 
-                type="button" 
-                className={styles.cleanBtn} 
-                onClick={handleReset}
+                type="button" className="cleanBtn" onClick={handleReset}
+
               >
                 <BroomIcon /> Limpiar
               </Button>
 
               {/* Enviar  */}
               <Button 
-                type="submit" 
-                className={styles.btnSubmit}
+                type="submit" className="submitBtn" onClick={handleSubmit}
               >
-                <CheckIcon /> Enviar
+                <CheckIcon /> 'Enviar'
               </Button>
             </div>
           </Form>

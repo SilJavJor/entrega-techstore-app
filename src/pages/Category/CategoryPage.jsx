@@ -18,6 +18,7 @@ import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
 
 // Estilos
 import styles from './CategoryPage.module.css';
+import '../../styles/Forms/Inputs.css';
 import '../../styles/Buttons/ActionButtons.css';
 
 export function CategoryPage() {
@@ -120,8 +121,11 @@ export function CategoryPage() {
       }
 
       setSavedCategoryName(categoryData.name);
+
       setSavedCategoryId(currentId);
+
       setShowModal(true);
+
       handleReset();
     } catch (error) {
       console.error('Error al guardar la categoría:', error);
@@ -162,7 +166,7 @@ export function CategoryPage() {
                 type="text"
                 value={`# ${nextId}`}
                 readOnly
-                className={styles.readOnlyInput}
+                className="readOnlyInput"
               />
             </Form.Group>
 
@@ -177,7 +181,7 @@ export function CategoryPage() {
                 onChange={handleChange}
                 placeholder="Ej: Placas de Video"
                 required
-                className={styles.input}
+                className="input"
               />
             </Form.Group>
 
@@ -191,7 +195,7 @@ export function CategoryPage() {
                 onChange={handleChange}
                 placeholder="Ej: placas-de-video"
                 required
-                className={styles.input}
+                className="input"
               />
             </Form.Group>
 
@@ -213,7 +217,7 @@ export function CategoryPage() {
                 value={categoryData.image}
                 onChange={handleChange}
                 placeholder="https://images.unsplash.com/..."
-                className={styles.input}
+                className="input"
                 disabled={!!imageFile}
               />
             </Form.Group>
@@ -228,26 +232,22 @@ export function CategoryPage() {
                 value={categoryData.description}
                 onChange={handleChange}
                 placeholder="Resumen o detalles de los artículos pertenecientes a esta categoría..."
-                className={styles.input}
+                className="input"
               />
             </Form.Group>
 
-            {/* Botones de Acción */}
+            {/* Limpiar */}
             <div className="d-flex gap-3 mt-3">
               <Button
-                type="button"
-                className="cleanBtn"
-                onClick={handleReset}
-                disabled={uploading}
+                type="button" className="cleanBtn" onClick={handleReset}
+                  disabled={uploading}
               >
                 <BroomIcon /> Limpiar
               </Button>
 
               <Button
-                type="submit"
-                className="submitBtn"
-                onClick={handleSubmit}
-                disabled={uploading}
+                type="submit" className="submitBtn" onClick={handleSubmit}
+                  disabled={uploading}
               >
                 <CheckIcon /> {uploading ? 'Guardando...' : 'Guardar'}
               </Button>
@@ -260,8 +260,8 @@ export function CategoryPage() {
       <MessageBtnAccept
         isOpen={showModal}
         onClose={() => setShowModal(false)}
-        title="¡ Categoría Registrada !"
-        message={`La categoría "${savedCategoryName}" con ID #${savedCategoryId} se cargó correctamente en el sistema.`}
+        title="¡ Categoría agregada !"
+        message={`La categoría "${savedCategoryName}" con ID #${savedCategoryId} se agregó exitosamente.`}
         confirmText="Aceptar"
         showCancel={false}
       />

@@ -1,0 +1,25 @@
+/* ==========================================================================
+  FormsGlobal.css
+  Estilos globales para Tarjetas, Títulos, Subtítulos e Inputs en TechStore
+========================================================================== */
+
+/* Contenedor principal */
+.card {
+  background-color: #1a1a1a;
+  border: 1px solid #2a2a2a !important;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 680px;
+  padding: 3rem 2.5rem !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+}
+
+/* Etiquetas */
+.label {
+  color: #cccccc;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.45rem;
+  display: block;
+}

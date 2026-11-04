@@ -1,64 +1,11 @@
 /* ==========================================================================
   Estilos de RegisterForm.module.css
-  Descripción: Estilos para la pagina de registro..
+  Descripción: Estilos para la pagina de Registro de la aplicación.
   Autor: Silvio Jorda
   Date: 2026-09-30
 ========================================================================== */
 
-.card {
-  background-color: #1a1a1a;
-  border: 1px solid #2a2a2a !important;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 680px;
-  padding: 3rem 2.5rem !important;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  color: #ffffff;
-}
-
-.title {
-  color: #8de2d6;
-  font-size: 2rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-.subtitle {
-  font-size: 0.95rem;
-  text-align: center;
-  color: #aaaaaa;
-  margin-bottom: 2rem;
-}
-
-.label {
-  color: #cccccc;
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-bottom: 0.45rem;
-  display: block;
-}
-
-.input {
-  background-color: #111111 !important;
-  border: 1px solid #333333 !important;
-  color: #ffffff !important;
-  border-radius: 6px;
-  padding: 0.85rem 1.1rem !important;
-  font-size: 0.95rem;
-}
-
-.input:focus {
-  border-color: #8de2d6 !important;
-  box-shadow: 0 0 0 0.25rem rgba(141, 226, 214, 0.25) !important;
-}
-
-.input::placeholder {
-  color: #555555 !important;
-  font-weight: 400;
-  opacity: 1;
-}
-
+/*  */
 .terms {
   cursor: pointer;
   margin-top: 0.3rem;
@@ -104,14 +51,4 @@
   color: #aaaaaa;
   margin-top: 1.8rem;
   margin-bottom: 0;
-}
-
-.loginLink {
-  color: #8de2d6;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.loginLink:hover {
-  text-decoration: underline;
 }

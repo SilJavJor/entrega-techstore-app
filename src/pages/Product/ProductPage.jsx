@@ -1,20 +1,9 @@
 /* ==========================================================================
   Componente ProductPage.jsx
-  Descripción: Pagina para la carga de productos. Obtiene dinámicamente
-    las categorías registradas consumiendo useCategories() y guarda el 
-    producto utilizando useProducts(). Guarda directamente las imágenes en 
-    ImgBB mediante API Key. La Descripción es opcional.
-  Autor: Silvio Jorda 
-  Date: 2026-09-30
-========================================================================== */
-
-// Importaciones
-/* ==========================================================================
-  Componente ProductPage.jsx
-  Descripción: Pagina para la carga de productos. Obtiene dinámicamente
-    las categorías registradas consumiendo useCategories() y guarda el 
-    producto utilizando useProducts(). Guarda directamente las imágenes en 
-    ImgBB mediante API Key. La Descripción es opcional.
+  Descripción: Pagina para el alta de productos. Obtiene dinámicamente las 
+    categorías registradas consumiendo useCategories() y guarda el producto 
+    utilizando useProducts(). Guarda directamente las imágenes en ImgBB 
+    mediante API Key. La Descripción es opcional.
   Autor: Silvio Jorda 
   Date: 2026-09-30
 ========================================================================== */
@@ -31,6 +20,7 @@ import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
 
 // Estilos
 import styles from './ProductPage.module.css';
+import '../../styles/Forms/Inputs.css';
 import '../../styles/Buttons/ActionButtons.css';
 
 export function ProductPage() {
@@ -184,7 +174,7 @@ export function ProductPage() {
                 type="text"
                 value={`# ${nextId}`}
                 readOnly
-                className={styles.readOnlyInput}
+                className="input"
               />
             </Form.Group>
 
@@ -200,7 +190,7 @@ export function ProductPage() {
                 onChange={handleChange}
                 placeholder="Ej: Monitor Gamer LG 27 UltraGear"
                 required
-                className={styles.input}
+                className="input"
               />
             </Form.Group>
 
@@ -223,7 +213,7 @@ export function ProductPage() {
                   value={productData.category}
                   onChange={handleChange}
                   required
-                  className={styles.input}
+                  className="input"
                 >
                   <option value="">Seleccioná una categoría...</option>
                   {categories &&
@@ -260,7 +250,7 @@ export function ProductPage() {
                     onChange={handleChange}
                     placeholder="Ej: 350000"
                     required
-                    className={styles.input}
+                    className="input"
                   />
                 </Form.Group>
               </Col>
@@ -277,7 +267,7 @@ export function ProductPage() {
                     onChange={handleChange}
                     placeholder="Ej: 15"
                     required
-                    className={styles.input}
+                    className="input"
                   />
                 </Form.Group>
               </Col>
@@ -295,13 +285,14 @@ export function ProductPage() {
               <Form.Label className={styles.label}>
                 O ingresar URL directa de la imagen
               </Form.Label>
+
               <Form.Control
                 type="url"
                 name="image"
                 value={productData.image}
                 onChange={handleChange}
                 placeholder="https://..."
-                className={styles.input}
+                className="input"
                 disabled={!!imageFile}
               />
             </Form.Group>
@@ -316,27 +307,24 @@ export function ProductPage() {
                 value={productData.description}
                 onChange={handleChange}
                 placeholder="Especificaciones técnicas y detalles del artículo..."
-                className={styles.input}
+                className="input"
               />
             </Form.Group>
 
             {/* Botones de Acción */}
             <div className="d-flex gap-3 mt-3">
               <Button
-                type="button" 
-                className={styles.cleanBtn}
-                onClick={handleReset}
-                disabled={uploading}
+                type="button" className="cleanBtn" onClick={handleReset}
+                  disabled={uploading}
               >
                 <BroomIcon /> Limpiar
               </Button>
 
               <Button
-                type="submit"
-                className={styles.submitBtn}
-                disabled={uploading}
+                type="submit" className="submitBtn"  onClick={handleSubmit} 
+                  disabled={uploading}
               >
-                <CheckIcon /> {uploading ? 'Guardando...' : 'Guardar Producto'}
+                <CheckIcon /> {uploading ? 'Guardando...' : 'Guardar'}
               </Button>
             </div>
           </Form>
@@ -347,8 +335,8 @@ export function ProductPage() {
       <MessageBtnAccept
         isOpen={showModal}
         onClose={() => setShowModal(false)}
-        title="¡ Producto Registrado !"
-        message={`El producto "${savedProductName}" con ID #${savedProductId} se cargó exitosamente en la categoría seleccionada.`}
+        title="¡ Producto agregado !"
+        message={`El producto "${savedProductName}" con ID #${savedProductId} se agregó exitosamente.`}
         confirmText="Aceptar"
         showCancel={false}
       />

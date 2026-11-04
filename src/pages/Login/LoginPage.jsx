@@ -19,7 +19,11 @@ import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
 
 // Estilos
 import styles from './LoginPage.module.css';
+import '../../styles/Forms/Globals.css';
+import '../../styles/Forms/Titles.css';
 import '../../styles/CheckBoxes/CheckBoxes.css';
+import '../../styles/Forms/Inputs.css';
+import '../../styles/Forms/Links.css';
 import '../../styles/Buttons/ActionButtons.css';
 import '../../styles/Buttons/SocialButtons.css';
 
@@ -88,9 +92,9 @@ export function LoginPage() {
     <Container className="py-5 d-flex justify-content-center align-items-center">
       <Card className={`border-0 p-4 shadow-lg ${styles.card}`}>
         <Card.Body>
-          <h1 className={styles.title}>Iniciar Sesión</h1>
+          <h1 className="title">Iniciar Sesión</h1>
 
-          <p className={styles.subtitle}>Ingresá a tu cuenta para gestionar tus compras</p>
+          <p className="subtitle">Ingresá a tu cuenta para gestionar tus compras</p>
 
           {/* Error de  credenciales */}
           {error && (
@@ -102,7 +106,7 @@ export function LoginPage() {
           <Form onSubmit={handleSubmit} className="d-flex flex-column gap-3">
             {/* Usuario o Email */}
             <Form.Group controlId="identifier">
-              <Form.Label className={styles.label}>Usuario o Correo electrónico *</Form.Label>
+              <Form.Label className="label">Usuario o Correo electrónico *</Form.Label>
 
               <Form.Control
                 type="text"
@@ -112,13 +116,13 @@ export function LoginPage() {
                 onChange={handleChange}
                 placeholder="Ej: tuemail@ejemplo.com o Admin"
                 required
-                className={styles.input}
+                className="input"
               />
             </Form.Group>
 
             {/* Contraseña */}
             <Form.Group controlId="password">
-              <Form.Label className={styles.label}>Contraseña *</Form.Label>
+              <Form.Label className="label">Contraseña *</Form.Label>
 
               <Form.Control
                 type="password"
@@ -127,7 +131,7 @@ export function LoginPage() {
                 onChange={handleChange}
                 placeholder="••••••••••••••••"
                 required
-                className={styles.input}
+                className="input"
               />
             </Form.Group>
 
@@ -154,7 +158,9 @@ export function LoginPage() {
 
             <div className="d-flex gap-3 mt-3">
               {/* Limpiar */}
-              <Button type="button" className="cleanBtn" onClick={handleReset}>
+              <Button 
+                type="button" className="cleanBtn" onClick={handleReset}
+              >
                 <BroomIcon /> Limpiar
               </Button>
 
