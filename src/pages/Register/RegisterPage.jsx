@@ -10,88 +10,43 @@
 ========================================================================== */
 
 // Importaciones
-import { useState } from 'react';
+/* ==========================================================================
+  Componente RegisterPage.jsx
+  Descripción: Formulario de registro desacoplado visualmente mediante el hook
+    useRegisterForm y estandarizado con clases globales de botones y validación HTML5.
+  Autor: Silvio Jorda
+  Fecha: 2026-11-04
+========================================================================== */
+
 import { Link } from 'react-router-dom';
 import { Container, Card, Form, Button, Row, Col } from 'react-bootstrap';
+import { useRegisterPage } from './useRegisterPage';
 import { BroomIcon } from '../../components/UI/Icons/BroomIcon/BroomIcon';
 import { CheckIcon } from '../../components/UI/Icons/CheckIcon/CheckIcon';
 import { GoogleIcon } from '../../components/UI/Icons/GoogleIcon/GoogleIcon';
 import { GitHubIcon } from '../../components/UI/Icons/GitHubIcon/GitHubIcon';
 import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
 
-// Estilos
 import styles from './RegisterPage.module.css';
 import '../../styles/Forms/Globals.css';
 import '../../styles/Forms/Titles.css';
-import '../../styles/CheckBoxes/CheckBoxes.css';
+import '../../styles/Forms/CheckBoxes.css';
 import '../../styles/Forms/Inputs.css';
 import '../../styles/Forms/Links.css';
 import '../../styles/Buttons/ActionButtons.css';
 import '../../styles/Buttons/SocialButtons.css';
 
 export function RegisterPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    acceptTerms: false
-  });
-
-  // Ventana modal de aviso
-  const [modalConfig, setModalConfig] = useState({
-    show: false,
-    title: '',
-    message: ''
-  });
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }));
-  };
-
-  const handleReset = () => {
-    setFormData({
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-      acceptTerms: false
-    });
-  };
-
-  const handleNotImplemented = (featureName) => {
-    setModalConfig({
-      show: true,
-      title: '¡ Función No Implementada !',
-      message: `El registro mediante ${featureName} no se encuentra 
-        disponible actualmente en esta versión de desarrollo.`
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (formData.password !== formData.confirmPassword) {
-      setModalConfig({
-        show: true,
-        title: '¡ Error de Contraseña !',
-        message: 'Las contraseñas ingresadas no coinciden. Por favor, verificá los datos.'
-      });
-      return;
-    }
-
-    // Opcion no implementada
-    handleNotImplemented('este Formulario');
-  };
-
-  const handleCloseModal = () => {
-    setModalConfig({ show: false, title: '', message: '' });
-  };
+  const {
+    formData,
+    modalConfig,
+    handleChange,
+    handleReset,
+    handleSubmit,
+    handleNotImplemented,
+    handleCloseModal,
+    handleCustomInvalid
+  } = useRegisterPage();
 
   return (
     <Container className="py-5 d-flex justify-content-center align-items-center">
@@ -102,7 +57,7 @@ export function RegisterPage() {
           <p className="subtitle">Completá tus datos para registrarte en TechStore</p>
 
           <Form onSubmit={handleSubmit} className="d-flex flex-column gap-3">
-            {/* Nombre */}
+            {/* Nombre Completo */}
             <Form.Group controlId="name">
               <Form.Label className="label">Nombre completo *</Form.Label>
 
@@ -115,10 +70,12 @@ export function RegisterPage() {
                 placeholder="Ej: Juan Pérez"
                 required
                 className="input"
+                onInvalid={(e) => handleCustomInvalid(e, 'Ingresá tu nombre completo.')}
+                onInput={(e) => e.target.setCustomValidity('')}
               />
             </Form.Group>
 
-            {/* E-mail */}
+            {/* Correo Electrónico */}
             <Form.Group controlId="email">
               <Form.Label className="label">Correo electrónico *</Form.Label>
 
@@ -130,6 +87,14 @@ export function RegisterPage() {
                 placeholder="Ej: juan.perez@email.com"
                 required
                 className="input"
+                onInvalid={(e) =>
+                  handleCustomInvalid(
+                    e,
+                    'Ingresá un correo electrónico.',
+                    'Ingresá un correo electrónico válido.'
+                  )
+                }
+                onInput={(e) => e.target.setCustomValidity('')}
               />
             </Form.Group>
 
@@ -147,6 +112,8 @@ export function RegisterPage() {
                     placeholder="Mínimo 8 caracteres"
                     required
                     className="input"
+                    onInvalid={(e) => handleCustomInvalid(e, 'Ingresá una contraseña.')}
+                    onInput={(e) => e.target.setCustomValidity('')}
                   />
                 </Form.Group>
               </Col>
@@ -163,6 +130,8 @@ export function RegisterPage() {
                     placeholder="Repetí tu contraseña"
                     required
                     className="input"
+                    onInvalid={(e) => handleCustomInvalid(e, 'Confirmá tu contraseña.')}
+                    onInput={(e) => e.target.setCustomValidity('')}
                   />
                 </Form.Group>
               </Col>
@@ -176,30 +145,33 @@ export function RegisterPage() {
                 checked={formData.acceptTerms}
                 onChange={handleChange}
                 required
-                className={styles.terms}
+                className="checkInput"
+                onInvalid={(e) =>
+                  handleCustomInvalid(e, 'Debés aceptar los términos y condiciones para continuar.')
+                }
+                onInput={(e) => e.target.setCustomValidity('')}
                 label={
                   <span className={styles.termsText}>
                     Acepto los{' '}
-
                     <a
                       href="#terms"
-                      className={styles.termsLink}
+                      className="linkTo"
                       onClick={(e) => {
-                      e.preventDefault();
-
-                      handleNotImplemented('Términos y Condiciones');
+                        e.preventDefault();
+                        handleNotImplemented('Términos y Condiciones');
                       }}
                     >
-                    Términos y Condiciones
+                      Términos y Condiciones
                     </a>
                   </span>
                 }
               />
             </Form.Group>
 
+            {/* Botones de Acción */}
             <div className="d-flex gap-3 mt-3">
               {/* Limpiar */}
-              <Button type="button" className="cleanBtn" onClick={handleReset} >
+              <Button type="button" className="cleanBtn" onClick={handleReset}>
                 <BroomIcon /> Limpiar
               </Button>
 
@@ -215,20 +187,19 @@ export function RegisterPage() {
             <span> o registrarse con </span>
           </div>
 
+          {/* Botones Sociales */}
           <div className="d-flex gap-3">
             {/* Google */}
-            <Button 
-              type="button" 
-              className="socialBtn" 
+            <Button
+              type="button" className="socialBtn"
               onClick={() => handleNotImplemented('Google')}
             >
               <GoogleIcon /> Google
             </Button>
 
-            {/* GitHub */}
-            <Button 
-              type="button" 
-              className="socialBtn"
+          {/* GitHub */}
+            <Button
+              type="button" className="socialBtn"
               onClick={() => handleNotImplemented('GitHub')}
             >
               <GitHubIcon /> GitHub
@@ -238,8 +209,7 @@ export function RegisterPage() {
           {/* Login */}
           <p className={styles.footerText}>
             ¿ Si ya tenés una cuenta ?{' '}
-
-            <Link to="/login" className={styles.loginLink}>
+            <Link to="/login" className="linkTo">
               Iniciá sesión acá
             </Link>
           </p>

@@ -1,11 +1,10 @@
 /* ==========================================================================
-  Estilos de RegisterForm.module.css
-  Descripción: Estilos para la pagina de Registro de la aplicación.
+  Estilos de RegisterPage.module.css
+  Descripción: Estilos específicos para la vista de Registro.
   Autor: Silvio Jorda
-  Date: 2026-09-30
+  Fecha: 2026-11-04
 ========================================================================== */
 
-/*  */
 .terms {
   cursor: pointer;
   margin-top: 0.3rem;
@@ -16,6 +15,7 @@
   color: #cccccc;
 }
 
+/*
 .termsLink {
   color: #8de2d6;
   text-decoration: none;
@@ -24,6 +24,7 @@
 .termsLink:hover {
   text-decoration: underline;
 }
+*/
 
 .divider {
   display: flex;

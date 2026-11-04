@@ -1,45 +1,10 @@
 /* ==========================================================================
-   Estilos de LoginForm.module.css
-   Descripción: Hojas de estilo para el formulario de Login.
-   Autor: Silvio Jorda
-   Fecha: 2026-09-30
+  Estilos de LoginPage.module.css
+  Descripción: Estilos complementarios para la vista de Login.
+  Autor: Silvio Jorda
+  Date: 2026-09-30
 ========================================================================== */
 
-/*
-.card {
-  background-color: #1a1a1a;
-  border: 1px solid #2a2a2a !important;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 680px;
-  padding: 3rem 2.5rem !important;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  color: #ffffff;
-}
-
-.title {
-  color: #8de2d6;
-  font-size: 2rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-.subtitle {
-  font-size: 0.95rem;
-  text-align: center;
-  color: #aaaaaa;
-  margin-bottom: 2rem;
-}
-
-.label {
-  color: #cccccc;
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-bottom: 0.45rem;
-  display: block;
-}
-*/
 .remember {
   cursor: pointer;
 }
@@ -64,25 +29,6 @@
   text-decoration: underline;
   opacity: 0.85;
 }
-
-/*
-.cleanBtn {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background-color: transparent !important;
-  color: #cccccc !important;
-  border: 1px solid #555555 !important;
-  padding: 0.88rem !important;
-  border-radius: 6px;
-  font-weight: 500;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-*/
 
 .divider {
   display: flex;
@@ -111,14 +57,56 @@
   margin-top: 1.8rem;
   margin-bottom: 0;
 }
-/*
-.registerLink {
-  color: #8de2d6;
-  text-decoration: none;
-  font-weight: 500;
+
+.remember {
+  cursor: pointer;
 }
 
-.registerLink:hover {
-  text-decoration: underline;
+.rememberText {
+  font-size: 0.88rem;
+  color: #cccccc;
 }
-*/
+
+.forgotBtn {
+  background: none;
+  border: none;
+  color: #8de2d6;
+  font-size: 0.88rem;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.forgotBtn:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 1.8rem 0;
+  color: #666666;
+  font-size: 0.85rem;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #333333;
+}
+
+.divider span {
+  padding: 0 0.75rem;
+}
+
+.footerText {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #aaaaaa;
+  margin-top: 1.8rem;
+  margin-bottom: 0;
+}

@@ -6,12 +6,12 @@
 ========================================================================== */
 
 /* Lins */
-.loginLink {
+.linkTo {
   color: #8de2d6;
   text-decoration: none;
   font-weight: 500;
 }
 
-.loginLink:hover {
+.linkTo:hover {
   text-decoration: underline;
 }

@@ -28,14 +28,14 @@
 
 .statLabel {
   font-size: 0.85rem;
-  color: #dddddd; /* Blanco suave con excelente legibilidad */
+  color: #dddddd;
   font-weight: 600;
   margin-bottom: 0.25rem;
 }
 
 .subActionButton {
   background-color: transparent !important;
-  color: #dddddd !important; /* Mismo color que el texto de los ítems */
+  color: #dddddd !important;
   border: 1px solid #444444 !important;
   padding: 0.35rem 0.75rem !important;
   font-size: 0.82rem !important;
@@ -71,28 +71,6 @@
   background-color: #bb2d3b !important;
   transform: translateY(-1px);
 }
-/*
-.submitBtn {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background-color: #8de2d6 !important;
-  color: #111111 !important;
-  border: none !important;
-  padding: 0.75rem;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.submitBtn:hover {
-  background-color: #72c8bc !important;
-}
-*/
 
 .submitBtn {
   width: 100%;
@@ -119,7 +97,6 @@
 /* ==========================================================================
    Texto Instructivo / Subtítulos de Secciones
    ========================================================================== */
-
 .instructionText {
   font-size: 0.88rem;
   color: #dddddd !important; /* Mismo color claro que el texto de los ítems */
