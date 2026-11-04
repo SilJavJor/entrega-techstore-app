@@ -4,7 +4,7 @@
   Autor: Silvio Jorda
   Fecha: 2026-09-30
 ========================================================================== */
-
+/*
 .card {
   background-color: #1a1a1a;
   border: 1px solid #333333 !important;
@@ -13,6 +13,7 @@
   max-width: 580px;
   color: #ffffff;
 }
+/*
 
 .title {
   font-size: 1.8rem;
@@ -36,7 +37,8 @@
   margin-bottom: 0.4rem;
   display: block;
 }
-
+*/
+/*
 .input[type="file"]::file-selector-button {
   background-color: #8de2d6 !important;
   color: #111111 !important;
@@ -72,3 +74,4 @@
 .input[type="file"]::-webkit-file-upload-button:hover {
   background-color: #72c8bc !important;
 }
+*/

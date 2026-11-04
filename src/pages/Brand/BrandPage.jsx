@@ -1,15 +1,14 @@
 /* ==========================================================================
   Componente BrandsPage.jsx
-  Descripción: Página para el alta de Marcas de productos con ID autogenerado,
-    consumiendo del subcontexto useBrands().
+  Descripción: Página para el alta de Marcas desacoplada de la lógica mediante
+   useBrandPage.
   Autor: Silvio Jorda 
   Fecha: 2026-11-03
 ========================================================================== */
 
 // Importaciones
-import { useState } from 'react';
 import { Container, Card, Form, Button } from 'react-bootstrap';
-import { useBrands } from '../../context/Brands/BrandsContext';
+import { useBrandPage } from './useBrandPage';
 import { CustomFileInput } from '../../components/UI/CustomFileInput/CustomFileInput';
 import { BroomIcon } from '../../components/UI/Icons/BroomIcon/BroomIcon';
 import { CheckIcon } from '../../components/UI/Icons/ChekIcon/CheckIcon';
@@ -19,146 +18,25 @@ import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
 import styles from './BrandPage.module.css';
 import '../../styles/Forms/Globals.css';
 import '../../styles/Forms/Titles.css';
-import '../../styles/CheckBoxes/CheckBoxes.css';
 import '../../styles/Forms/Inputs.css';
-import '../../styles/Forms/Links.css';
 import '../../styles/Buttons/ActionButtons.css';
-import '../../styles/Buttons/SocialButtons.css';
 
 export function BrandPage() {
-  // Sub-Contexto de Marcas
-  const { addBrand, getNextBrandId } = useBrands();
-
-  // Próximo ID de Marca
-  const nextId = getNextBrandId ? getNextBrandId() : '-';
-
-  const [formData, setFormData] = useState({
-    name: '',
-    slug: '',
-    description: '',
-    image: ''
-  });
-
-  const [imageFile, setImageFile] = useState(null);
-
-  const [uploading, setUploading] = useState(false);
-
-  const [showModal, setShowModal] = useState(false);
-
-  const [savedBrandName, setSavedBrandName] = useState('');
-
-  const [savedBrandId, setSavedBrandId] = useState('');
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    // Autogeneración del slug al escribir el nombre
-    if (name === 'name') {
-      const generatedSlug = value
-        .toLowerCase()
-        .trim()
-        .replace(/[^\w-]+/g, '');
-
-      setFormData((prev) => ({
-        ...prev,
-        name: value,
-        slug: generatedSlug
-      }));
-    } else {
-      setFormData((prev) => ({
-        ...prev,
-        [name]: value
-      }));
-    }
-  };
-
-  const handleFileChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      setImageFile(e.target.files[0]);
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // Validación de seguridad en JS
-    if (!formData.name.trim() || !formData.slug.trim()) {
-      alert('Por favor, completá el nombre de la marca y su identificador (slug).');
-  
-      return;
-    }
-
-    const currentId = nextId;
-
-    let imageUrl = formData.image;
-
-    try {
-      setUploading(true);
-
-      // Si se seleccionó un archivo físico, se sube a ImgBB vía API
-      if (imageFile) {
-        const formData = new FormData();
-        formData.append('image', imageFile);
-
-        const apiKey = import.meta.env.VITE_IMGBB_API_KEY;
-
-        if (!apiKey) {
-          throw new Error('La API Key de ImgBB no está definida en el archivo .env');
-        }
-
-        const response = await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, {
-          method: 'POST',
-          body: formData
-        });
-
-        const data = await response.json();
-
-        if (!data.success) {
-          throw new Error(data.error?.message || 'Error al subir la imagen a ImgBB.');
-        }
-
-        imageUrl = data.data.url;
-      }
-
-      const newBrandData = {
-        name: formData.name,
-        slug: formData.slug,
-        description: formData.description,
-        image: imageUrl || 'https://via.placeholder.com/300',
-        createdAt: new Date().toISOString()
-      };
-
-      if (addBrand) {
-        addBrand(newBrandData);
-      }
-
-      setSavedBrandName(formData.name);
-
-      setSavedBrandId(currentId);
-
-      setShowModal(true);
-
-      handleReset();
-    } catch (error) {
-      console.error('Error al guardar la marca:', error);
-      alert(`Ocurrió un error: ${error.message}`);
-    } finally {
-      setUploading(false);
-    }
-  };
-
-  const handleReset = () => {
-    setFormData({
-      name: '',
-      slug: '',
-      description: '',
-      image: ''
-    });
-    setImageFile(null);
-
-    const fileInput = document.getElementById('imagenArchivoBrand');
-    if (fileInput) fileInput.value = '';
-  };
+  const {
+    nextId,
+    formData,
+    imageFile,
+    uploading,
+    showModal,
+    setShowModal,
+    savedBrandName,
+    savedBrandId,
+    handleChange,
+    handleFileChange,
+    handleReset,
+    handleSubmit,
+    handleCustomInvalid
+  } = useBrandPage();
 
   return (
     <Container className="py-5 d-flex justify-content-center align-items-center">
@@ -171,7 +49,6 @@ export function BrandPage() {
           </p>
 
           <Form onSubmit={handleSubmit} className="d-flex flex-column gap-3">
-            {/* ID Auto-generado */}
             <Form.Group controlId="id">
               <Form.Label className="label">ID de Marca (Auto-generado)</Form.Label>
 
@@ -183,7 +60,6 @@ export function BrandPage() {
               />
             </Form.Group>
 
-            {/* Marca */}
             <Form.Group controlId="name">
               <Form.Label className="label">Nombre de la marca *</Form.Label>
 
@@ -196,10 +72,11 @@ export function BrandPage() {
                 placeholder="Ej: Asus, Corsair, Logitech..."
                 required
                 className="input"
+                onInvalid={(e) => handleCustomInvalid(e, 'Por favor, ingresá el nombre de la marca.')}
+                onInput={(e) => e.target.setCustomValidity('')}
               />
             </Form.Group>
 
-            {/* Slug URL */}
             <Form.Group controlId="slug">
               <Form.Label className="label">Identificador URL (Slug) *</Form.Label>
 
@@ -211,34 +88,33 @@ export function BrandPage() {
                 placeholder="Ej: asus, corsair, logitech"
                 required
                 className="input"
+                onInvalid={(e) => handleCustomInvalid(e, 'Ingresá un slug válido.')}
+                onInput={(e) => e.target.setCustomValidity('')}
               />
             </Form.Group>
 
-            {/* Subida de Imagen por Archivo */}
             <CustomFileInput
-              controlId="imagenArchivoBrand"
+              controlId="archiveImage"
               label={<>Logo o Imagen Representativa <span className="text-muted fw-normal">(Subida a ImgBB)</span></>}
               onChange={handleFileChange}
             />
 
-            {/* O URL directa de Imagen */}
             <Form.Group controlId="image">
-              <Form.Label className="label">
-                O ingresar URL directa del logo/imagen
-              </Form.Label>
+              <Form.Label className="label">O ingresar URL directa del logo/imagen</Form.Label>
 
               <Form.Control
                 type="url"
                 name="image"
                 value={formData.image}
                 onChange={handleChange}
-                placeholder="https://images.unsplash.com/..."
+                placeholder="https://..."
                 className="input"
                 disabled={!!imageFile}
+                onInvalid={(e) => handleCustomInvalid(e, null, 'Ingresá una URL de imagen válida.')}
+                onInput={(e) => e.target.setCustomValidity('')}
               />
             </Form.Group>
 
-            {/* Descripción */}
             <Form.Group controlId="description">
               <Form.Label className="label">Descripción</Form.Label>
 
@@ -248,23 +124,17 @@ export function BrandPage() {
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
-                placeholder="Resumen o detalles de la marca comercial o fabricante..."
+                placeholder="Resumen o detalles de la marca..."
                 className="input"
               />
             </Form.Group>
 
-            {/* Limpiar */}
             <div className="d-flex gap-3 mt-3">
-              <Button
-                type="button" className="cleanBtn" onClick={handleReset}
-                  disabled={uploading}
-              >
+              <Button type="button" className="cleanBtn" onClick={handleReset} disabled={uploading}>
                 <BroomIcon /> Limpiar
               </Button>
 
-              <Button
-                type="submit" className="submitBtn" disabled={uploading}
-              >
+              <Button type="submit" className="submitBtn" disabled={uploading}>
                 <CheckIcon /> {uploading ? 'Guardando...' : 'Guardar'}
               </Button>
             </div>
@@ -272,7 +142,6 @@ export function BrandPage() {
         </Card.Body>
       </Card>
 
-      {/* Modal de confirmación */}
       <MessageBtnAccept
         isOpen={showModal}
         onClose={() => setShowModal(false)}

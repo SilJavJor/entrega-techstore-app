@@ -15,6 +15,8 @@ import { useFavorites } from '../../context/Favorites/FavoritesContext';
 import { StarInLineIcon } from '../UI/Icons/StarInLineIcon/StarInLineIcon';
 import { StarOutlineIcon } from '../UI/Icons/StarOutLineIcon/StarOutLineIcon';
 import { useCart } from '../../context/Cart/CartContext';
+
+// Estilos
 import styles from './ProductCard.module.css';
 
 export function ProductCard({ product }) {
@@ -28,7 +30,7 @@ export function ProductCard({ product }) {
 
   const stock = product.stock ?? product.stockDisponible ?? 0;
 
-  // Marca como favorito
+  // Marcado como favorito
   const handleFavoriteClick = (e) => {
     e.preventDefault();
 

@@ -7,149 +7,40 @@
 ========================================================================== */
 
 // Importaciones
-import { useState } from 'react';
+/* ==========================================================================
+  Componente TeamPage.jsx
+  Descripción: Formulario para el registro de un nuevo integrante del equipo
+    desacoplado visualmente mediante useTeamForm.
+  Autor: Silvio Jorda 
+  Fecha: 2026-11-04
+========================================================================== */
+
 import { Container, Card, Form, Row, Col, Button } from 'react-bootstrap';
-import { useTeam } from '../../context/Teams/TeamsContext';
+import { useTeamPage } from './useTeamPage';
 import { BroomIcon } from '../../components/UI/Icons/BroomIcon/BroomIcon';
 import { CheckIcon } from '../../components/UI/Icons/CheckIcon/CheckIcon';
 import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
 
-// Estilos
 import styles from './TeamPage.module.css';
 import '../../styles/Forms/Globals.css';
 import '../../styles/Forms/Titles.css';
-import '../../styles/CheckBoxes/CheckBoxes.css';
 import '../../styles/Forms/Inputs.css';
 import '../../styles/Buttons/ActionButtons.css';
 
 export function TeamPage() {
-  // Sub-Contexto de Equipos
-  const { addTeamMember, getNextTeamId } = useTeam();
-  
-  // Proximo ID de Integrante
-  const nextId = getNextTeamId ? getNextTeamId() : '-';
-
-  //const [memberData, setMemberData] = useState({
-  const [formData, setFormData] = useState({
-    name: '',
-    role: '',
-    email: '',
-    linkedin: '',
-    github: '',
-    bio: ''
-  });
-
-  const [imageFile, setImageFile] = useState(null);
-
-  const [uploading, setUploading] = useState(false);
-
-  const [errors, setErrors] = useState({});
-
-  const [showModal, setShowModal] = useState(false);
-
-  const [savedMemberName, setSavedMemberName] = useState('');
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value
-    }));
-
-    if (errors[name]) {
-      setErrors((prev) => ({ ...prev, [name]: null }));
-    }
-  };
-
-  const handleFileChange = (e) => {
-    if (e.target.files && e.target.files[0]) {
-      setImageFile(e.target.files[0]);
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (!imageFile) {
-      alert('Por favor, seleccioná una foto de perfil para el integrante.');
-
-      return;
-    }
-
-    try {
-      setUploading(true);
-
-      const formData = new FormData();
-
-      formData.append('image', imageFile);
-
-      const apiKey = import.meta.env.VITE_IMGBB_API_KEY;
-
-      if (!apiKey) {
-        throw new Error('La API Key de ImgBB no está definida en el archivo .env');
-      }
-
-      const response = await fetch(`https://api.imgbb.com/1/upload?key=${apiKey}`, {
-        method: 'POST',
-        body: formData
-      });
-
-      const data = await response.json();
-
-      if (!data.success) {
-        throw new Error(data.error?.message || 'Error al subir la imagen a ImgBB.');
-      }
-
-      const imageUrl = data.data.url;
-
-      if (addTeamMember) {
-        const result = addTeamMember({
-          name: formData.name,
-          role: formData.role,
-          email: formData.email,
-          linkedin: formData.linkedin,
-          github: formData.github,
-          photo: imageUrl,
-          bio: formData.bio
-        });
-
-        if (result && !result.success && result.errors) {
-          setErrors(result.errors);
-
-          return;
-        }
-      }
-
-      setSavedMemberName(formData.name);
-
-      setShowModal(true);
-
-      handleReset();
-    } catch (error) {
-      console.error('Error durante la carga:', error);
-
-      alert(`Ocurrió un error: ${error.message}`);
-    } finally {
-      setUploading(false);
-    }
-  };
-
-  const handleReset = () => {
-    setFormData({
-      name: '',
-      role: '',
-      email: '',
-      linkedin: '',
-      github: '',
-      bio: ''
-    });
-    setImageFile(null);
-
-    setErrors({});
-
-    const fileInput = document.getElementById('imagen');
-    if (fileInput) fileInput.value = '';
-  };
+  const {
+    nextId,
+    formData,
+    uploading,
+    showModal,
+    setShowModal,
+    savedMemberName,
+    handleChange,
+    handleFileChange,
+    handleReset,
+    handleSubmit,
+    handleCustomInvalid
+  } = useTeamPage();
 
   return (
     <Container className="py-5 d-flex justify-content-center align-items-center">
@@ -165,7 +56,6 @@ export function TeamPage() {
             {/* ID Auto-generado */}
             <Form.Group controlId="id">
               <Form.Label className="label">ID de Integrante (Auto-generado)</Form.Label>
-
               <Form.Control
                 type="text"
                 value={`# ${nextId}`}
@@ -175,40 +65,37 @@ export function TeamPage() {
             </Form.Group>
 
             {/* Nombre */}
-            <Form.Group controlId="nombre">
+            <Form.Group controlId="name">
               <Form.Label className="label">Nombre Completo *</Form.Label>
 
               <Form.Control
                 type="text"
-                name="nombre"
+                name="name"
                 autoFocus
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Ej: Laura Giménez"
                 required
                 className="input"
-                isInvalid={!!errors.nombre}
+                onInvalid={(e) => handleCustomInvalid(e, 'Por favor, ingresá el nombre completo del integrante.')}
+                onInput={(e) => e.target.setCustomValidity('')}
               />
-
-              {errors.nombre && <span className="errorText">{errors.nombre}</span>}
             </Form.Group>
 
             {/* Puesto / Rol */}
-            <Form.Group controlId="puesto">
+            <Form.Group controlId="role">
               <Form.Label className="label">Puesto / Rol *</Form.Label>
-
               <Form.Control
                 type="text"
-                name="puesto"
+                name="role"
                 value={formData.role}
                 onChange={handleChange}
                 placeholder="Ej: Desarrolladora Frontend React"
                 required
                 className="input"
-                isInvalid={!!errors.puesto}
+                onInvalid={(e) => handleCustomInvalid(e, 'Por favor, ingresá el puesto o rol del integrante.')}
+                onInput={(e) => e.target.setCustomValidity('')}
               />
-
-              {errors.puesto && <span className={styles.errorText}>{errors.puesto}</span>}
             </Form.Group>
 
             {/* Email */}
@@ -223,72 +110,78 @@ export function TeamPage() {
                 placeholder="Ej: laura.gimenez@techstore.com"
                 required
                 className="input"
-                isInvalid={!!errors.email}
+                onInvalid={(e) =>
+                  handleCustomInvalid(
+                    e,
+                    'Por favor, ingresá un correo electrónico.',
+                    'Por favor, ingresá un correo electrónico válido.'
+                  )
+                }
+                onInput={(e) => e.target.setCustomValidity('')}
               />
-
-              {errors.email && <span className={styles.errorText}>{errors.email}</span>}
             </Form.Group>
 
+            {/* Redes Sociales (LinkedIn / GitHub) */}
             <Row className="g-3">
-              {/* Fila LinkedIn (Opcionales) */}
               <Col md={6}>
                 <Form.Group controlId="linkedin">
                   <Form.Label className="label">
-                    Perfil de LinkedIn 
-                    <span className="text-muted fw-normal">(Opcional)</span>
+                    Perfil de LinkedIn <span className="text-muted fw-normal">(Opcional)</span>
                   </Form.Label>
 
                   <Form.Control
-                    type="text"
+                    type="url"
                     name="linkedin"
                     value={formData.linkedin}
                     onChange={handleChange}
-                    placeholder="Ej: https://linkedin.com/in/laura-gimenez"
+                    placeholder="Ej: https://linkedin.com/in/..."
                     className="input"
+                    onInvalid={(e) => handleCustomInvalid(e, null, 'Por favor, ingresá una URL válida de LinkedIn.')}
+                    onInput={(e) => e.target.setCustomValidity('')}
                   />
                 </Form.Group>
               </Col>
 
-              {/* GitHub (Opcionales) */}
               <Col md={6}>
                 <Form.Group controlId="github">
                   <Form.Label className="label">
-                    Perfil de GitHub 
-                    <span className="text-muted fw-normal">(Opcional)</span>
+                    Perfil de GitHub <span className="text-muted fw-normal">(Opcional)</span>
                   </Form.Label>
-
                   <Form.Control
-                    type="text"
+                    type="url"
                     name="github"
                     value={formData.github}
                     onChange={handleChange}
-                    placeholder="Ej: https://github.com/lauragimenez"
+                    placeholder="Ej: https://github.com/..."
                     className="input"
+                    onInvalid={(e) => handleCustomInvalid(e, null, 'Por favor, ingresá una URL válida de GitHub.')}
+                    onInput={(e) => e.target.setCustomValidity('')}
                   />
                 </Form.Group>
               </Col>
             </Row>
 
-            {/* Foto de Perfil (Subida a ImgBB) */}
+            {/* Foto de Perfil */}
             <Form.Group controlId="imagen">
               <Form.Label className="label">Foto de Perfil *</Form.Label>
-
               <Form.Control
                 type="file"
+                id="imagen"
                 name="imagen"
                 accept="image/*"
                 onChange={handleFileChange}
                 required
                 className="input"
+                onInvalid={(e) => handleCustomInvalid(e, 'Por favor, seleccioná una foto de perfil.')}
+                onInput={(e) => e.target.setCustomValidity('')}
               />
             </Form.Group>
 
-            {/* Biografía / Presentación */}
+            {/* Biografia */}
             <Form.Group controlId="bio">
               <Form.Label className="label">
                 Biografía / Presentación <span className="text-muted fw-normal">(Opcional)</span>
               </Form.Label>
-
               <Form.Control
                 as="textarea"
                 rows={4}
@@ -300,10 +193,11 @@ export function TeamPage() {
               />
             </Form.Group>
 
-            {/* Botones */}
+            {/* Botones de Acción */}
             <div className="d-flex gap-3 mt-3">
-              <Button 
-                type="button" 
+              {/* Limpiar */}
+              <Button
+                type="button"
                 className="cleanBtn"
                 onClick={handleReset}
                 disabled={uploading}
@@ -311,8 +205,9 @@ export function TeamPage() {
                 <BroomIcon /> Limpiar
               </Button>
 
-              <Button 
-                type="submit" 
+              {/* Guardar */}
+              <Button
+                type="submit"
                 className="submitBtn"
                 disabled={uploading}
               >

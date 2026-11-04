@@ -62,13 +62,3 @@
 .cleanBtn:hover svg {
   stroke: #8de2d6;
 }
-
-/* Campo de Solo Lectura (ID Autogenerado) */
-.readonly-input-tech {
-  background-color: #0d0d0d !important;
-  border-color: #2a2a2a !important;
-  color: #8de2d6 !important;
-  font-weight: 700 !important;
-  cursor: not-allowed !important;
-  user-select: none;
-}

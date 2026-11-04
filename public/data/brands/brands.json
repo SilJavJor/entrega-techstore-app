@@ -2,49 +2,63 @@
   {
     "id": 1,
     "name": "Intel",
+    "slug": "intel",
     "description": "",
-    "image": ""
+    "imageURL": "",
+    "createdAt": ""
   },
 
   {
     "id": 2,
     "name": "AMD",
+    "slug": "amd",
     "description": "",
-    "image": ""
+    "imageURL": "",
+    "createdAt": ""
   },
 
   {
     "id": 3,
     "name": "Asus",
+    "slug": "asus",
     "description": "",
-    "image": ""
+    "imageURL": "",
+    "createdAt": ""
   },
 
   {
     "id": 4,
     "name": "MSI",
+    "slug": "msi",
     "description": "",
-    "image": ""
+    "imageURL": "",
+    "createdAt": ""
   },
 
   {
     "id": 5,
     "name": "GIGABYTE",
+    "slug": "gigabyte",
     "description": "",
-    "image": ""
+    "imageURL": "",
+    "createdAt": ""
   },
 
   {
     "id": 6,
     "name": "KINGSTON",
+    "slug": "kingston",
     "description": "",
-    "image": ""
+    "imageURL": "",
+    "createdAt": ""
   },
 
   {
     "id": 7,
     "name": "ADATA",
+    "slug": "adata",
     "description": "",
-    "image": ""
+    "imageURL": "",
+    "createdAt": ""
   }
 ]
