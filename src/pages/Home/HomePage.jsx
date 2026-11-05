@@ -95,11 +95,8 @@ export function HomePage() {
         <div className={`d-flex justify-content-between align-items-center pb-3 mb-4 ${styles.sectionHeader}`}>
           <h2 className={styles.sectionTitle}>Productos Destacados</h2>
 
-          <Button
-            as={Link}
-            to="/products"
-            className={styles.viewAllBtn}
-          >
+          {/* Ver todos */}
+          <Button as={Link} to="/products" className={styles.viewAllBtn}          >
             Ver todos &rarr;
           </Button>
         </div>
@@ -107,6 +104,7 @@ export function HomePage() {
         {loading && (
           <div className="text-center py-5">
             <Spinner animation="border" style={{ color: '#8de2d6' }} role="status" />
+
             <p className={`mt-3 ${styles.loadingText}`}>Cargando productos destacados...</p>
           </div>
         )}
