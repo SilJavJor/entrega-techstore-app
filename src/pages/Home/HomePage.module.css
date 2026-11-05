@@ -1,17 +1,8 @@
 /* ==========================================================================
-  Estilos de HomeForm.module.css
-  Descripción: Estilos de la página principal con tarjetas oscuras, iconos y 
-    animaciones.
-  Autor: Silvio Jorda
-  Fecha: 2026-09-30
-========================================================================== */
-
-/* ==========================================================================
   Estilos de HomePage.module.css
-  Descripción: Hoja de estilos para la página principal con el banner principal
-    expandido al 100% y tarjetas de beneficios.
+  Descripción: Hoja de estilos para la página de Inicio de la aplicación.
   Autor: Silvio Jorda
-  Fecha: 2026-11-05
+  Date: 2026-09-30
 ========================================================================== */
 
 .bannerCard {
