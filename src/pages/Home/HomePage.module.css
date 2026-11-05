@@ -6,10 +6,20 @@
   Fecha: 2026-09-30
 ========================================================================== */
 
-.heroCard {
-  background: linear-gradient(135deg, #1a1a1a 0%, #242424 100%) !important;
+/* ==========================================================================
+  Estilos de HomePage.module.css
+  Descripción: Hoja de estilos para la página principal con el banner principal
+    expandido al 100% y tarjetas de beneficios.
+  Autor: Silvio Jorda
+  Fecha: 2026-11-05
+========================================================================== */
+
+.bannerCard {
+  background-color: #1a1a1a !important;
   border: 1px solid #2a2a2a !important;
   border-radius: 12px;
+  width: 100% !important;
+  max-width: 100% !important;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   color: #ffffff;
 }
@@ -19,6 +29,7 @@
   font-weight: 800;
   margin-bottom: 1rem;
   color: #ffffff;
+  text-align: center;
 }
 
 .highlight {
@@ -28,9 +39,10 @@
 .heroSubtitle {
   font-size: 1.15rem;
   color: #cccccc;
-  max-width: 620px;
-  margin: 0 auto 2rem;
+  max-width: 680px;
+  margin: 0 auto 2rem auto;
   line-height: 1.6;
+  text-align: center;
 }
 
 .heroButton {
@@ -103,21 +115,8 @@
 .sectionTitle {
   font-size: 1.8rem;
   font-weight: 700;
-  color: #111111;
+  color: #ffffff;
   margin: 0;
-}
-
-.viewAllLink {
-  color: #111111 !important;
-  font-weight: 600;
-  font-size: 0.98rem;
-  text-decoration: none !important;
-  transition: color 0.2s ease, text-decoration 0.2s ease;
-}
-
-.viewAllLink:hover {
-  color: #8de2d6 !important;
-  text-decoration: underline !important;
 }
 
 .viewAllBtn {
@@ -145,7 +144,7 @@
 .errorText {
   text-align: center;
   font-size: 1.05rem;
-  color: #555555;
+  color: #aaaaaa;
 }
 
 .errorText {

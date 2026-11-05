@@ -1,51 +1,39 @@
 /* ==========================================================================
-  Componente ProductDetailForm.jsx
+  Componente ProductDetail.jsx
   Descripción: Componente que muestra el detalle de un producto específico
     consumiendo desde el DataContext. Tarjeta oscura
   Autor: Silvio Jorda
   Date: 2026-09-30
 ========================================================================== */
 
+
+/* ==========================================================================
+  Componente ProductDetail.jsx
+  Descripción: Componente vista del detalle de un producto específico,
+    desacoplado visualmente mediante useProductDetail.
+  Autor: Silvio Jorda
+  Fecha: 2026-11-05
+========================================================================== */
+
 // Importaciones
-import { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card, Button, Badge, InputGroup, Alert, Spinner } from 'react-bootstrap';
-import { useProducts } from '../../context/Products/ProductsContext';
-import { useCart } from '../../context/Cart/CartContext';
+import { useProductDetail } from './useProductDetail';
+
+// Estilos
 import styles from './ProductDetail.module.css';
 
 export function ProductDetail() {
-  // Parametros 
-  const { id } = useParams();
-
-  // Contexto de Productos
-  const { products, loading } = useProducts();
-
-  // Agregar al carrito
-  const { addToCart } = useCart();
-
-  const [cantidad, setCantidad] = useState(1);
-
-  const [added, setAdded] = useState(false);
-
-  // p = producto
-  const product = products ? products.find((p) => String(p.id) === String(id)) : null;
-
-  const increase = () => {
-    if (product && cantidad < product.stock) setCantidad(cantidad + 1);
-  };
-
-  const decrement = () => {
-    if (cantidad > 1) setCantidad(cantidad - 1);
-  };
-
-  const handleAddToCart = () => {
-    if (product) {
-      addToCart(product, cantidad);
-
-      setAdded(true);
-    }
-  };
+  const {
+    product,
+    brandName,
+    loading,
+    cantidad,
+    added,
+    increase,
+    decrement,
+    handleAddToCart
+  } = useProductDetail();
 
   if (loading) {
     return (
@@ -78,14 +66,14 @@ export function ProductDetail() {
   }
 
   return (
-    <Container className="py-5 d-flex justify-content-center">
+    <Container fluid="lg" className="py-5 d-flex justify-content-center">
       <Card className={`border-0 p-4 shadow-lg ${styles.mainCard}`}>
         <Row className="g-4 align-items-center">
-          {/* Columna Izquierda - Imagen del producto en caja oscura */}
+          {/* Columna Izquierda - Imagen del producto */}
           <Col md={6} className="text-center">
             <div className={styles.imageWrapper}>
               <Card.Img
-                src={product.image}
+                src={product.image || product.imagen || 'https://via.placeholder.com/300'}
                 alt={product.name}
                 className={styles.image}
               />
@@ -95,6 +83,26 @@ export function ProductDetail() {
           {/* Columna Derecha - Información y Compra */}
           <Col md={6}>
             <div className="d-flex flex-column gap-3">
+              
+              {/* Etiqueta / Badge de Marca */}
+              {/*
+              {brandName && (
+                <div>
+                  <Badge bg="dark" className={styles.brandBadge}>
+                    {brandName}
+                  </Badge>
+                </div>
+              )}
+              */}
+
+{/* Etiqueta / Badge de Marca con Mensaje de Diagnóstico */}
+<div>
+  <Badge bg="dark" className={styles.brandBadge}>
+    {brandName ? `Marca: ${brandName}` : 'Marca: Sin Cargar en Producto'}
+  </Badge>
+</div>
+
+              {/* Título del producto */}
               <h1 className={styles.title}>{product.name}</h1>
 
               {/* Precio y Stock */}
@@ -119,12 +127,10 @@ export function ProductDetail() {
                 <div className="d-flex flex-column gap-3 mt-2" style={{ maxWidth: '320px' }}>
                   {/* Selector de Cantidad */}
                   <div>
-                    <label className={styles.qtyLabel}>
-                      Cantidad a llevar:
-                    </label>
+                    <label className={styles.qtyLabel}>Cantidad a llevar:</label>
 
                     <InputGroup>
-                      <Button 
+                      <Button
                         className={styles.qtyBtn}
                         onClick={decrement}
                         disabled={cantidad <= 1}
@@ -136,7 +142,7 @@ export function ProductDetail() {
                         {cantidad}
                       </span>
 
-                      <Button 
+                      <Button
                         className={styles.qtyBtn}
                         onClick={increase}
                         disabled={cantidad >= product.stock}
@@ -147,7 +153,7 @@ export function ProductDetail() {
                   </div>
 
                   {/* Agregar al Carrito */}
-                  <Button 
+                  <Button
                     className={styles.addBtn}
                     onClick={handleAddToCart}
                     disabled={product.stock <= 0}

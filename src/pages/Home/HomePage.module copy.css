@@ -1,0 +1,153 @@
+/* ==========================================================================
+  Estilos de HomeForm.module.css
+  Descripción: Estilos de la página principal con tarjetas oscuras, iconos y 
+    animaciones.
+  Autor: Silvio Jorda
+  Fecha: 2026-09-30
+========================================================================== */
+
+.heroCard {
+  background: linear-gradient(135deg, #1a1a1a 0%, #242424 100%) !important;
+  border: 1px solid #2a2a2a !important;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+}
+
+.heroTitle {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.highlight {
+  color: #8de2d6;
+}
+
+.heroSubtitle {
+  font-size: 1.15rem;
+  color: #cccccc;
+  max-width: 620px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+.heroButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #8de2d6 !important;
+  color: #111111 !important;
+  font-weight: 700;
+  padding: 0.85rem 2rem !important;
+  border-radius: 6px;
+  border: none !important;
+  font-size: 1rem;
+  text-decoration: none !important;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.heroButton:hover {
+  background-color: #72c8bc !important;
+  color: #111111 !important;
+  transform: translateY(-2px);
+}
+
+.featureCard {
+  background-color: #1a1a1a !important;
+  border: 1px solid #2a2a2a !important;
+  border-radius: 12px;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.featureCard:hover {
+  transform: translateY(-6px);
+  border-color: #8de2d6 !important;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.45), 0 0 14px rgba(141, 226, 214, 0.3);
+}
+
+.featureIcon {
+  font-size: 2.2rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featureTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #ffffff;
+}
+
+.featureText {
+  font-size: 0.9rem;
+  color: #aaaaaa;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.featuredSection {
+  margin-top: 1rem;
+}
+
+.sectionHeader {
+  border-bottom: 1px solid #333333;
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #111111;
+  margin: 0;
+}
+
+.viewAllLink {
+  color: #111111 !important;
+  font-weight: 600;
+  font-size: 0.98rem;
+  text-decoration: none !important;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.viewAllLink:hover {
+  color: #8de2d6 !important;
+  text-decoration: underline !important;
+}
+
+.viewAllBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #8de2d6 !important;
+  color: #111111 !important;
+  font-weight: 700;
+  padding: 0.5rem 1.25rem !important;
+  border-radius: 6px;
+  border: none !important;
+  font-size: 0.9rem;
+  text-decoration: none !important;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.viewAllBtn:hover {
+  background-color: #72c8bc !important;
+  color: #111111 !important;
+  transform: translateY(-2px);
+}
+
+.loadingText,
+.errorText {
+  text-align: center;
+  font-size: 1.05rem;
+  color: #555555;
+}
+
+.errorText {
+  color: #ff5555;
+}
