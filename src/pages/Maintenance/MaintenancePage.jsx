@@ -22,7 +22,7 @@ import { useSettingsLoad } from '../../hooks/UseSettings/useSettingsLoad';
 
 // Estilos
 import styles from './MaintenancePage.module.css';
-import '../../styles/Forms/CheckBoxes.css';
+import '../../styles/Checks/CheckBoxes.css';
 
 export function MaintenancePage() {
   const [modalConfig, setModalConfig] = useState({ show: false, title: '', message: '' });

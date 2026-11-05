@@ -20,10 +20,10 @@ import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
 // Estilos
 import styles from './LoginPage.module.css';
 import '../../styles/Forms/Globals.css';
-import '../../styles/Forms/Titles.css';
-import '../../styles/Forms/CheckBoxes.css';
-import '../../styles/Forms/Inputs.css';
-import '../../styles/Forms/Links.css';
+import '../../styles/Titles/Titles.css';
+import '../../styles/Checks/CheckBoxes.css';
+import '../../styles/Inputs/Inputs.css';
+import '../../styles/Links/Links.css';
 import '../../styles/Buttons/ActionButtons.css';
 import '../../styles/Buttons/SocialButtons.css';
 

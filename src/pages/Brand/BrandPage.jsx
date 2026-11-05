@@ -17,8 +17,8 @@ import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
 // Estilos
 import styles from './BrandPage.module.css';
 import '../../styles/Forms/Globals.css';
-import '../../styles/Forms/Titles.css';
-import '../../styles/Forms/Inputs.css';
+import '../../styles/Titles/Titles.css';
+import '../../styles/Inputs/Inputs.css';
 import '../../styles/Buttons/ActionButtons.css';
 
 export function BrandPage() {

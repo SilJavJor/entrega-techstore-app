@@ -14,7 +14,7 @@ import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
 
 // Estilos
 import styles from './ContactUsPage.module.css';
-import '../../styles/Forms/Inputs.css';
+import '../../styles/Inputs/Inputs.css';
 import '../../styles/Buttons/ActionButtons.css';
 
 export function ContactUsPage() {
@@ -130,7 +130,7 @@ export function ContactUsPage() {
               <Button 
                 type="submit" className="submitBtn" onClick={handleSubmit}
               >
-                <CheckIcon /> 'Enviar'
+                <CheckIcon /> Enviar
               </Button>
             </div>
           </Form>
