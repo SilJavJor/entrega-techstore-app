@@ -1,26 +1,19 @@
 /* ==========================================================================
-  Componente TeamForm.jsx
-  Descripcion: Formulario para el registro de un nuevo integrante del equipo
-    con ID autogenerado, botón de limpiar y ventana de mensaje de confirmación.
+  Componente TeamPage.jsx
+  Descripción: Pagina para el registro de un nuevo integrante del equipo
+    desacoplado visualmente mediante useTeamPage.
   Autor: Silvio Jorda 
-  Fecha: 2026-09-30
+  Date: 2026-09-30
 ========================================================================== */
 
 // Importaciones
-/* ==========================================================================
-  Componente TeamPage.jsx
-  Descripción: Formulario para el registro de un nuevo integrante del equipo
-    desacoplado visualmente mediante useTeamForm.
-  Autor: Silvio Jorda 
-  Fecha: 2026-11-04
-========================================================================== */
-
 import { Container, Card, Form, Row, Col, Button } from 'react-bootstrap';
 import { useTeamPage } from './useTeamPage';
 import { BroomIcon } from '../../components/UI/Icons/BroomIcon/BroomIcon';
 import { CheckIcon } from '../../components/UI/Icons/CheckIcon/CheckIcon';
 import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
 
+// Estilos
 import styles from './TeamPage.module.css';
 import '../../styles/Forms/Globals.css';
 import '../../styles/Forms/Titles.css';

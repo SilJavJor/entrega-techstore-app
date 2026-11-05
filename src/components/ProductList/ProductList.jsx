@@ -8,7 +8,7 @@
 
 // Importaciones
 import { Row, Col } from 'react-bootstrap';
-import { ProductCard } from '../Product/ProductCard';
+import { ProductCard } from '../ProductCard/ProductCard';
 import styles from './ProductList.module.css';
 
 export function ProductList({ products = [] }) {

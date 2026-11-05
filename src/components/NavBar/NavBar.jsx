@@ -10,6 +10,8 @@
 import { Link } from 'react-router-dom';
 import { Nav, NavDropdown } from 'react-bootstrap';
 import { useAuth } from '../../context/AuthContext/AuthContext';
+
+// Estilos
 import styles from './NavBar.module.css';
 
 export function NavBar() {

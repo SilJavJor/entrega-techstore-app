@@ -9,6 +9,8 @@
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 import { BoltIcon } from '../UI/Icons/BoltIcon/BoltIcon';
+
+// Estilos
 import styles from './Footer.module.css';
 
 export function Footer() {
@@ -19,11 +21,7 @@ export function Footer() {
           <Col xs={12} md={5} className="text-center text-md-start">
             <h3 className={styles.title}>
               <Link to="/" className={styles.brandLink}>
-                {/* Icono */}
-                <BoltIcon />
-
-                {/* Marca */}
-                TechStore
+                <BoltIcon /> TechStore
               </Link>{' '}
 
               - Soluciones Tecnológicas

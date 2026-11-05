@@ -16,6 +16,7 @@
   flex-direction: column !important;
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
   color: #ffffff;
+  min-width: calc(100% + 10px);
 }
 
 .card:hover {
@@ -24,7 +25,7 @@
   box-shadow: 0 10px 25px rgba(141, 226, 214, 0.2), 0 6px 16px rgba(0, 0, 0, 0.4) !important;
 }
 
-.favButton {
+.favoriteBtn {
   color: #8de2d6 !important;
   text-decoration: none !important;
   background: rgba(0, 0, 0, 0.55) !important;
@@ -41,12 +42,12 @@
   transition: transform 0.2s ease, background-color 0.2s ease !important;
 }
 
-.favButton:hover {
+.favoriteBtn:hover {
   transform: scale(1.1);
   background: rgba(0, 0, 0, 0.8) !important;
 }
 
-.favButton svg {
+.favoriteBtn svg {
   width: 20px;
   height: 20px;
   display: block;
@@ -95,6 +96,7 @@
   color: #8de2d6;
 }
 
+/*
 .detailsBtn {
   background-color: #8de2d6 !important;
   color: #111111 !important;
@@ -115,7 +117,9 @@
   color: #111111 !important;
   transform: translateY(-1px);
 }
+*/
 
+/*
 .addBtn {
   background-color: transparent !important;
   color: #cccccc !important;
@@ -138,4 +142,27 @@
   border-color: #444444 !important;
   color: #666666 !important;
   cursor: not-allowed;
+}
+*/
+
+/* Marca */
+.brandBadge {
+  background-color: rgba(17, 17, 17, 0.85) !important;
+  color: #8de2d6 !important;
+  border: 1px solid rgba(141, 226, 214, 0.4) !important;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  backdrop-filter: blur(4px); /* Efecto cristalino sobre la imagen */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  z-index: 2;
+  transition: all 0.2s ease-in-out;
+}
+
+.card:hover .brandBadge {
+  border-color: #8de2d6 !important;
+  color: #ffffff !important;
+  background-color: #1a1a1a !important;
 }

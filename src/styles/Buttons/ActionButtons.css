@@ -5,7 +5,7 @@
   Date: 2026-09-30
 ========================================================================== */
 
-/* Boton Guardar */
+/* Guardar / Enviar*/
 .submitBtn {
   flex: 1;
   display: flex;
@@ -35,7 +35,7 @@
   cursor: not-allowed;
 }
 
-/* Boton Limpiar */
+/* Limpiar */
 .cleanBtn {
   flex: 1;
   display: flex;
@@ -61,4 +61,51 @@
 
 .cleanBtn:hover svg {
   stroke: #8de2d6;
+}
+
+/* Agregar al Carrito */
+.addBtn {
+  background-color: transparent !important;
+  color: #cccccc !important;
+  border: 1px solid #555555 !important;
+  border-radius: 6px;
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  padding: 0.6rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.addBtn:hover:not(:disabled) {
+  border-color: #8de2d6 !important;
+  color: #8de2d6 !important;
+  background-color: rgba(141, 226, 214, 0.05) !important;
+}
+
+.addBtn:disabled {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+  border-color: #444444 !important;
+  color: #666666 !important;
+  cursor: not-allowed;
+}
+
+/* Ver Detalle */
+.detailsBtn {
+  background-color: #8de2d6 !important;
+  color: #111111 !important;
+  border: none !important;
+  border-radius: 6px;
+  font-size: 0.9rem !important;
+  font-weight: 700 !important;
+  padding: 0.6rem !important;
+  text-decoration: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.1s ease !important;
+}
+
+.detailsBtn:hover {
+  background-color: #72c8bc !important;
+  color: #111111 !important;
+  transform: translateY(-1px);
 }

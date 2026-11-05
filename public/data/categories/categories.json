@@ -3,55 +3,63 @@
     "id" : 1,
     "name" : "Motherboards",
     "description" : "",
-    "image ": ""
+    "imageURL": "",
+    "createdAt": ""
   },
 
   {
     "id" : 2,
     "name" : "Procesadores",
     "description" : "",
-    "image" : ""
+    "imageURL" : "",
+    "createdAt": ""
   },
 
   {
     "id" : 3,
     "name" : "Memorias RAM",
     "description" : "",
-    "image ": ""
+    "imageURL": "",
+    "createdAt": ""
   },
 
   {
     "id" : 4,
     "name" : "Almacenamiento",
     "description" : "",
-    "image" : ""
+    "imageURL" : "",
+    "createdAt": ""
   },
 
   {
     "id" : 5,
     "name" : "Placas de Video",
     "description" : "",
-    "image" : ""
+    "imageURL" : "",
+    "createdAt": ""
   },
 
   {
     "id" : 6,
     "name" : "Monitores",
     "description" : "",
-    "image" : ""
+    "imageURL" : "",
+    "createdAt": ""
   },
 
   {
     "id" : 7,
     "name" : "Perifericos",
     "description" : "",
-    "image" : ""
+    "imageURL" : "",
+    "createdAt": ""
   },
 
   {
     "id": 8,
     "name": "Componentes de PC",
     "description": "",
-    "image": ""
+    "imageURL": "",
+    "createdAt": ""
   }
 ]

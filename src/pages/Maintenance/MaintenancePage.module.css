@@ -59,7 +59,7 @@
   background-color: #dc3545 !important;
   color: #ffffff !important;
   border: none !important;
-  padding: 0.85rem !important; /* Mismo padding vertical */
+  padding: 0.85rem !important;
   border-radius: 6px;
   font-weight: 600;
   font-size: 1rem;
@@ -81,7 +81,7 @@
   background-color: #8de2d6 !important;
   color: #111111 !important;
   border: none !important;
-  padding: 0.85rem !important; /* Mismo padding vertical */
+  padding: 0.85rem !important;
   border-radius: 6px;
   font-weight: 600;
   font-size: 1rem;
@@ -94,11 +94,9 @@
   transform: translateY(-1px);
 }
 
-/* ==========================================================================
-   Texto Instructivo / Subtítulos de Secciones
-   ========================================================================== */
+/* Texto Instructivo / Subtítulos de Secciones */
 .instructionText {
   font-size: 0.88rem;
-  color: #dddddd !important; /* Mismo color claro que el texto de los ítems */
+  color: #dddddd !important;
   margin-bottom: 1rem;
 }

@@ -1,6 +1,7 @@
 /* ==========================================================================
-  Estilos de RegisterPage.module.css
-  Descripción: Estilos específicos para la vista de Registro.
+  Estilos: RegisterPage.module.css
+  Descripción: Estilos específicos para la Página de Registro de la 
+    aplicación.
   Autor: Silvio Jorda
   Fecha: 2026-11-04
 ========================================================================== */
@@ -14,17 +15,6 @@
   font-size: 0.88rem;
   color: #cccccc;
 }
-
-/*
-.termsLink {
-  color: #8de2d6;
-  text-decoration: none;
-}
-
-.termsLink:hover {
-  text-decoration: underline;
-}
-*/
 
 .divider {
   display: flex;

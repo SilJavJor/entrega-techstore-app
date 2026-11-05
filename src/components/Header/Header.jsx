@@ -14,6 +14,8 @@ import { useAuth } from '../../context/AuthContext/AuthContext';
 import { NavBar } from '../NavBar/NavBar';
 import { BoltIcon } from '../UI/Icons/BoltIcon/BoltIcon';
 import { CartWidget } from '../CartWidget/CartWidget';
+
+// Estilos
 import styles from './Header.module.css';
 
 export function Header() {

@@ -10,7 +10,6 @@
 import { useState } from 'react';
 import { useTeam } from '../../context/Teams/TeamsContext';
 
-
 export function useTeamPage() {
   const { team, addTeamMember, getNextTeamId } = useTeam();
 

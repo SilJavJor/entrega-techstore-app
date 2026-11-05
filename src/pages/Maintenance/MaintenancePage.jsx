@@ -15,7 +15,7 @@ import { BroomIcon } from '../../components/UI/Icons/BroomIcon/BroomIcon';
 import { CheckIcon } from '../../components/UI/Icons/ChekIcon/CheckIcon';
 import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
 
-// Hooks de lógica de negocio
+// Hooks
 import { useSettingsStats } from '../../hooks/UseSettings/useSettingsStats';
 import { useSettingsClean } from '../../hooks/UseSettings/useSettingsClean';
 import { useSettingsLoad } from '../../hooks/UseSettings/useSettingsLoad';

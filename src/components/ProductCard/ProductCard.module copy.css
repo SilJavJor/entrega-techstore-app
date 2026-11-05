@@ -140,11 +140,7 @@
   cursor: not-allowed;
 }
 
-/* ==========================================================================
-  Estilos para el Badge de Marca en ProductCard
-========================================================================== */
-
-/* Contenedor o clase del Badge */
+/* Marca */
 .brandBadge {
   background-color: rgba(17, 17, 17, 0.85) !important;
   color: #8de2d6 !important;
@@ -160,7 +156,6 @@
   transition: all 0.2s ease-in-out;
 }
 
-/* Efecto opcional al pasar el mouse por la tarjeta */
 .card:hover .brandBadge {
   border-color: #8de2d6 !important;
   color: #ffffff !important;

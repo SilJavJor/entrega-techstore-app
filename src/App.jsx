@@ -24,7 +24,7 @@ import { ContactUsPage } from './pages/ContactUs/ContactUsPage';
 import { LoginPage } from './pages/Login/LoginPage';
 import { RegisterPage } from './pages/Register/RegisterPage';
 import { AboutUsPage } from './pages/AboutUs/AboutUsPage';
-import { MaintenancePage } from './pages/Settings/MaintenancePage';
+import { MaintenancePage } from './pages/Maintenance/MaintenancePage';
 import { NotFoundPage } from './pages/NotFound/NotFoundPage';
 
 function App() {

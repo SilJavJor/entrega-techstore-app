@@ -13,6 +13,8 @@ import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
 import { ScrollToBottom } from '../UI/ScrollToBottom/ScrollToBottom';
 import { ScrollToTop } from '../UI/ScrollToTop/ScrollToTop';
+
+// Estilos
 import styles from './Layout.module.css';
 
 export function Layout() {
