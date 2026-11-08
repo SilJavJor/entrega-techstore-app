@@ -7,18 +7,6 @@
 ========================================================================== */
 
 // Importaciones
-/* ==========================================================================
-  Hook: useProductDetail.js (Con Logs de Diagnóstico)
-========================================================================== */
-
-/* ==========================================================================
-  Hook: useProductDetail.js
-  Descripción: Encapsula la búsqueda del producto por ID, resuelve la marca
-    vinculando id_marca con el contexto de marcas y gestiona el carrito.
-  Autor: Silvio Jorda
-  Fecha: 2026-11-05
-========================================================================== */
-
 import { useState, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useProducts } from '../../context/Products/ProductsContext';
@@ -27,11 +15,15 @@ import { useCart } from '../../context/Cart/CartContext';
 
 export function useProductDetail() {
   const { id } = useParams();
+
   const { products, loading } = useProducts();
+
   const { brands } = useBrands();
+
   const { addToCart } = useCart();
 
   const [cantidad, setCantidad] = useState(1);
+
   const [added, setAdded] = useState(false);
 
   // Búsqueda del producto en el catálogo por ID
@@ -56,6 +48,7 @@ export function useProductDetail() {
     // Búsqueda en la lista de marcas por ID
     if (brands && Array.isArray(brands)) {
       const foundBrand = brands.find((b) => String(b.id) === String(brandId));
+
       if (foundBrand) {
         return foundBrand.name || foundBrand.nombre || foundBrand.slug;
       }
@@ -79,6 +72,7 @@ export function useProductDetail() {
   const handleAddToCart = () => {
     if (product) {
       addToCart(product, cantidad);
+
       setAdded(true);
     }
   };

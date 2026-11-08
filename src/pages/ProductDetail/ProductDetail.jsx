@@ -1,15 +1,6 @@
 /* ==========================================================================
   Componente ProductDetail.jsx
-  Descripción: Componente que muestra el detalle de un producto específico
-    consumiendo desde el DataContext. Tarjeta oscura
-  Autor: Silvio Jorda
-  Date: 2026-09-30
-========================================================================== */
-
-
-/* ==========================================================================
-  Componente ProductDetail.jsx
-  Descripción: Componente vista del detalle de un producto específico,
+  Descripción: Componente que muestra el detalle de un producto específico,
     desacoplado visualmente mediante useProductDetail.
   Autor: Silvio Jorda
   Fecha: 2026-11-05

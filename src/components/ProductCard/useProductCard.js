@@ -7,42 +7,61 @@
 ========================================================================== */
 
 // Importaciones
+/* ==========================================================================
+  Hook: useProductCard.js
+  Descripción: Encapsula la lógica de interacción de ProductCard e integra
+    la activación del panel desplegable Offcanvas.
+  Autor: Silvio Jorda
+  Fecha: 2026-11-05
+========================================================================== */
+
 import { useFavorites } from '../../context/Favorites/FavoritesContext';
-import { useCart } from '../../context/Cart/CartContext';
+import { useCartModal } from '../../pages//Modal/CartSummary/useCartSummary';
 
 export function useProductCard(product) {
   const { isFavorite, toggleFavorite } = useFavorites();
 
-  const { addToCart } = useCart();
+  // Control del panel desplegable Offcanvas
+  const {
+    isOpen,
+    lastAddedProduct,
+    cart,
+    totalItems,
+    totalPrice,
+    openModalWithProduct,
+    closeModal
+  } = useCartModal();
 
   const isFavoriteProduct = product ? isFavorite(product.id) : false;
-
+  
   const stock = product?.stock ?? product?.stockDisponible ?? 0;
 
   const handleFavoriteClick = (e) => {
     e.preventDefault();
-
     e.stopPropagation();
-
-    if (product) {
-      toggleFavorite(product.id);
-    }
+    if (product) toggleFavorite(product.id);
   };
 
   const handleAddToCart = (e) => {
     e.preventDefault();
-
     e.stopPropagation();
 
-    if (stock > 0 && addToCart && product) {
-      addToCart(product, 1);
+    if (stock > 0 && product) {
+      // Agrega el producto y abre el Offcanvas lateral
+      openModalWithProduct(product, 1);
     }
   };
 
   return {
     isFavoriteProduct,
     stock,
+    isOpen,
+    lastAddedProduct,
+    cart,
+    totalItems,
+    totalPrice,
     handleFavoriteClick,
-    handleAddToCart
+    handleAddToCart,
+    closeModal
   };
 }

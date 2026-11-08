@@ -14,6 +14,8 @@ import { useProducts } from '../../context/Products/ProductsContext';
 import { usePagination } from '../../hooks/UsePagination/usePagination';
 import { PaginationBar } from '../UI/PaginationBar/PaginationBar';
 import { ProductList } from '../ProductList/ProductList';
+
+// Estilos
 import styles from './ProductListContainer.module.css';
 
 export function ProductListContainer({ greeting = "Catálogo de Productos" }) {

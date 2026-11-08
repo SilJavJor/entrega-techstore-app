@@ -9,6 +9,8 @@
 // Importaciones
 import { Container, Row, Col, Card, Spinner, Alert } from 'react-bootstrap';
 import { useData } from '../../context/DataContext/DataContext';
+
+// Estilos
 import styles from './OurTeam.module.css';
 
 export function OurTeam() {
