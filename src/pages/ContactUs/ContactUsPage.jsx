@@ -60,7 +60,7 @@ export function ContactUsPage() {
           {/* Subtítulo */}
           <div className={styles.subtitleContainer}>
             <p className={styles.subtitle}>
-              ¿Tenés alguna duda o consulta sobre nuestros productos?
+              ¿ Tenés alguna duda o consulta sobre nuestros productos ?
             </p>
 
             <p className={styles.subtitle}>

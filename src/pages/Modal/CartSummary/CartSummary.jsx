@@ -6,8 +6,11 @@
   Fecha: 2026-11-05
 ========================================================================== */
 
+// Importaciones
 import { Offcanvas, Button, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+
+// Estilos
 import styles from './CartSummary.module.css';
 
 export function CartSummary({
@@ -37,6 +40,7 @@ export function CartSummary({
           {lastAddedProduct && (
             <div className={`p-3 mb-4 ${styles.addedAlert}`}>
               <span className={styles.addedNotice}>✓ Producto agregado recientemente</span>
+
               <div className="d-flex align-items-center gap-3 mt-2">
                 <img
                   src={lastAddedProduct.image || lastAddedProduct.imagen || 'https://via.placeholder.com/60'}
@@ -47,10 +51,12 @@ export function CartSummary({
                   <h6 className={`mb-1 ${styles.productName}`}>
                     {lastAddedProduct.name || lastAddedProduct.nombre}
                   </h6>
+
                   <div className="d-flex align-items-center gap-2">
                     <span className={styles.productPrice}>
                       $ {Number(lastAddedProduct.price || lastAddedProduct.precio || 0).toLocaleString('es-AR')}
                     </span>
+
                     <span className={styles.productQty}>
                       (x{lastAddedProduct.addedQuantity || 1})
                     </span>
@@ -73,10 +79,12 @@ export function CartSummary({
                     <Badge bg="dark" className={styles.qtyBadge}>
                       {item.quantity || 1}x
                     </Badge>
+
                     <span className={`text-truncate ${styles.itemName}`}>
                       {item.name || item.nombre}
                     </span>
                   </div>
+
                   <span className={styles.itemSubtotal}>
                     $ {Number((item.price || item.precio || 0) * (item.quantity || 1)).toLocaleString('es-AR')}
                   </span>
@@ -92,6 +100,7 @@ export function CartSummary({
         <div className={`pt-3 border-top ${styles.footerBox}`}>
           <div className="d-flex justify-content-between align-items-center mb-3">
             <span className={styles.totalLabel}>Monto Total:</span>
+
             <span className={styles.totalAmount}>
               $ {Number(totalPrice).toLocaleString('es-AR')}
             </span>

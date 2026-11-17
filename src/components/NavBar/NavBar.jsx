@@ -9,6 +9,8 @@
 // Importaciones
 import { Link } from 'react-router-dom';
 import { Nav, NavDropdown } from 'react-bootstrap';
+
+// Contexto
 import { useAuth } from '../../context/AuthContext/AuthContext';
 
 // Estilos

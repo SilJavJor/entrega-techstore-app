@@ -1,22 +1,12 @@
 /* ==========================================================================
   Componente ProductDetail.jsx
-  Descripción: Componente que muestra el detalle de un producto específico,
+  Descripcion: Componente que muestra el detalle de un producto específico,
     desacoplado visualmente mediante useProductDetail.
   Autor: Silvio Jorda
-  Fecha: 2026-11-05
+  Date: 2026-09-30
 ========================================================================== */
 
 // Importaciones
-
-/* ==========================================================================
-  Componente ProductDetail.jsx
-  Descripción: Componente que muestra el detalle de un producto específico,
-    desacoplado visualmente mediante useProductDetail e integrado con Offcanvas.
-  Autor: Silvio Jorda
-  Fecha: 2026-11-16
-========================================================================== */
-
-// 
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card, Button, Badge, InputGroup, Spinner } from 'react-bootstrap';
 import { useProductDetail } from './useProductDetail';
@@ -24,6 +14,7 @@ import { useProductDetail } from './useProductDetail';
 // 
 import { CartSummary } from '../../pages/Modal/CartSummary/CartSummary';
 
+// Estilos
 import styles from './ProductDetail.module.css';
 
 export function ProductDetail() {
@@ -47,6 +38,7 @@ export function ProductDetail() {
     return (
       <Container className="text-center py-5">
         <Spinner animation="border" style={{ color: '#8de2d6' }} role="status" />
+
         <p className={`mt-3 ${styles.loadingText}`}>Cargando detalle del producto...</p>
       </Container>
     );
@@ -58,9 +50,11 @@ export function ProductDetail() {
         <Card className={`border-0 p-4 text-center shadow-lg ${styles.notFoundCard}`}>
           <Card.Body>
             <h2 className={styles.notFoundTitle}>Producto no encontrado</h2>
+
             <p className={styles.notFoundSubtitle}>
               El artículo solicitado no existe o fue removido del catálogo.
             </p>
+
             <Button as={Link} to="/products" className={styles.backBtn}>
               Volver al Catálogo
             </Button>
@@ -75,7 +69,7 @@ export function ProductDetail() {
       <Container fluid="lg" className="py-5 d-flex justify-content-center">
         <Card className={`border-0 p-4 shadow-lg ${styles.mainCard}`}>
           <Row className="g-4 align-items-center">
-            {/* Columna Izquierda - Imagen del producto[cite: 12] */}
+            {/* Imagen del producto */}
             <Col md={6} className="text-center">
               <div className={styles.imageWrapper}>
                 <Card.Img
@@ -86,10 +80,10 @@ export function ProductDetail() {
               </div>
             </Col>
 
-            {/* Columna Derecha - Información y Compra[cite: 12] */}
+            {/* Información y Compra */}
             <Col md={6}>
               <div className="d-flex flex-column gap-3">
-                {/* Badge de Marca */}
+                {/* Marca */}
                 {brandName && (
                   <div>
                     <Badge bg="dark" className={styles.brandBadge}>
@@ -98,10 +92,10 @@ export function ProductDetail() {
                   </div>
                 )}
 
-                {/* Título del producto[cite: 12] */}
+                {/* Título del producto */}
                 <h1 className={styles.title}>{product.name}</h1>
 
-                {/* Precio y Stock[cite: 12] */}
+                {/* Precio y Stock */}
                 <div className="d-flex align-items-center gap-3">
                   <span className={styles.price}>
                     ${Number(product.price).toLocaleString('es-AR')}
@@ -114,7 +108,7 @@ export function ProductDetail() {
 
                 <hr className={styles.divider} />
 
-                {/* Descripción[cite: 12] */}
+                {/* Descripcion */}
                 <p className={styles.description}>
                   {product.description || 'Sin descripción disponible.'}
                 </p>

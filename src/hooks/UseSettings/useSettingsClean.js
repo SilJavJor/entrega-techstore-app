@@ -5,6 +5,7 @@
 
 // Imprtaciones
 import { useState } from 'react';
+import { STORAGE_KEYS } from './useSettingsStats';
 
 // Contextos
 import { useBrands } from '../../context/Brands/BrandsContext';
@@ -13,14 +14,18 @@ import { useProducts } from '../../context/Products/ProductsContext';
 import { useFavorites } from '../../context/Favorites/FavoritesContext';
 import { useCart } from '../../context/Cart/CartContext';
 import { useTeam } from '../../context/Teams/TeamsContext';
-import { STORAGE_KEYS } from './useSettingsStats';
 
 export function useSettingsClean(onSuccess, setModalConfig) {
   const { clearBrands } = useBrands();
+
   const { clearCategories } = useCategories();
+
   const { clearProducts } = useProducts();
+
   const { clearTeams } = useTeam();
+
   const { clearFavorites } = useFavorites();
+
   const { clearCart } = useCart();
 
   const domainCleaners = {

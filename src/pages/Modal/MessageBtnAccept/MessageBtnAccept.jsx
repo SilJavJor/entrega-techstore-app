@@ -2,11 +2,14 @@
   Componente Modal.jsx
   Descripción: Ventana emergente con mensaje personalizado y botón centrado.
   Autor: Silvio Jorda
-  Fecha: 2026-10-08
+  Date: 2026-09-30
 ========================================================================== */
 
-import styles from './MessageBtnAccept.module.css';
+// Importaciones
 import { CheckIcon } from '../../../components/UI/Icons/CheckIcon/CheckIcon';
+
+// Estilos
+import styles from './MessageBtnAccept.module.css';
 
 export function MessageBtnAccept({ isOpen, onClose, title = 'Atención', message }) {
   if (!isOpen) return null;

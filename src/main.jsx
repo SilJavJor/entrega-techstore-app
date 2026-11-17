@@ -6,15 +6,17 @@
   Date: 2026-09-30
 ========================================================================== */
 
+// Importaciones
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 
-// Importación de Contextos
+// Contextos
 import { AuthProvider } from './context/AuthContext/AuthContext';
 import { DataProvider } from './context/DataContext/DataContext';
 
 // Probar que pasa al cambiar el orden de los imports, si se rompe la app o no
+// Estilos
 import './index.css';
 import App from './App.jsx';
 

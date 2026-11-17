@@ -114,6 +114,7 @@ export function useProductPage() {
         formData.append('image', imageFile);
 
         const apiKey = import.meta.env.VITE_IMGBB_API_KEY;
+
         if (!apiKey) {
           throw new Error('La API Key de ImgBB no está definida en el archivo .env');
         }

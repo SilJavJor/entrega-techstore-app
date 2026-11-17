@@ -8,6 +8,8 @@
 
 // Importaciones
 import { useMemo } from 'react';
+
+// Contexto
 import { useProducts } from '../../context/Products/ProductsContext';
 
 export function useHomePage() {

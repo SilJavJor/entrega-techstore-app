@@ -1,23 +1,11 @@
 /* ==========================================================================
-  Componente Register.jsx
-  Descripción: Formulario de registro de usuarios para la aplicación TechStore.
-    Este componente permite a los usuarios crear una nueva cuenta proporcionando 
-    su nombre completo, correo electrónico y contraseña. También incluye la 
-    opción de registrarse mediante cuentas de terceros como Google o GitHub y 
-    redirecionamiento al Login.
+  Componente RegisterPage.jsx
+  Descripción: Pagina de registro de Usuarios de la aplicacion-
   Autor: Silvio Jorda
   Date: 2026-09-30
 ========================================================================== */
 
 // Importaciones
-/* ==========================================================================
-  Componente RegisterPage.jsx
-  Descripción: Formulario de registro desacoplado visualmente mediante el hook
-    useRegisterForm y estandarizado con clases globales de botones y validación HTML5.
-  Autor: Silvio Jorda
-  Fecha: 2026-11-04
-========================================================================== */
-
 import { Link } from 'react-router-dom';
 import { Container, Card, Form, Button, Row, Col } from 'react-bootstrap';
 import { useRegisterPage } from './useRegisterPage';
@@ -27,6 +15,7 @@ import { GoogleIcon } from '../../components/UI/Icons/GoogleIcon/GoogleIcon';
 import { GitHubIcon } from '../../components/UI/Icons/GitHubIcon/GitHubIcon';
 import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
 
+// Estilos
 import styles from './RegisterPage.module.css';
 import '../../styles/Forms/Globals.css';
 import '../../styles/Titles/Titles.css';
@@ -88,11 +77,7 @@ export function RegisterPage() {
                 required
                 className="input"
                 onInvalid={(e) =>
-                  handleCustomInvalid(
-                    e,
-                    'Ingresá un correo electrónico.',
-                    'Ingresá un correo electrónico válido.'
-                  )
+                  handleCustomInvalid(e, 'Ingresá un correo electrónico.', 'Ingresá un correo electrónico válido.')
                 }
                 onInput={(e) => e.target.setCustomValidity('')}
               />

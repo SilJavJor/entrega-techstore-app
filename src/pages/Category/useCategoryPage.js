@@ -3,11 +3,13 @@
   Descripción: Encapsula la lógica de estado, validación por capas,
     duplicados y envío a ImgBB para el alta de categorías.
   Autor: Silvio Jorda
-  Fecha: 2026-11-04
+   Date: 2026-09-30
 ========================================================================== */
 
 // Importaciones
 import { useState } from 'react';
+
+// Contexto
 import { useCategories } from '../../context/Categories/CategoriesContext';
 
 export function useCategoryPage() {
@@ -79,6 +81,7 @@ export function useCategoryPage() {
     setImageFile(null);
 
     const fileInput = document.getElementById('imagenArchivoCategory');
+
     if (fileInput) fileInput.value = '';
   };
 
@@ -91,6 +94,7 @@ export function useCategoryPage() {
 
     if (!trimmedName || !trimmedSlug) {
       alert('El nombre de la categoría y su slug no pueden estar vacíos.');
+
       return;
     }
 
@@ -100,10 +104,12 @@ export function useCategoryPage() {
 
     if (isDuplicate) {
       alert(`La categoría "${trimmedName}" o el slug "${trimmedSlug}" ya existen en el sistema.`);
+
       return;
     }
 
     const currentId = nextId;
+
     let imageUrl = categoryData.image;
 
     try {
@@ -152,6 +158,7 @@ export function useCategoryPage() {
       handleReset();
     } catch (error) {
       console.error('Error al guardar la categoría:', error);
+
       alert(`Ocurrió un error: ${error.message}`);
     } finally {
       setUploading(false);

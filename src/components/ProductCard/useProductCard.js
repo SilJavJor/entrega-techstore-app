@@ -41,12 +41,15 @@ export function useProductCard(product) {
 
   const handleFavoriteClick = (e) => {
     e.preventDefault();
+ 
     e.stopPropagation();
+ 
     if (product) toggleFavorite(product.id);
   };
 
   const handleAddToCart = (e) => {
     e.preventDefault();
+
     e.stopPropagation();
 
     if (stock > 0 && product) {

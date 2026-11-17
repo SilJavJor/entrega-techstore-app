@@ -7,6 +7,8 @@
 
 // Importaciones
 import { useState } from 'react';
+
+// Contexto
 import { useBrands } from '../../context/Brands/BrandsContext';
 
 export function useBrandPage() {
@@ -78,6 +80,7 @@ export function useBrandPage() {
     setImageFile(null);
 
     const fileInput = document.getElementById('imagenArchivoBrand');
+
     if (fileInput) fileInput.value = '';
   };
 
@@ -85,10 +88,12 @@ export function useBrandPage() {
     e.preventDefault();
 
     const trimmedName = formData.name.trim();
+
     const trimmedSlug = formData.slug.trim();
 
     if (!trimmedName || !trimmedSlug) {
       alert('El nombre y el slug de la marca no pueden estar vacíos.');
+
       return;
     }
 
@@ -98,10 +103,12 @@ export function useBrandPage() {
 
     if (isDuplicate) {
       alert(`La marca "${trimmedName}" o el slug "${trimmedSlug}" ya existen.`);
+
       return;
     }
 
     const currentId = nextId;
+
     let imageUrl = formData.image;
 
     try {
@@ -109,9 +116,11 @@ export function useBrandPage() {
 
       if (imageFile) {
         const uploadData = new FormData();
+
         uploadData.append('image', imageFile);
 
         const apiKey = import.meta.env.VITE_IMGBB_API_KEY;
+
         if (!apiKey) {
           throw new Error('La API Key de ImgBB no está definida en el archivo .env');
         }
@@ -122,6 +131,7 @@ export function useBrandPage() {
         });
 
         const data = await response.json();
+
         if (!data.success) {
           throw new Error(data.error?.message || 'Error al subir la imagen a ImgBB.');
         }
@@ -142,11 +152,15 @@ export function useBrandPage() {
       }
 
       setSavedBrandName(trimmedName);
+
       setSavedBrandId(currentId);
+
       setShowModal(true);
+
       handleReset();
     } catch (error) {
       console.error('Error al guardar la marca:', error);
+
       alert(`Ocurrió un error: ${error.message}`);
     } finally {
       setUploading(false);

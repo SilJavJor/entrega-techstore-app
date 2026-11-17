@@ -9,12 +9,6 @@
 ========================================================================== */
 
 // Importaciones
-/* ==========================================================================
-  Componente ProductPage.jsx
-  Descripción: Formulario de alta de productos con selección de Categorías y Marcas.
-========================================================================== */
-
-// Importaciones
 import { Container, Card, Form, Row, Col, Button, Spinner, Alert } from 'react-bootstrap';
 import { useProductPage } from './useProductPage';
 import { CustomFileInput } from '../../components/UI/CustomFileInput/CustomFileInput';
@@ -148,6 +142,7 @@ export function ProductPage() {
                   {loadingCategories ? (
                     <div className="d-flex align-items-center gap-2 py-2">
                       <Spinner animation="border" size="sm" style={{ color: '#8de2d6' }} />
+
                       <span className="text-muted small">Cargando...</span>
                     </div>
                   ) : errorCategories ? (
@@ -270,7 +265,7 @@ export function ProductPage() {
 
             <div className="d-flex gap-3 mt-3">
 
-              {/* Botones de Acción */}
+              {/* Limpiar */}
               <Button type="button" className="cleanBtn" onClick={handleReset} disabled={uploading}>
                 <BroomIcon /> Limpiar
               </Button>

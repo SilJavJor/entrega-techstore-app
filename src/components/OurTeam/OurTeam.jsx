@@ -8,6 +8,8 @@
 
 // Importaciones
 import { Container, Row, Col, Card, Spinner, Alert } from 'react-bootstrap';
+
+// Contexto
 import { useData } from '../../context/DataContext/DataContext';
 
 // Estilos

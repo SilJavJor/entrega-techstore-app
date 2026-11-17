@@ -12,7 +12,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Layout } from './components/Layout/Layout';
 import { ProductListContainer } from './components/ProductListContainer/ProductListContainer';
 
-// Importacion de Paginas
+// Paginas
 import { HomePage } from './pages/Home/HomePage';
 import { ProductDetail } from './pages/ProductDetail/ProductDetail';
 import { CartPage } from './pages/Cart/CartPage';
@@ -64,7 +64,7 @@ function App() {
         {/* Acreca de... */}
         <Route path="/aboutus" element={<AboutUsPage />} />
 
-        {/* ABMC de Equipo CRUD */}
+        {/* ABMC de Equipo - CRUD */}
         <Route path="/add-team" element={<TeamPage />} />
 
         {/* Mantenimiento */}

@@ -250,7 +250,7 @@ export function CartPage() {
         </Card>
       </Container>
 
-      {/* Modal Reutilizable de Confirmación */}
+      {/* Modal de Confirmación */}
       <MessageBtnAccept
         isOpen={isCheckoutModalOpen}
         onClose={handleCloseCheckoutModal}

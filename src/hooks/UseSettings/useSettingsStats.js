@@ -10,12 +10,10 @@
   Descripción: Audita y calcula cantidades en tiempo real desde los Contextos.
 ========================================================================== */
 
-/* ==========================================================================
-  Hook: useSettingsStats.js
-  Descripción: Audita las cantidades en tiempo real reaccionando a los Contextos.
-========================================================================== */
-
+// Importaciones
 import { useState, useEffect } from 'react';
+
+// Contextos
 import { useBrands } from '../../context/Brands/BrandsContext';
 import { useCategories } from '../../context/Categories/CategoriesContext';
 import { useProducts } from '../../context/Products/ProductsContext';
@@ -35,10 +33,15 @@ export const STORAGE_KEYS = {
 export function useSettingsStats() {
   // Consumo de los contextos
   const { brands } = useBrands();
+
   const { categories } = useCategories();
+
   const { products } = useProducts();
+
   const { team } = useTeam();
+
   const { favorites } = useFavorites();
+
   const { cart } = useCart();
 
   const [storageStats, setStorageStats] = useState({});

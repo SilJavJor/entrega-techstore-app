@@ -1,21 +1,16 @@
 /* ==========================================================================
   Hook: useCartPage.js
-  Descripción: Encapsula las acciones de incremento, reducción parcial de
+  Descripción: Encapsula las acciones de incremento, decremento parcial de
     unidades, eliminación completa y vaciado del carrito para CartPage.
   Autor: Silvio Jorda
-  Fecha: 2026-11-16
+   Date: 2026-09-30
 ========================================================================== */
 
-/* ==========================================================================
-  Hook: useCartPage.js
-  Descripción: Encapsula las acciones de incremento, reducción de unidades,
-    eliminación completa, vaciado y confirmación de compra en modal.
-  Autor: Silvio Jorda
-  Fecha: 2026-11-16
-========================================================================== */
-
+// Importaciones
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+// Contexto
 import { useCart } from '../../context/Cart/CartContext';
 
 export function useCartPage() {
@@ -62,7 +57,9 @@ export function useCartPage() {
   // Cierra el modal, vacía el carrito y vuelve al catálogo
   const handleCloseCheckoutModal = () => {
     setIsCheckoutModalOpen(false);
+
     clearCart();
+
     navigate('/products');
   };
 

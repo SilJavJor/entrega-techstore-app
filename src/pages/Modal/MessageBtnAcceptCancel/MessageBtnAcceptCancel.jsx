@@ -5,8 +5,10 @@
 ========================================================================== */
 
 // Importaciones
-import styles from './MessageBtnAcceptCancel.module.css';
 import { CheckIcon } from '../../../components/UI/Icons/CheckIcon/CheckIcon';
+
+// Estilos
+import styles from './MessageBtnAcceptCancel.module.css';
 
 export function Modal({
   isOpen,
