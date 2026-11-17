@@ -8,7 +8,6 @@
     color: Color del ícono (por defecto: '#8de2d6')
   Autor: Silvio Jorda
   Date: 2026-09-30
-
 ========================================================================== */
 
 export function BoltIcon({ size = 22, color = '#8de2d6' }) {
