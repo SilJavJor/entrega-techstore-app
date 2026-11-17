@@ -1,4 +1,3 @@
-
 // Importacion
 import { BoltIcon } from '../../components/UI/Icons/BoltIcon/BoltIcon';
 
