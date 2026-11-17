@@ -8,6 +8,8 @@
 
 // Importaciones
 import { useState } from 'react';
+
+// Contextos
 import { useProducts } from '../../context/Products/ProductsContext';
 import { useCategories } from '../../context/Categories/CategoriesContext';
 import { useBrands } from '../../context/Brands/BrandsContext'; // <-- Importación de Marcas

@@ -38,18 +38,20 @@ export const useCart = () => {
 };
 
 export const CartProvider = ({ children }) => {
-  // 1. Inicialización perezosa leyendo localStorage[cite: 13]
+  // Inicialización perezosa leyendo localStorage
   const [cart, setCart] = useState(() => {
     try {
       const savedCart = localStorage.getItem('techstore_cart');
+
       return savedCart ? JSON.parse(savedCart) : [];
     } catch (e) {
       console.error('Error al leer el carrito desde localStorage:', e);
+
       return [];
     }
   });
 
-  // Sincronización automática de cada cambio de 'cart' hacia localStorage[cite: 13]
+  // Sincronización automática de cada cambio de 'cart' hacia localStorage
   useEffect(() => {
     try {
       localStorage.setItem('techstore_cart', JSON.stringify(cart));
@@ -58,7 +60,7 @@ export const CartProvider = ({ children }) => {
     }
   }, [cart]);
 
-  // Agregar o incrementar cantidad de un producto (inmutable)[cite: 13]
+  // Agregar o incrementar cantidad de un producto (inmutable)
   const addToCart = (product, quantity = 1) => {
     setCart((prevCart) => {
       const existingIndex = prevCart.findIndex((prod) => prod.id === product.id);
@@ -66,8 +68,11 @@ export const CartProvider = ({ children }) => {
       if (existingIndex !== -1) {
         return prevCart.map((item, index) => {
           if (index !== existingIndex) return item;
+
           const maxStock = item.stock ?? Infinity;
+
           const nextQty = Math.min(item.quantity + quantity, maxStock);
+
           return { ...item, quantity: nextQty };
         });
       }
@@ -82,6 +87,7 @@ export const CartProvider = ({ children }) => {
       prevCart.reduce((acc, item) => {
         if (item.id !== id) {
           acc.push(item);
+
           return acc;
         }
 
@@ -95,19 +101,21 @@ export const CartProvider = ({ children }) => {
     );
   };
 
-  // Eliminar un producto completo (todas sus unidades)[cite: 13]
+  // Eliminar un producto completo (todas sus unidades)
   const removeFromCart = (id) => {
     setCart((prevCart) => prevCart.filter((product) => product.id !== id));
   };
 
-  // Vaciar / Limpiar el carrito[cite: 13]
+  // Vaciar / Limpiar el carrito
   const clearCart = () => {
     setCart([]);
+
     localStorage.setItem('techstore_cart', JSON.stringify([]));
   };
 
-  // Totales[cite: 13]
+  // Totales
   const totalQuantity = cart.reduce((acc, product) => acc + product.quantity, 0);
+
   const totalPrice = cart.reduce((acc, product) => acc + (product.price || 0) * product.quantity, 0);
 
   return (

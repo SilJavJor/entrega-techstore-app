@@ -3,7 +3,7 @@
   Descripción: Pagina para el Alta de Categorías desacoplada mediante 
     useCategoryPage.
   Autor: Silvio Jorda 
-  Fecha: 2026-09-30
+  Date: 2026-09-30
 ========================================================================== */
 
 // Importaciones

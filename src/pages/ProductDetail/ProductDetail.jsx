@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import { Container, Row, Col, Card, Button, Badge, InputGroup, Spinner } from 'react-bootstrap';
 import { useProductDetail } from './useProductDetail';
 
-// 
+// CartSummary
 import { CartSummary } from '../../pages/Modal/CartSummary/CartSummary';
 
 // Estilos
@@ -155,7 +155,7 @@ export function ProductDetail() {
         </Card>
       </Container>
 
-      {/* Panel Desplegable Lateral Offcanvas */}
+      {/* Panel Desplegable Lateral */}
       <CartSummary
         isOpen={isOpen}
         onClose={closeModal}

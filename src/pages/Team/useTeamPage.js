@@ -8,6 +8,8 @@
 
 // Importaciones
 import { useState } from 'react';
+
+// contexto
 import { useTeam } from '../../context/Teams/TeamsContext';
 
 export function useTeamPage() {
@@ -43,6 +45,7 @@ export function useTeamPage() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setFormData((prev) => ({
       ...prev,
       [name]: value
@@ -67,6 +70,7 @@ export function useTeamPage() {
     setImageFile(null);
 
     const fileInput = document.getElementById('imagen');
+
     if (fileInput) fileInput.value = '';
   };
 
@@ -74,26 +78,31 @@ export function useTeamPage() {
     e.preventDefault();
 
     const trimmedName = formData.name.trim();
+
     const trimmedRole = formData.role.trim();
+
     const trimmedEmail = formData.email.trim();
 
     if (!trimmedName || !trimmedRole || !trimmedEmail) {
       alert('Por favor, completá los campos obligatorios (Nombre, Rol y Email).');
+
       return;
     }
 
     if (!imageFile) {
       alert('Por favor, seleccioná una foto de perfil para el integrante.');
+
       return;
     }
 
-    // Prevención de duplicados por Email
+    // Dupplicacion de Email
     const isDuplicate = team?.some(
       (member) => member.email?.toLowerCase() === trimmedEmail.toLowerCase()
     );
 
     if (isDuplicate) {
       alert(`El integrante con el correo "${trimmedEmail}" ya se encuentra registrado.`);
+
       return;
     }
 
@@ -101,9 +110,11 @@ export function useTeamPage() {
       setUploading(true);
 
       const uploadData = new FormData();
+
       uploadData.append('image', imageFile);
 
       const apiKey = import.meta.env.VITE_IMGBB_API_KEY;
+
       if (!apiKey) {
         throw new Error('La API Key de ImgBB no está definida en el archivo .env');
       }

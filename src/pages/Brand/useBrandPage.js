@@ -1,6 +1,6 @@
 /* ==========================================================================
   Hook: useBrandPage.js
-  Descripción: Encapsula la lógica de estado, validación y envío de Marcas.
+  Descripcion: Encapsula la lógica de estado, validación y envío de Marcas.
   Autor: Silvio Jorda
   Date: 2026-09-30
 ========================================================================== */

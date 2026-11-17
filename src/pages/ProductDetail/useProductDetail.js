@@ -1,20 +1,12 @@
 /* ==========================================================================
   Hook: useProductDetail.js
-  Descripción: Encapsula la búsqueda del producto por ID, el contador de 
-    cantidad a comprar y la interacción con el carrito de compras.
+    Descripción: Encapsula la búsqueda del producto por ID, la resolución de su
+    marca, el contador de cantidad y la apertura del Offcanvas del carrito.
   Autor: Silvio Jorda
   Date: 2026-09-30
 ========================================================================== */
 
 // Importaciones
-/* ==========================================================================
-  Hook: useProductDetail.js
-  Descripción: Encapsula la búsqueda del producto por ID, la resolución de su
-    marca, el contador de cantidad y la apertura del Offcanvas del carrito.
-  Autor: Silvio Jorda
-  Fecha: 2026-11-16
-========================================================================== */
-
 import { useState, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -22,7 +14,7 @@ import { useParams } from 'react-router-dom';
 import { useProducts } from '../../context/Products/ProductsContext';
 import { useBrands } from '../../context/Brands/BrandsContext';
 
-// 
+// CartSummary
 import { useCartSummary } from '../../pages/Modal/CartSummary/useCartSummary';
 
 export function useProductDetail() {
@@ -32,7 +24,7 @@ export function useProductDetail() {
 
   const { brands } = useBrands();
 
-  // Integración con el hook del Offcanvas (ajusta la ruta si lo ubicaste en otra carpeta)
+  // CartSummary
   const {
     isOpen,
     lastAddedProduct,
@@ -45,12 +37,12 @@ export function useProductDetail() {
 
   const [cantidad, setCantidad] = useState(1);
 
-  // Búsqueda del producto en el catálogo por ID[cite: 11]
+  // Busqueda del producto en el catálogo por ID
   const product = products
     ? products.find((p) => String(p.id) === String(id))
     : null;
 
-  // Resolución del nombre de la marca vinculando id_marca con el contexto[cite: 11]
+  // Resolucion del nombre de la marca vinculando id_marca con el contexto
   const brandName = useMemo(() => {
     if (!product) return null;
 

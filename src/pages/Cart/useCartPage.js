@@ -3,7 +3,7 @@
   Descripción: Encapsula las acciones de incremento, decremento parcial de
     unidades, eliminación completa y vaciado del carrito para CartPage.
   Autor: Silvio Jorda
-   Date: 2026-09-30
+  Date: 2026-09-30
 ========================================================================== */
 
 // Importaciones

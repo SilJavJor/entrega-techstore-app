@@ -1,15 +1,8 @@
 /* ==========================================================================
-   Estilos de CartForm.module.css
-   Descripción: Hoja de estilos para el carrito de compras.
-   Autor: Silvio Jorda
-   Fecha: 2026-10-16
-========================================================================== */
-
-/* ==========================================================================
-   Estilos de CartForm.module.css
-   Descripción: Hoja de estilos para el carrito de compras.
-   Autor: Silvio Jorda
-   Fecha: 2026-10-16
+  Estilos de CartPage.module.css
+  Descripcion: Estilos para el carrito de compras.
+  Autor: Silvio Jorda
+  Date: 2026-10-16
 ========================================================================== */
 
 .mainCard {
@@ -64,19 +57,6 @@
   color: #ffffff;
   transition: border-color 0.2s ease;
 }
-
-/*
-.itemCard {
-  background-color: #111111 !important;
-  border: 1px solid #2a2a2a !important;
-  border-radius: 8px;
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 !important;
-  color: #ffffff;
-  transition: border-color 0.2s ease;
-}
-*/
 
 .itemCard:hover {
   border-color: #333333 !important;
@@ -215,30 +195,10 @@
   justify-content: center;
 }
 
-/*
-.decreaseMultiBtn {
-  background-color: transparent !important;
-  color: #8de2d6 !important;
-  border: 1px solid rgba(141, 226, 214, 0.45) !important;
-  font-size: 0.78rem;
-  font-weight: 600;
-  padding: 0.25rem 0.55rem !important;
-  border-radius: 5px;
-  transition: all 0.2s ease;
-}
-
-.decreaseMultiBtn:hover {
-  background-color: rgba(141, 226, 214, 0.12) !important;
-  border-color: #8de2d6 !important;
-}
-*/
-
-/* Divisor reutilizable superior/inferior */
 .sectionDivider {
   border-top: 1px solid #333333;
 }
 
-/* Tamaño idéntico para Seguir Comprando y Vaciar Carrito */
 .equalActionBtn {
   min-width: 210px;
   height: 46px;
@@ -252,7 +212,6 @@
   text-align: center;
 }
 
-/* Botón destacado Finalizar la Compra */
 .checkoutButton {
   background-color: #8de2d6 !important;
   color: #111111 !important;

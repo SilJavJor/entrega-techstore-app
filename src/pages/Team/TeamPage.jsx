@@ -104,11 +104,7 @@ export function TeamPage() {
                 required
                 className="input"
                 onInvalid={(e) =>
-                  handleCustomInvalid(
-                    e,
-                    'Por favor, ingresá un correo electrónico.',
-                    'Por favor, ingresá un correo electrónico válido.'
-                  )
+                  handleCustomInvalid(e, 'Por favor, ingresá un correo electrónico.', 'Por favor, ingresá un correo electrónico válido.')
                 }
                 onInput={(e) => e.target.setCustomValidity('')}
               />

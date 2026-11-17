@@ -91,7 +91,7 @@ export function LoginPage() {
               />
             </Form.Group>
 
-            {/* Recordarme y Olvidé Contraseña */}
+            {/* Recordarme */}
             <div className="d-flex justify-content-between align-items-center mt-1">
               <Form.Check
                 type="checkbox"
@@ -103,6 +103,7 @@ export function LoginPage() {
                 label={<span className={styles.rememberText}>Recordarme</span>}
               />
 
+              {/* Olvide Contraseña */}
               <button
                 type="button"
                 className={styles.forgotBtn}
@@ -140,7 +141,8 @@ export function LoginPage() {
             >
               <GoogleIcon /> Google
             </Button>
-            {/* Google */}
+
+            {/* GitHub */}
             <Button 
               type="button" className="socialBtn"
               onClick={() => handleNotImplemented('GitHub')}
@@ -149,7 +151,7 @@ export function LoginPage() {
             </Button>
           </div>
 
-          {/* Enlace al Registro */}
+          {/* Pagina de Registro */}
           <p className={styles.footerText}>
             ¿ Si no tenés una cuenta ?{' '}
             <Link to="/register" className={styles.registerLink}>

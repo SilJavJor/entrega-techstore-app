@@ -9,6 +9,8 @@
 // Importaciones
 import { Link } from 'react-router-dom';
 import { Container, Card, Button } from 'react-bootstrap';
+
+// Estilos
 import styles from './NotFoundPage.module.css';
 
 export function NotFoundPage() {
