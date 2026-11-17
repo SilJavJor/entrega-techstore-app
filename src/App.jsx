@@ -1,6 +1,6 @@
 /* ==========================================================================
   Componente App.jsx
-  Descripcion: Componente principal de la aplicación que define las rutas 
+  Descripcion: Componente principal de la aplicación que define las rutas
     y la estructura general de la aplicación.
   Autor: Silvio Jorda
   Date: 2026-09-30

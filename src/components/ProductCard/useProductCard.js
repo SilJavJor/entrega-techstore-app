@@ -15,8 +15,11 @@
   Fecha: 2026-11-05
 ========================================================================== */
 
+// Contextos
 import { useFavorites } from '../../context/Favorites/FavoritesContext';
-import { useCartModal } from '../../pages//Modal/CartSummary/useCartSummary';
+
+// Importaciones
+import { useCartSummary } from '../../pages/Modal/CartSummary/useCartSummary';
 
 export function useProductCard(product) {
   const { isFavorite, toggleFavorite } = useFavorites();
@@ -30,7 +33,7 @@ export function useProductCard(product) {
     totalPrice,
     openModalWithProduct,
     closeModal
-  } = useCartModal();
+  } = useCartSummary();
 
   const isFavoriteProduct = product ? isFavorite(product.id) : false;
   

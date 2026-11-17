@@ -1,6 +1,6 @@
 /* ==========================================================================
-  Inputs.css
-  Estilos: Estilos globales para todos los Links de la aplicacion.
+  Links.css
+  Descripcion: Estilos unificados para los Links de la aplicacion.
   Autor: Silvio Jorda
   Date: 2026-09-30
 ========================================================================== */
@@ -12,6 +12,7 @@
   font-weight: 500;
 }
 
+/* Links A - Hover */
 .linkTo:hover {
   text-decoration: underline;
 }

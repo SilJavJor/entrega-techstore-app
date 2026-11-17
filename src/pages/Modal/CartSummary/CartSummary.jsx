@@ -109,6 +109,8 @@ export function CartSummary({
 
             <Button
               variant="outline-light"
+              as={Link}
+              to="/products"
               onClick={onClose}
               className={styles.continueBtn}
             >

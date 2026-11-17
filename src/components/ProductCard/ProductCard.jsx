@@ -30,7 +30,7 @@ import { Link } from 'react-router-dom';
 import { useProductCard } from './useProductCard';
 import { StarInLineIcon } from '../UI/Icons/StarInLineIcon/StarInLineIcon';
 import { StarOutlineIcon } from '../UI/Icons/StarOutLineIcon/StarOutLineIcon';
-import { CartSummary } from '../../pages//Modal/CartSummary/CartSummary';
+import { CartSummary } from '../../pages/Modal/CartSummary/CartSummary';
 
 // Estilos
 import styles from './ProductCard.module.css';
@@ -116,7 +116,7 @@ export function ProductCard({ product }) {
         </Card.Body>
       </Card>
 
-      {/* Desplegable Offcanvas del Carrito */}
+      {/* Desplegable del Carrito */}
       <CartSummary
         isOpen={isOpen}
         onClose={closeModal}

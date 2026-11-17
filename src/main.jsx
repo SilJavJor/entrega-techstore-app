@@ -19,7 +19,7 @@ import './index.css';
 import App from './App.jsx';
 
 // Se debe cambiár este valor a false para desactivar el StricMode
-const ENABLE_STRICT_MODE = true;
+const ENABLE_STRICT_MODE = false;
 
 // eslint-disable-next-line react-refresh/only-export-components
 const StrictWrapper = ENABLE_STRICT_MODE ? React.StrictMode : React.Fragment;

@@ -1,11 +1,12 @@
 /* ==========================================================================
   Inputs.css
-  Estilos: Estilos globales para todos los Inputs de la aplicacion.
+  Descripcion: Estilos unificados para los Inputs (Textos, Selects, TextAreas)
+    de la aplicacion.
   Autor: Silvio Jorda
   Date: 2026-09-30
 ========================================================================== */
 
-/* Entradas de texto, selects y textareas */
+/* Textos, selects, textareas, etc. */
 .input {
   background-color: #111111 !important;
   border: 1px solid #444444 !important;
@@ -14,11 +15,13 @@
   font-size: 0.95rem !important;
 }
 
+/* En Foco */
 .input:focus {
   border-color: #8de2d6 !important;
   box-shadow: 0 0 0 0.25rem rgba(141, 226, 214, 0.25) !important;
 }
 
+/* Placeholder */
 .input::placeholder {
   color: #555555 !important;
   font-weight: 400;

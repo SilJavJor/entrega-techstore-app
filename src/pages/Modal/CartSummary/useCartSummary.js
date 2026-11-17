@@ -6,10 +6,13 @@
   Fecha: 2026-11-05
 ========================================================================== */
 
+// Importaciones
 import { useState, useCallback } from 'react';
+
+// Contexto
 import { useCart } from '../../../context/Cart/CartContext';
 
-export function useCartModal() {
+export function useCartSummary() {
   const [isOpen, setIsOpen] = useState(false);
 
   const [lastAddedProduct, setLastAddedProduct] = useState(null);
