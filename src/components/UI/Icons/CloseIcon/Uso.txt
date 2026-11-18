@@ -1,8 +1,0 @@
-// Importacion
-import { CloseIcon } from '../../components/UI/Icons/CloseIcon/CloseIcon';
-
-// Uso simple con los valores por defecto:
-<CloseIcon />
-
-// Con tamaño y/o color personalizadas
-<CloseIcon size=22 color="#ff4d4f" /> Cancelar

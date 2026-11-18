@@ -1,8 +1,0 @@
-// Importacion
-import { GitHubIcon } from '../../components/UI/Icons/GoogleIcon/GoogleIcon';
-
-// Uso simple con los valores por defecto:
-<GoogleIcon />
-
-// O con tamaño personalizado
-<CloseIcon size=22 />

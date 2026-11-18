@@ -1,8 +1,0 @@
-// Importacion
-import { GitHubIcon } from '../../components/UI/Icons/GitHubIcon/GitHubIcon';
-
-// Uso simple con los valores por defecto:
-<GitHubIcon />
-
-// Con tamaño y/o color personalizadas
-<GitHubIcon  size = 22, color = "#ffffff" />
