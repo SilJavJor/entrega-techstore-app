@@ -27,10 +27,8 @@ export function BrandPage() {
     formData,
     imageFile,
     uploading,
-    showModal,
-    setShowModal,
-    savedBrandName,
-    savedBrandId,
+    modalConfig,
+    closeModal,
     handleChange,
     handleFileChange,
     handleReset,
@@ -143,12 +141,10 @@ export function BrandPage() {
       </Card>
 
       <MessageBtnAccept
-        isOpen={showModal}
-        onClose={() => setShowModal(false)}
-        title="¡ Marca agregada !"
-        message={`La marca "${savedBrandName}" con ID #${savedBrandId} se agregó exitosamente.`}
-        confirmText="Aceptar"
-        showCancel={false}
+        isOpen={modalConfig.show}
+        onClose={closeModal}
+        title={modalConfig.title}
+        message={modalConfig.message}
       />
     </Container>
   );

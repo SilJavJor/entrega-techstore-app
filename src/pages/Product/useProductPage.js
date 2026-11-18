@@ -12,14 +12,14 @@ import { useState } from 'react';
 // Contextos
 import { useProducts } from '../../context/Products/ProductsContext';
 import { useCategories } from '../../context/Categories/CategoriesContext';
-import { useBrands } from '../../context/Brands/BrandsContext'; // <-- Importación de Marcas
+import { useBrands } from '../../context/Brands/BrandsContext';
 
 export function useProductPage() {
   const { addProduct, getNextProductId } = useProducts();
 
   const { categories, loadingCategories, errorCategories } = useCategories();
 
-  const { brands, loadingBrands, errorBrands } = useBrands(); // <-- Sub-contexto de Marcas
+  const { brands, loadingBrands, errorBrands } = useBrands();
 
   const nextId = getNextProductId ? getNextProductId() : '-';
 
@@ -34,14 +34,15 @@ export function useProductPage() {
   });
 
   const [imageFile, setImageFile] = useState(null);
-
   const [uploading, setUploading] = useState(false);
 
-  const [showModal, setShowModal] = useState(false);
+  const [modalConfig, setModalConfig] = useState({
+    show: false,
+    title: '',
+    message: ''
+  });
 
-  const [savedProductName, setSavedProductName] = useState('');
-
-  const [savedProductId, setSavedProductId] = useState('');
+  const closeModal = () => setModalConfig({ show: false, title: '', message: '' });
 
   const handleCustomInvalid = (e, customMsg, typeMismatchMsg) => {
     if (e.target.validity.valueMissing) {
@@ -75,9 +76,7 @@ export function useProductPage() {
     });
     setImageFile(null);
 
-    //const fileInput = document.getElementById('imagenArchivo');
     const fileInput = document.getElementById('archiveImage');
-
     if (fileInput) fileInput.value = '';
   };
 
@@ -87,25 +86,54 @@ export function useProductPage() {
     const trimmedName = productData.name.trim();
 
     if (!trimmedName) {
-      alert('El nombre del producto no puede estar vacío.');
-
-      return;
-    }
-
-    if (!productData.category) {
-      alert('Por favor, seleccioná una categoría para el producto.');
-
+      setModalConfig({
+        show: true,
+        title: '¡ Atención !',
+        message: 'El nombre del producto no puede estar vacío.'
+      });
       return;
     }
 
     if (!productData.brand) {
-      alert('Por favor, seleccioná una marca para el producto.');
+      setModalConfig({
+        show: true,
+        title: '¡ Atención !',
+        message: 'Por favor, seleccioná una marca para el producto.'
+      });
+      return;
+    }
 
+    if (!productData.category) {
+      setModalConfig({
+        show: true,
+        title: '¡ Atención !',
+        message: 'Por favor, seleccioná una categoría para el producto.'
+      });
+      return;
+    }
+
+    const numericPrice = Number(productData.price);
+    const numericStock = Number(productData.stock);
+
+    if (Number.isNaN(numericPrice) || numericPrice <= 0) {
+      setModalConfig({
+        show: true,
+        title: '¡ Precio Inválido !',
+        message: 'El precio del producto debe ser mayor a $ 0.'
+      });
+      return;
+    }
+
+    if (Number.isNaN(numericStock) || numericStock < 0) {
+      setModalConfig({
+        show: true,
+        title: '¡ Stock Inválido !',
+        message: 'El stock disponible no puede ser negativo.'
+      });
       return;
     }
 
     const currentId = nextId;
-
     let imageUrl = productData.image;
 
     try {
@@ -113,7 +141,6 @@ export function useProductPage() {
 
       if (imageFile) {
         const formData = new FormData();
-
         formData.append('image', imageFile);
 
         const apiKey = import.meta.env.VITE_IMGBB_API_KEY;
@@ -140,25 +167,29 @@ export function useProductPage() {
         addProduct({
           name: trimmedName,
           category: productData.category,
-          brand: productData.brand, // <-- Se persiste la Marca seleccionada
-          price: Number(productData.price),
-          stock: Number(productData.stock),
+          brand: productData.brand,
+          price: numericPrice,
+          stock: numericStock,
           image: imageUrl || 'https://via.placeholder.com/300',
           description: productData.description.trim()
         });
       }
 
-      setSavedProductName(trimmedName);
-
-      setSavedProductId(currentId);
-
-      setShowModal(true);
+      setModalConfig({
+        show: true,
+        title: '¡ Producto Registrado !',
+        message: `El producto "${trimmedName}" con ID #${currentId} se cargó exitosamente con su categoría y marca.`
+      });
 
       handleReset();
     } catch (error) {
       console.error('Error al guardar el producto:', error);
 
-      alert(`Ocurrió un error: ${error.message}`);
+      setModalConfig({
+        show: true,
+        title: '¡ Error !',
+        message: `Ocurrió un error: ${error.message}`
+      });
     } finally {
       setUploading(false);
     }
@@ -175,10 +206,8 @@ export function useProductPage() {
     errorBrands,
     imageFile,
     uploading,
-    showModal,
-    setShowModal,
-    savedProductName,
-    savedProductId,
+    modalConfig,
+    closeModal,
     handleChange,
     handleFileChange,
     handleReset,

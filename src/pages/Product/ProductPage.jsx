@@ -35,10 +35,8 @@ export function ProductPage() {
     errorBrands,
     imageFile,
     uploading,
-    showModal,
-    setShowModal,
-    savedProductName,
-    savedProductId,
+    modalConfig,
+    closeModal,
     handleChange,
     handleFileChange,
     handleReset,
@@ -185,7 +183,7 @@ export function ProductPage() {
               {/* Precio */}
               <Col md={6}>
                 <Form.Group controlId="price">
-                  <Form.Label className={styles.label}>Precio ($) *</Form.Label>
+                  <Form.Label className="label">Precio ($) *</Form.Label>
 
                   <Form.Control
                     type="number"
@@ -262,9 +260,7 @@ export function ProductPage() {
               />
             </Form.Group>
 
-
             <div className="d-flex gap-3 mt-3">
-
               {/* Limpiar */}
               <Button type="button" className="cleanBtn" onClick={handleReset} disabled={uploading}>
                 <BroomIcon /> Limpiar
@@ -281,12 +277,10 @@ export function ProductPage() {
 
       {/* Modal de confirmación */}
       <MessageBtnAccept
-        isOpen={showModal}
-        onClose={() => setShowModal(false)}
-        title="¡ Producto Registrado !"
-        message={`El producto "${savedProductName}" con ID #${savedProductId} se cargó exitosamente con su categoría y marca.`}
-        confirmText="Aceptar"
-        showCancel={false}
+        isOpen={modalConfig.show}
+        onClose={closeModal}
+        title={modalConfig.title}
+        message={modalConfig.message}
       />
     </Container>
   );

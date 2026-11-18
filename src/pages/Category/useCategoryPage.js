@@ -3,7 +3,7 @@
   Descripción: Encapsula la lógica de estado, validación por capas,
     duplicados y envío a ImgBB para el alta de categorías.
   Autor: Silvio Jorda
-   Date: 2026-09-30
+  Date: 2026-09-30
 ========================================================================== */
 
 // Importaciones
@@ -14,7 +14,7 @@ import { useCategories } from '../../context/Categories/CategoriesContext';
 
 export function useCategoryPage() {
   const { categories, addCategory, getNextCategoryId } = useCategories();
- 
+
   const nextId = getNextCategoryId ? getNextCategoryId() : '-';
 
   const [categoryData, setCategoryData] = useState({
@@ -25,14 +25,15 @@ export function useCategoryPage() {
   });
 
   const [imageFile, setImageFile] = useState(null);
-
   const [uploading, setUploading] = useState(false);
 
-  const [showModal, setShowModal] = useState(false);
+  const [modalConfig, setModalConfig] = useState({
+    show: false,
+    title: '',
+    message: ''
+  });
 
-  const [savedCategoryName, setSavedCategoryName] = useState('');
-
-  const [savedCategoryId, setSavedCategoryId] = useState('');
+  const closeModal = () => setModalConfig({ show: false, title: '', message: '' });
 
   // Helper de mensajes nativos HTML5
   const handleCustomInvalid = (e, customMsg, typeMismatchMsg) => {
@@ -80,9 +81,7 @@ export function useCategoryPage() {
     });
     setImageFile(null);
 
-    //const fileInput = document.getElementById('imagenArchivoCategory');
     const fileInput = document.getElementById('archiveImage');
-
     if (fileInput) fileInput.value = '';
   };
 
@@ -90,12 +89,14 @@ export function useCategoryPage() {
     e.preventDefault();
 
     const trimmedName = categoryData.name.trim();
- 
     const trimmedSlug = categoryData.slug.trim();
 
     if (!trimmedName || !trimmedSlug) {
-      alert('El nombre de la categoría y su slug no pueden estar vacíos.');
-
+      setModalConfig({
+        show: true,
+        title: '¡ Atención !',
+        message: 'El nombre de la categoría y su slug no pueden estar vacíos.'
+      });
       return;
     }
 
@@ -104,13 +105,15 @@ export function useCategoryPage() {
     );
 
     if (isDuplicate) {
-      alert(`La categoría "${trimmedName}" o el slug "${trimmedSlug}" ya existen en el sistema.`);
-
+      setModalConfig({
+        show: true,
+        title: '¡ Categoría Duplicada !',
+        message: `La categoría "${trimmedName}" o el slug "${trimmedSlug}" ya existen en el sistema.`
+      });
       return;
     }
 
     const currentId = nextId;
-
     let imageUrl = categoryData.image;
 
     try {
@@ -150,17 +153,21 @@ export function useCategoryPage() {
         addCategory(newCategoryData);
       }
 
-      setSavedCategoryName(trimmedName);
-
-      setSavedCategoryId(currentId);
-
-      setShowModal(true);
+      setModalConfig({
+        show: true,
+        title: '¡ Categoría Registrada !',
+        message: `La categoría "${trimmedName}" con ID #${currentId} se cargó correctamente.`
+      });
 
       handleReset();
     } catch (error) {
       console.error('Error al guardar la categoría:', error);
 
-      alert(`Ocurrió un error: ${error.message}`);
+      setModalConfig({
+        show: true,
+        title: '¡ Error !',
+        message: `Ocurrió un error: ${error.message}`
+      });
     } finally {
       setUploading(false);
     }
@@ -171,10 +178,8 @@ export function useCategoryPage() {
     categoryData,
     imageFile,
     uploading,
-    showModal,
-    setShowModal,
-    savedCategoryName,
-    savedCategoryId,
+    modalConfig,
+    closeModal,
     handleChange,
     handleFileChange,
     handleReset,

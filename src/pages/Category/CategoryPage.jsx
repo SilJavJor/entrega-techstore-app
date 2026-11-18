@@ -27,10 +27,8 @@ export function CategoryPage() {
     categoryData,
     imageFile,
     uploading,
-    showModal,
-    setShowModal,
-    savedCategoryName,
-    savedCategoryId,
+    modalConfig,
+    closeModal,
     handleChange,
     handleFileChange,
     handleReset,
@@ -143,12 +141,10 @@ export function CategoryPage() {
       </Card>
 
       <MessageBtnAccept
-        isOpen={showModal}
-        onClose={() => setShowModal(false)}
-        title="¡ Categoría Registrada !"
-        message={`La categoría "${savedCategoryName}" con ID #${savedCategoryId} se cargó correctamente.`}
-        confirmText="Aceptar"
-        showCancel={false}
+        isOpen={modalConfig.show}
+        onClose={closeModal}
+        title={modalConfig.title}
+        message={modalConfig.message}
       />
     </Container>
   );

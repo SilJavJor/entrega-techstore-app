@@ -1,5 +1,5 @@
 /* ==========================================================================
-  Hook: useTeamForm.js
+  Hook: useTeamPage.js
   Descripción: Encapsula la lógica de estado, validación por capas,
     reseteo y envío de integrantes a ImgBB para TeamPage.
   Autor: Silvio Jorda
@@ -9,7 +9,7 @@
 // Importaciones
 import { useState } from 'react';
 
-// contexto
+// Contexto
 import { useTeam } from '../../context/Teams/TeamsContext';
 
 export function useTeamPage() {
@@ -27,12 +27,15 @@ export function useTeamPage() {
   });
 
   const [imageFile, setImageFile] = useState(null);
-
   const [uploading, setUploading] = useState(false);
 
-  const [showModal, setShowModal] = useState(false);
+  const [modalConfig, setModalConfig] = useState({
+    show: false,
+    title: '',
+    message: ''
+  });
 
-  const [savedMemberName, setSavedMemberName] = useState('');
+  const closeModal = () => setModalConfig({ show: false, title: '', message: '' });
 
   // Helper para mensajes nativos de HTML5 personalizados
   const handleCustomInvalid = (e, customMsg, typeMismatchMsg) => {
@@ -70,7 +73,6 @@ export function useTeamPage() {
     setImageFile(null);
 
     const fileInput = document.getElementById('imagen');
-
     if (fileInput) fileInput.value = '';
   };
 
@@ -78,39 +80,57 @@ export function useTeamPage() {
     e.preventDefault();
 
     const trimmedName = formData.name.trim();
-
     const trimmedRole = formData.role.trim();
-
     const trimmedEmail = formData.email.trim();
 
     if (!trimmedName || !trimmedRole || !trimmedEmail) {
-      alert('Por favor, completá los campos obligatorios (Nombre, Rol y Email).');
+      setModalConfig({
+        show: true,
+        title: '¡ Atención !',
+        message: 'Por favor, completá los campos obligatorios (Nombre, Rol y Email).'
+      });
+      return;
+    }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(trimmedEmail)) {
+      setModalConfig({
+        show: true,
+        title: '¡ Correo Inválido !',
+        message: 'Por favor, ingresá una dirección de correo electrónico válida.'
+      });
       return;
     }
 
     if (!imageFile) {
-      alert('Por favor, seleccioná una foto de perfil para el integrante.');
-
+      setModalConfig({
+        show: true,
+        title: '¡ Falta Foto de Perfil !',
+        message: 'Por favor, seleccioná una foto de perfil para el integrante.'
+      });
       return;
     }
 
-    // Dupplicacion de Email
+    // Duplicación de Email
     const isDuplicate = team?.some(
       (member) => member.email?.toLowerCase() === trimmedEmail.toLowerCase()
     );
 
     if (isDuplicate) {
-      alert(`El integrante con el correo "${trimmedEmail}" ya se encuentra registrado.`);
-
+      setModalConfig({
+        show: true,
+        title: '¡ Integrante Duplicado !',
+        message: `El integrante con el correo "${trimmedEmail}" ya se encuentra registrado.`
+      });
       return;
     }
+
+    const currentId = nextId;
 
     try {
       setUploading(true);
 
       const uploadData = new FormData();
-
       uploadData.append('image', imageFile);
 
       const apiKey = import.meta.env.VITE_IMGBB_API_KEY;
@@ -143,15 +163,21 @@ export function useTeamPage() {
         });
       }
 
-      setSavedMemberName(trimmedName);
- 
-      setShowModal(true);
- 
+      setModalConfig({
+        show: true,
+        title: '¡ Integrante Agregado !',
+        message: `"${trimmedName}" (ID #${currentId}) ha sido agregado al equipo exitosamente con su foto en ImgBB.`
+      });
+
       handleReset();
     } catch (error) {
       console.error('Error durante la carga:', error);
- 
-      alert(`Ocurrió un error: ${error.message}`);
+
+      setModalConfig({
+        show: true,
+        title: '¡ Error !',
+        message: `Ocurrió un error: ${error.message}`
+      });
     } finally {
       setUploading(false);
     }
@@ -162,9 +188,8 @@ export function useTeamPage() {
     formData,
     imageFile,
     uploading,
-    showModal,
-    setShowModal,
-    savedMemberName,
+    modalConfig,
+    closeModal,
     handleChange,
     handleFileChange,
     handleReset,

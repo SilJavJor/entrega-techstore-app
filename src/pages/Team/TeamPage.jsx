@@ -25,9 +25,8 @@ export function TeamPage() {
     nextId,
     formData,
     uploading,
-    showModal,
-    setShowModal,
-    savedMemberName,
+    modalConfig,
+    closeModal,
     handleChange,
     handleFileChange,
     handleReset,
@@ -208,12 +207,10 @@ export function TeamPage() {
       </Card>
 
       <MessageBtnAccept
-        isOpen={showModal}
-        onClose={() => setShowModal(false)}
-        title="¡ Integrante agregado !"
-        message={`"${savedMemberName}" ha sido agregado al equipo exitosamente con su foto en ImgBB.`}
-        confirmText="Aceptar"
-        showCancel={false}
+        isOpen={modalConfig.show}
+        onClose={closeModal}
+        title={modalConfig.title}
+        message={modalConfig.message}
       />
     </Container>
   );

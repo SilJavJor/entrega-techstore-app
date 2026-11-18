@@ -24,14 +24,15 @@ export function useBrandPage() {
   });
 
   const [imageFile, setImageFile] = useState(null);
-  
   const [uploading, setUploading] = useState(false);
-  
-  const [showModal, setShowModal] = useState(false);
-  
-  const [savedBrandName, setSavedBrandName] = useState('');
-  
-  const [savedBrandId, setSavedBrandId] = useState('');
+
+  const [modalConfig, setModalConfig] = useState({
+    show: false,
+    title: '',
+    message: ''
+  });
+
+  const closeModal = () => setModalConfig({ show: false, title: '', message: '' });
 
   // Personalización de mensajes nativos de HTML5
   const handleCustomInvalid = (e, customMsg, typeMismatchMsg) => {
@@ -79,9 +80,7 @@ export function useBrandPage() {
     });
     setImageFile(null);
 
-    //const fileInput = document.getElementById('imagenArchivoBrand');
     const fileInput = document.getElementById('archiveImage');
-
     if (fileInput) fileInput.value = '';
   };
 
@@ -89,12 +88,14 @@ export function useBrandPage() {
     e.preventDefault();
 
     const trimmedName = formData.name.trim();
-
     const trimmedSlug = formData.slug.trim();
 
     if (!trimmedName || !trimmedSlug) {
-      alert('El nombre y el slug de la marca no pueden estar vacíos.');
-
+      setModalConfig({
+        show: true,
+        title: '¡ Atención !',
+        message: 'El nombre y el slug de la marca no pueden estar vacíos.'
+      });
       return;
     }
 
@@ -103,13 +104,15 @@ export function useBrandPage() {
     );
 
     if (isDuplicate) {
-      alert(`La marca "${trimmedName}" o el slug "${trimmedSlug}" ya existen.`);
-
+      setModalConfig({
+        show: true,
+        title: '¡ Marca Duplicada !',
+        message: `La marca "${trimmedName}" o el slug "${trimmedSlug}" ya existen.`
+      });
       return;
     }
 
     const currentId = nextId;
-
     let imageUrl = formData.image;
 
     try {
@@ -117,7 +120,6 @@ export function useBrandPage() {
 
       if (imageFile) {
         const uploadData = new FormData();
-
         uploadData.append('image', imageFile);
 
         const apiKey = import.meta.env.VITE_IMGBB_API_KEY;
@@ -152,17 +154,21 @@ export function useBrandPage() {
         addBrand(newBrandData);
       }
 
-      setSavedBrandName(trimmedName);
-
-      setSavedBrandId(currentId);
-
-      setShowModal(true);
+      setModalConfig({
+        show: true,
+        title: '¡ Marca Agregada !',
+        message: `La marca "${trimmedName}" con ID #${currentId} se agregó exitosamente.`
+      });
 
       handleReset();
     } catch (error) {
       console.error('Error al guardar la marca:', error);
 
-      alert(`Ocurrió un error: ${error.message}`);
+      setModalConfig({
+        show: true,
+        title: '¡ Error !',
+        message: `Ocurrió un error: ${error.message}`
+      });
     } finally {
       setUploading(false);
     }
@@ -173,10 +179,8 @@ export function useBrandPage() {
     formData,
     imageFile,
     uploading,
-    showModal,
-    setShowModal,
-    savedBrandName,
-    savedBrandId,
+    modalConfig,
+    closeModal,
     handleChange,
     handleFileChange,
     handleReset,
