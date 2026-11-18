@@ -46,6 +46,7 @@ export function useSettingsStats() {
 
   const [storageStats, setStorageStats] = useState({});
 
+  {/*
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const checkStorageStats = () => {
      // Suma real de unidades para el carrito
@@ -61,6 +62,7 @@ export function useSettingsStats() {
 
       if (savedBrands) {
         const parsed = JSON.parse(savedBrands);
+
         brandsCount = Array.isArray(parsed) ? parsed.length : 1;
       }
     // eslint-disable-next-line no-unused-vars
@@ -68,6 +70,24 @@ export function useSettingsStats() {
         // eslint-disable-next-line no-unused-vars
         brandsCount = 0;
     }
+
+    
+    setStorageStats({
+      brands: Array.isArray(brands) ? brands.length : 0,
+      categories: Array.isArray(categories) ? categories.length : 0,
+      products: Array.isArray(products) ? products.length : 0,
+      team: Array.isArray(team) ? team.length : 0,
+      favorites: Array.isArray(favorites) ? favorites.length : 0,
+      cart: cartCount
+    });
+  };
+  */}
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const checkStorageStats = () => {
+    const cartCount = Array.isArray(cart)
+      ? cart.reduce((acc, item) => acc + (item.quantity || 1), 0)
+      : 0;
 
     setStorageStats({
       brands: Array.isArray(brands) ? brands.length : 0,

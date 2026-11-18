@@ -11,7 +11,7 @@ import { Container, Card, Form, Button } from 'react-bootstrap';
 import { useBrandPage } from './useBrandPage';
 import { CustomFileInput } from '../../components/UI/CustomFileInput/CustomFileInput';
 import { BroomIcon } from '../../components/UI/Icons/BroomIcon/BroomIcon';
-import { CheckIcon } from '../../components/UI/Icons/ChekIcon/CheckIcon';
+import { CheckIcon } from '../../components/UI/Icons/CheckIcon/CheckIcon';
 import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
 
 // Estilos

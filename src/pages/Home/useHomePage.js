@@ -13,7 +13,8 @@ import { useMemo } from 'react';
 import { useProducts } from '../../context/Products/ProductsContext';
 
 export function useHomePage() {
-  const { products, loading, error } = useProducts();
+  //const { products, loading, error } = useProducts();
+  const { products, loadingProducts: loading, errorProducts: error } = useProducts();
 
   // Selección personalizada de los primeros 4 productos del catálogo
   const featuredProducts = useMemo(() => {

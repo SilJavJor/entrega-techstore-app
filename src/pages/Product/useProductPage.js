@@ -75,7 +75,8 @@ export function useProductPage() {
     });
     setImageFile(null);
 
-    const fileInput = document.getElementById('imagenArchivo');
+    //const fileInput = document.getElementById('imagenArchivo');
+    const fileInput = document.getElementById('archiveImage');
 
     if (fileInput) fileInput.value = '';
   };

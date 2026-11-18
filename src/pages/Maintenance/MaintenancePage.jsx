@@ -12,7 +12,7 @@ import { useState } from 'react';
 import { Container, Card, Form, Button, Row, Col, Badge } from 'react-bootstrap';
 import { BoltIcon } from '../../components/UI/Icons/BoltIcon/BoltIcon';
 import { BroomIcon } from '../../components/UI/Icons/BroomIcon/BroomIcon';
-import { CheckIcon } from '../../components/UI/Icons/ChekIcon/CheckIcon';
+import { CheckIcon } from '../../components/UI/Icons/CheckIcon/CheckIcon';
 import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
 
 // Hooks
@@ -84,10 +84,18 @@ export function MaintenancePage() {
                 <Badge bg="dark" className="border border-secondary">{storageStats.products ?? 0} ítems</Badge>
               </Col>
 
+              {/*}
               <Col xs={4} md={2}>
                 <div className="small text-light fw-medium mb-1">Equipo</div>
 
                 <Badge bg="dark" className="border border-secondary">{storageStats.teams ?? 0} ítems</Badge>
+              </Col>
+              */}
+
+              <Col xs={4} md={2}>
+                <div className="small text-light fw-medium mb-1">Equipo</div>
+
+                <Badge bg="dark" className="border border-secondary">{storageStats.team ?? 0} ítems</Badge>
               </Col>
 
               <Col xs={4} md={2}>

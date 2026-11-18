@@ -80,7 +80,8 @@ export function useCategoryPage() {
     });
     setImageFile(null);
 
-    const fileInput = document.getElementById('imagenArchivoCategory');
+    //const fileInput = document.getElementById('imagenArchivoCategory');
+    const fileInput = document.getElementById('archiveImage');
 
     if (fileInput) fileInput.value = '';
   };

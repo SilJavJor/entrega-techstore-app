@@ -13,7 +13,7 @@ import { Container, Card, Form, Row, Col, Button, Spinner, Alert } from 'react-b
 import { useProductPage } from './useProductPage';
 import { CustomFileInput } from '../../components/UI/CustomFileInput/CustomFileInput';
 import { BroomIcon } from '../../components/UI/Icons/BroomIcon/BroomIcon';
-import { CheckIcon } from '../../components/UI/Icons/ChekIcon/CheckIcon';
+import { CheckIcon } from '../../components/UI/Icons/CheckIcon/CheckIcon';
 import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
 
 // Estilos

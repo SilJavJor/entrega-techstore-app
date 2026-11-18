@@ -20,8 +20,9 @@ import { useCartSummary } from '../../pages/Modal/CartSummary/useCartSummary';
 export function useProductDetail() {
   const { id } = useParams();
 
-  const { products, loading } = useProducts();
-
+  //const { products, loading } = useProducts();
+  const { products, loadingProducts: loading } = useProducts();
+  
   const { brands } = useBrands();
 
   // CartSummary

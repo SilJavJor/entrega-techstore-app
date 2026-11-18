@@ -79,7 +79,8 @@ export function useBrandPage() {
     });
     setImageFile(null);
 
-    const fileInput = document.getElementById('imagenArchivoBrand');
+    //const fileInput = document.getElementById('imagenArchivoBrand');
+    const fileInput = document.getElementById('archiveImage');
 
     if (fileInput) fileInput.value = '';
   };
