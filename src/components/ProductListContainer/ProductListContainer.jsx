@@ -1,65 +1,29 @@
 /* ==========================================================================
   Componente ProductListContainer.jsx
-  Descripción: Componente contenedor del catálogo de productos. Consume los
-    datos desde el sub-contexto useProducts. integra la barra de Filtros por
-    categorías, labarra de paginacion, etc..
+  Descripción: Componente contenedor del catálogo de productos desacoplado
+    mediante useProductListContainer.
   Autor: Silvio Jorda
   Date: 2026-09-30
 ========================================================================== */
 
 // Importaciones
-import { useState, useMemo } from 'react';
 import { Container, Spinner, Alert, Form, Button } from 'react-bootstrap';
-import { useProducts } from '../../context/Products/ProductsContext';
-import { usePagination } from '../../hooks/UsePagination/usePagination';
+import { useProductListContainer } from './useProductListContainer';
 import { PaginationBar } from '../UI/PaginationBar/PaginationBar';
 import { ProductList } from '../ProductList/ProductList';
 
 // Estilos
 import styles from './ProductListContainer.module.css';
 
-export function ProductListContainer({ greeting = "Catálogo de Productos" }) {
-  // Consumo desde el sub-contexto useProducts con alias para el JSX
-  const { products, loadingProducts: loading, errorProducts: error } = useProducts();
-
-  // Estados del Filtro de Categorías y del Historial (últimos 5)
-  const [selectedCategory, setSelectedCategory] = useState('all');
-
-  const [recentFilters, setRecentFilters] = useState([]);
-
-  // Categorías obtenidas del catálogo
-  const availableCategories = useMemo(() => {
-    if (!products) return [];
-
-    const categories = products.map((p) => p.category).filter(Boolean);
-
-    return ['all', ...new Set(categories)];
-  }, [products]);
-
-  // Handler para seleccionar categoría y registrar el historial
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-
-    const categoryName = category === 'all' ? 'Todas' : category;
-
-    setRecentFilters((prev) => {
-      const filtered = prev.filter((item) => item !== categoryName);
-
-      return [categoryName, ...filtered].slice(0, 5);
-    });
-  };
-
-  // Productos filtrados por la categoría activa
-  const filteredProducts = useMemo(() => {
-    if (!products) return [];
-
-    if (selectedCategory === 'all') return products;
-
-    return products.filter((p) => p.category?.toLowerCase() === selectedCategory.toLowerCase());
-  }, [products, selectedCategory]);
-
-  // Paginacion aplicando los filtros
+export function ProductListContainer({ greeting = 'Catálogo de Productos' }) {
   const {
+    loading,
+    error,
+    selectedCategory,
+    recentFilters,
+    availableCategories,
+    handleCategoryChange,
+    handleRecentFilterSelect,
     currentItems: currentProducts,
     currentPage,
     totalPages,
@@ -67,15 +31,14 @@ export function ProductListContainer({ greeting = "Catálogo de Productos" }) {
     itemsPerPage,
     handlePageChange,
     handleItemsPerPageChange
-  } = usePagination(filteredProducts, 8);
+  } = useProductListContainer();
 
   return (
     <Container className="py-4 d-flex flex-column gap-3">
-      {/* Encabezado  */}
+      {/* Encabezado */}
       <div className={`d-flex align-items-center justify-content-between w-100 pb-2 mb-2 ${styles.headerWrapper}`}>
         {greeting && <h2 className={`mb-0 ${styles.title}`}>{greeting}</h2>}
 
-        {/* Barra paginacion */}
         {!loading && !error && (
           <PaginationBar
             currentPage={currentPage}
@@ -92,7 +55,6 @@ export function ProductListContainer({ greeting = "Catálogo de Productos" }) {
       {/* Grupo de filtrado */}
       {!loading && !error && (
         <div className={`d-flex flex-wrap align-items-center justify-content-between gap-3 p-3 mb-2 ${styles.filterBar}`}>
-          {/* Lado Izquierdo: Botones de Categorías */}
           <div className="d-flex align-items-center gap-2 flex-wrap">
             <span className={`fw-semibold ${styles.filterLabel}`}>Categorías:</span>
 
@@ -113,7 +75,6 @@ export function ProductListContainer({ greeting = "Catálogo de Productos" }) {
             })}
           </div>
 
-          {/* Lado Derecho: Desplegable de los últimos 5 filtros */}
           <div className="d-flex align-items-center gap-2 ms-auto">
             <Form.Label htmlFor="recentFiltersSelect" className={`mb-0 text-nowrap ${styles.filterLabel}`}>
               Últimos filtros:
@@ -123,13 +84,7 @@ export function ProductListContainer({ greeting = "Catálogo de Productos" }) {
               id="recentFiltersSelect"
               size="sm"
               className={styles.selectFilterControl}
-              onChange={(e) => {
-                const val = e.target.value;
-                if (val) {
-                  const targetCat = val === 'Todas' ? 'all' : val;
-                  setSelectedCategory(targetCat);
-                }
-              }}
+              onChange={handleRecentFilterSelect}
               value={selectedCategory === 'all' ? 'Todas' : selectedCategory}
               disabled={recentFilters.length === 0}
             >
@@ -147,7 +102,7 @@ export function ProductListContainer({ greeting = "Catálogo de Productos" }) {
         </div>
       )}
 
-      {/* 3. Carga */}
+      {/* Carga */}
       {loading && (
         <div className="d-flex flex-column align-items-center justify-content-center py-5">
           <Spinner animation="border" style={{ color: '#8de2d6' }} role="status" />
@@ -155,14 +110,14 @@ export function ProductListContainer({ greeting = "Catálogo de Productos" }) {
         </div>
       )}
 
-      {/* 4. Error */}
+      {/* Error */}
       {error && (
         <Alert variant="danger" className="text-center my-4">
           Error al cargar los productos: {error}
         </Alert>
       )}
 
-      {/* 5. Grilla de Productos y Navegación Inferior */}
+      {/* Grilla de Productos y Navegación Inferior */}
       {!loading && !error && currentProducts.length > 0 && (
         <>
           <ProductList products={currentProducts} />
@@ -179,7 +134,7 @@ export function ProductListContainer({ greeting = "Catálogo de Productos" }) {
         </>
       )}
 
-      {/* Mensaje si no hay coincidencias */}
+      {/* Sin coincidencias */}
       {!loading && !error && currentProducts.length === 0 && (
         <Alert variant="dark" className="text-center my-4">
           No se encontraron productos en la categoría seleccionada.

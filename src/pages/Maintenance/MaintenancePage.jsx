@@ -8,7 +8,7 @@
 ========================================================================== */
 
 // Importaciones
-import { useState } from 'react';
+//import { useState } from 'react';
 import { Container, Card, Form, Button, Row, Col, Badge } from 'react-bootstrap';
 import { BoltIcon } from '../../components/UI/Icons/BoltIcon/BoltIcon';
 import { BroomIcon } from '../../components/UI/Icons/BroomIcon/BroomIcon';
@@ -16,17 +16,19 @@ import { CheckIcon } from '../../components/UI/Icons/CheckIcon/CheckIcon';
 import { MessageBtnAccept } from '../Modal/MessageBtnAccept/MessageBtnAccept';
 
 // Hooks
-import { useSettingsStats } from '../../hooks/UseSettings/useSettingsStats';
-import { useSettingsClean } from '../../hooks/UseSettings/useSettingsClean';
-import { useSettingsLoad } from '../../hooks/UseSettings/useSettingsLoad';
+//import { useSettingsStats } from '../../hooks/UseSettings/useSettingsStats';
+//import { useSettingsClean } from '../../hooks/UseSettings/useSettingsClean';
+//import { useSettingsLoad } from '../../hooks/UseSettings/useSettingsLoad';
+import { useMaintenancePage } from './useMaintenancePage';
 
 // Estilos
 import styles from './MaintenancePage.module.css';
 import '../../styles/Checks/CheckBoxes.css';
 
 export function MaintenancePage() {
-  const [modalConfig, setModalConfig] = useState({ show: false, title: '', message: '' });
+  //const [modalConfig, setModalConfig] = useState({ show: false, title: '', message: '' });
 
+  {/*
   // Hook de Auditoría
   const { storageStats, checkStorageStats } = useSettingsStats();
 
@@ -45,8 +47,24 @@ export function MaintenancePage() {
     handleSelectAllLoad,
     handleExecuteLoad
   } = useSettingsLoad(checkStorageStats, setModalConfig);
+  */}
 
-  const closeModal = () => setModalConfig({ show: false, title: '', message: '' });
+
+  const {
+  storageStats,
+  modalConfig,
+  closeModal,
+  selectedCleanKeys,
+  handleCleanCheck,
+  handleSelectAllClean,
+  handleExecuteClean,
+  selectedLoadKeys,
+  handleLoadCheck,
+  handleSelectAllLoad,
+  handleExecuteLoad
+} = useMaintenancePage();
+
+  //const closeModal = () => setModalConfig({ show: false, title: '', message: '' });
 
   return (
     <Container className="py-5 d-flex justify-content-center align-items-center">
