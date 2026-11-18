@@ -1,0 +1,154 @@
+
+import { XxxxxXxxxx } from '../../components/UI/Icons/CheckIcon/CheckIcon';
+
+
+
+// Importacion
+import { BoltIcon } from '../../components/UI/Icons/BoltIcon/BoltIcon';
+
+// Uso simple con los valores por defecto:
+<BoltIcon />
+
+// Con tamaño y/o color personalizadas
+<BoltIcon size={22} color="#8de2d6" /> Aceptar
+
+
+
+// Importacion
+import { BroomIcon } from '../../components/UI/Icons/BroomIcon/BroomIcon';
+
+// Uso simple con los valores por defecto:
+<BroomIcon />
+
+// Con tamaño y/o color personalizadas
+<BroomIcon size =22, color = "#cccccc" /> Aceptar
+
+
+
+// Importacion
+import { CartIcon } from '../../components/UI/Icons/CartIcon/CartIcon';
+
+// Uso simple con los valores por defecto:
+<CartIcon />
+
+// Tamaño y/o color personalizadas
+<CartIcon size = 22, color = "#ffffff" />
+
+
+
+// Importacion
+import { CheckIcon } from '../../components/UI/Icons/CheckIcon/CheckIcon';
+
+// Uso simple con los valores por defecto:
+<CheckIcon />
+
+// Con tamaño y/o color personalizadas
+<CheckIcon size=22 color="#111111" /> Aceptar
+
+
+
+// Uso simple con los valores por defecto:
+<CheckIcon />
+
+<button className={styles.acceptBtn} onClick={handleConfirm}>
+  <CheckIcon size={18} color="#111111" /> Aceptar
+</button>
+
+
+
+// Importacion
+import { CloseIcon } from '../../components/UI/Icons/CloseIcon/CloseIcon';
+
+// Uso simple con los valores por defecto:
+<CloseIcon />
+
+// Con tamaño y/o color personalizadas
+<CloseIcon size=22 color="#ff4d4f" /> Cancelar
+
+
+
+// Importacion
+import { CreditCardIcon } from '../../components/UI/Icons/CreditCardIcon/CreditCardIcon';
+
+// Uso simple:
+<CreditCardIcon />
+
+// Con tamaño y/o clases personalizada
+<CreditCardIcon width="" height="" className="me-2" />
+
+
+
+// Importacion
+import { GitHubIcon } from '../../components/UI/Icons/GitHubIcon/GitHubIcon';
+
+// Uso simple con los valores por defecto:
+<GitHubIcon />
+
+// Con tamaño y/o color personalizadas
+<GitHubIcon  size = 22, color = "#ffffff" />
+
+
+
+// Importacion
+import { GitHubIcon } from '../../components/UI/Icons/GoogleIcon/GoogleIcon';
+
+// Uso simple con los valores por defecto:
+<GoogleIcon />
+
+// O con tamaño personalizado
+<CloseIcon size=22 />
+
+
+
+// Importacion
+import { CreditCardIcon } from '../../components/UI/Icons/StarOutLineIcon/StarOutLineIcon';
+
+// Uso simple con los valores por defecto:
+<StarOutLineIcon />
+
+// Con tamaño y color personalizados
+<StarOutLineIcon size = 28, color = "#8de2d6" />
+
+
+
+// Importacion
+import { ShieldIcon } from '../../components/UI/Icons/ShieldIcon/ShieldIcon';
+
+// Uso simple:
+<ShieldIcon />
+
+// Con tamaño y/o clases personalizadas:
+<ShieldIcon width="20px" height="20px" className="me-2" />
+
+
+
+// Importacion
+import { ShieldIcon } from '../../components/UI/Icons/ShieldIcon/ShieldIcon';
+
+// Uso simple:
+<ShieldIcon />
+
+// Con tamaño y/o clases personalizadas:
+<ShieldIcon width="20px" height="20px" className="me-2" />
+
+
+
+// Importacion
+import { CreditCardIcon } from '../../components/UI/Icons/StarInLineIcon/StarInLineIcon';
+
+// Uso simple con los valores por defecto:
+<StarInLineIcon />
+
+// Con tamaño y color personalizados
+<StarInLineIcon size = 28, color = "#FFD700" />
+
+
+
+// Importacion
+import { CreditCardIcon } from '../../components/UI/Icons/StarOutLineIcon/StarOutLineIcon';
+
+// Uso simple con los valores por defecto:
+<StarOutLineIcon />
+
+// Con tamaño y color personalizados
+<StarOutLineIcon size = 28, color = "#8de2d6" />
