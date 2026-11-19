@@ -1,3 +1,6 @@
+
+
+
 /* ==========================================================================
   Hook: useProductCard.js
   Descripción: Encapsula la interacción individual de la tarjeta de producto,

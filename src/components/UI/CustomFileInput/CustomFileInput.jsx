@@ -8,6 +8,8 @@
 
 // Importaciones
 import { Form } from 'react-bootstrap';
+
+// Estilos
 import styles from './CustomFileInput.module.css';
 
 export function CustomFileInput({ label, onChange, controlId = "imagenArchivo", disabled = false }) {

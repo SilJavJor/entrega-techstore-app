@@ -129,7 +129,7 @@ export function CategoriesProvider({ children }) {
   const clearCategories = () => {
     setCategories([]);
 
-    localStorage.removeItem('techstore_categories');
+    localStorage.setItem('techstore_categories', JSON.stringify([]));
   };
 
   // Reestablecer LocalStorage

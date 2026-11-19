@@ -16,7 +16,8 @@
   flex-direction: column !important;
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
   color: #ffffff;
-  min-width: calc(100% + 10px);
+  /* min-width: calc(100% + 10px); */ 
+  width: 100%;
 }
 
 .card:hover {

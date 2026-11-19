@@ -1,3 +1,6 @@
+
+
+
 /* ==========================================================================
   Componente ProductCard.jsx
   Descripción: Tarjeta individual de producto desacoplada visualmente mediante

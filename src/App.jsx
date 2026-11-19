@@ -10,6 +10,7 @@
 import { Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Layout } from './components/Layout/Layout';
+import { ProtectedRoute } from './components/ProtectedRoute/ProtectedRoute';
 import { ProductListContainer } from './components/ProductListContainer/ProductListContainer';
 
 // Paginas
@@ -41,13 +42,30 @@ function App() {
         <Route path="/product/:id" element={<ProductDetail />} />
 
         {/* ABMC de Marcas - CRUD */}
-        <Route path="/add-brand" element={<BrandPage />} />
+        <Route path="/add-brand" element={
+            <ProtectedRoute>
+              <BrandPage />
+            </ProtectedRoute>
+          }
+        />
+
 
         {/* ABMC de Categorias - CRUD */}
-        <Route path="/add-category" element={<CategoryPage />} />
+        <Route path="/add-category" element={
+            <ProtectedRoute>
+              <CategoryPage />
+            </ProtectedRoute>
+          }
+        />
+
 
         {/* ABMC de Pproductos - CRUD */}
-        <Route path="/add-product" element={<ProductPage />} />
+        <Route path="/add-product" element={
+            <ProtectedRoute>
+              <ProductPage />
+            </ProtectedRoute>
+          }
+        />
 
         {/* / Carrito de compras */}
         <Route path="/cart" element={<CartPage />} />
@@ -65,10 +83,20 @@ function App() {
         <Route path="/aboutus" element={<AboutUsPage />} />
 
         {/* ABMC de Equipo - CRUD */}
-        <Route path="/add-team" element={<TeamPage />} />
+        <Route path="/add-team" element={
+            <ProtectedRoute>
+              <TeamPage />
+            </ProtectedRoute>
+          }
+        />
 
         {/* Mantenimiento */}
-        <Route path="/maintenance" element={<MaintenancePage />} />
+        <Route path="/maintenance" element={
+            <ProtectedRoute>
+              <MaintenancePage />
+            </ProtectedRoute>
+          }
+        />
 
         {/* Paginas no encontradas (404) */}
         <Route path="*" element={<NotFoundPage />} />
